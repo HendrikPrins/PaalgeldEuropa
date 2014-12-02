@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+    padding-top:40px;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+#hummellogo {
+    max-height:40px;
+}
+
+.navbar-brand {
+    padding:5px;
+}
+
+.box {
+    padding:10px;
+}
+
+.welcome {
+    background-image: url('../img/welcome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: auto;
+    min-height: 100%;
+    height: auto;
+    padding: 25px;
+    padding-top: 200px;
+}
+
+.welcome a:hover {
+    text-decoration: none;
+    
+}
+
+.icontext {
+    color: #FC4D1E;
+}
+
+.icontext:hover {
+    color: #19AD6A;
+}
+    
+
+.info {
+    background-color: #FFFFFF;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 25px;
+}
+
+.info h3 {
+    color: #19AD6A;
+}
+
+.footer {
+    background-color: #19AD6A;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 25px;
+    color: #FFF;
+}
+
+.trans {
+    opacity: 0.8;
+    margin: 50px;
+    padding: 60px 0px 60px 0px;
+}
+
+/*Landingspagina*/
+
+
+
+/*Zoekpagina*/
+
+
+
+/*Resultatenpagina*/
