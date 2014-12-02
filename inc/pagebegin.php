@@ -55,8 +55,8 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Paalgeld<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a target="_blank" href="index.php">Paalgeld Europa</a></li>
-                    <li><a target="_blank" href="paalgeldwestindie.php">Paalgeld West-Indie</a></li>
-                    <li><a target="_blank" href="paalgeldlastgeld.php">Lastgeld</a></li>
+                    <li><a target="_blank" href="http://www.paalgeld.chrispool.nl/website/index.php">Paalgeld West-Indie</a></li>
+                    <li><a target="_blank" href="http://thesociallions.nl/sonttol/lastgeld/">Lastgeld</a></li>
                     <li class="divider"></li>
                     <li><a target="_blank" href="http://www.rug.nl">Rijksuniversiteit Groningen</a></li>
                   </ul>
@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                            <h3><?php echo $pageTitle; ?>
+                            <h3>Paalgeld Europa
                             <small><?php echo $subTitle; ?></small></h3>
                     </div>
                     <div>

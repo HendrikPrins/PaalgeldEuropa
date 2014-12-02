@@ -1,5 +1,6 @@
 <?php
 require_once('inc/config.php');
+$_loadChosen = true;
 beginPage('Paalgeld Europa - Namen', true, 'Onderzoek a.h.v. namen');
 ?>
 <form class="form-horizontal" role="form" action="namenresult.php" method="post">
