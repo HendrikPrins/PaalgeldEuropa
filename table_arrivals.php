@@ -4,7 +4,7 @@ beginPage();
 
 if(isset($_GET['id'])){
   // een bepaalde arrival met alle cargo
-  $res = $_db->query("SELECT * FROM paalgeldEur WHERE idEur = '".$_db->real_escape_string($_GET['id'])."'");
+  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldeur.portCode = ports.portCode AND idEur = '".$_db->real_escape_string($_GET['id'])."'");
   if($res == null || $res->num_rows == 0){
     echo 'Niets gevonden... div class=alert maken';
   }else{
@@ -13,8 +13,8 @@ if(isset($_GET['id'])){
     $row = $res->fetch_assoc();
     echo '<tr><td>arrival id</td><td>'.$row['idEur'].'</td></tr>';
     echo '<tr><td>date</td><td>'.$row['date'].'</td></tr>';
-    echo '<tr><td>fullNameCaptain</td><td>'.$row['fullNameCaptain'].'</td></tr>';
-    echo '<tr><td>departurePort</td><td>'.$row['departurePort'].'</td></tr>';
+    echo '<tr><td>fullNameCaptain</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td></tr>';
+    echo '<tr><td>departurePort</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
     echo '</table>';
 
     // de cargoes
@@ -31,11 +31,11 @@ if(isset($_GET['id'])){
   }
 }else{
   // Lijst van alle arrivals
-  $res = $_db->query("SELECT * FROM paalgeldEur");
+  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode");
   echo '<table class="table table-hover">';
   echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
   while($row = $res->fetch_assoc()){
-    echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</td><td>'.$row['departurePort'].'</td></tr>';
+    echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
   }
   echo '</table>';
 }

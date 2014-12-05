@@ -10,19 +10,22 @@ if(isset($_GET['id'])){
   }else{
     // details
 	echo '<table class="table">';
-    $row = $res->fetch_assoc();
-    echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td></tr>';
-    echo '<tr><td>First name</td><td>'.$row['firstNameCaptain'].'</td></tr>';
-    echo '<tr><td>Last Name</td><td>'.$row['lastNameCaptain'].'</td></tr>';
-    echo '</table>';
-	// de arrivals
-    echo '<b>Arrivals</b>';
-    echo '<table class="table table-hover">';
-    echo '<tr><th>Arrival id</th><th>Date</th><th>First name</th><th>Last Name</th><th>Departure port</th></tr>';
+  $row = $res->fetch_assoc();
+  echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td></tr>';
+  echo '<tr><td>First name</td><td>'.$row['firstNameCaptain'].'</td></tr>';
+  echo '<tr><td>Last Name</td><td>'.$row['lastNameCaptain'].'</td></tr>';
+  echo '</table>';
+// de arrivals
+  echo '<b>Arrivals</b>';
+  echo '<table class="table table-hover">';
+  echo '<tr><th>Arrival id</th><th>Date</th><th>First name</th><th>Last Name</th><th>Departure port</th></tr>';
+  echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td>'.$row['firstNameCaptain'].'</td><td>'.$row['lastNameCaptain'].'</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
+  if($res->num_rows > 1){
     while($row = $res->fetch_assoc()){
       echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td>'.$row['firstNameCaptain'].'</td><td>'.$row['lastNameCaptain'].'</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
     }
-    echo '</table>';
+  }
+  echo '</table>';
   }
  
 }else{

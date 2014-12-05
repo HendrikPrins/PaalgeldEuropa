@@ -28,6 +28,7 @@ if(isset($_GET['area'])){
 	echo '<tr><td>Country now</td><td>'.$row['countriesNow'].'</td></tr>';
 	echo '<tr><td>Arrivals</td><td>'.$row['arrivals'].'</td></tr>';
 	echo '</table>';
+
 	
 	// arrivals
 	$res2 = $_db->query("SELECT * FROM ports, paalgeldeur WHERE ports.portCode = paalgeldeur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'");
@@ -40,9 +41,9 @@ if(isset($_GET['area'])){
 	  }
 	    echo '</table>';
 	}
-	
+
   }
-  
+
 }else{
   // tabel met alle ports
   $res = $_db->query("SELECT * FROM ports, portareas WHERE ports.areaCode = portareas.areaCode ORDER BY portName");
