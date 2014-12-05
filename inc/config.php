@@ -1,7 +1,11 @@
 <?php
 session_start();
 // Maak verbinding met de database
-$_db = new mysqli('localhost', 'p13544_paalgeld', 'paalgeld2014', 'p13544_paalgeld');
+if($_SERVER["SERVER_NAME"] == 'localhost'){
+  $_db = new mysqli('localhost', 'f111433', 'mi3ahch3ei', 'f111433');
+}else{
+  $_db = new mysqli('mysql01.service.rug.nl', 'f111433', 'mi3ahch3ei', 'f111433');
+}
 // Sla de pagina naam op, handig bijv. voor het menu (class=active)
 $_pageName = basename($_SERVER['PHP_SELF']);
 // Zit de content in een container
