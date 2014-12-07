@@ -3,15 +3,17 @@ require('inc/config.php');
 beginPage();
 
 if(isset($_GET['id'])){
-  // 
-  $res = $_db->query("SELECT * FROM paalgeldeur, ports WHERE paalgeldeur.portCode = ports.portCode AND fullNameCaptain = '".$_db->real_escape_string($_GET['id'])."'");
+  //
+  $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));     
+  $res = $_db->query("SELECT * FROM paalgeldeur, ports WHERE paalgeldeur.portCode = ports.portCode AND fullNameCaptain = '".$captain."'");
   if($res == null || $res->num_rows == 0){
     echo 'Niets gevonden... div class=alert maken';
   }else{
     // details
 	echo '<table class="table">';
   $row = $res->fetch_assoc();
-  echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td></tr>';
+  $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+  echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td></tr>';
   echo '<tr><td>First name</td><td>'.$row['firstNameCaptain'].'</td></tr>';
   echo '<tr><td>Last Name</td><td>'.$row['lastNameCaptain'].'</td></tr>';
   echo '</table>';
@@ -34,7 +36,8 @@ if(isset($_GET['id'])){
   echo '<table class="table table-hover">';
   echo '<tr><th>captain</th><th>arrivals</th></tr>';
   while($row = $res->fetch_assoc()){
-    echo '<tr><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';
+    $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+    echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';
   }
   echo '</table>';
 }

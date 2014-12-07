@@ -12,7 +12,8 @@ if(isset($_GET['cargo'])){
     echo '<table class="table table-hover">';
     echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
     while($row = $res->fetch_assoc()){
-      echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$row['fullNameCaptain'].'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
+	  $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+      echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
     }
     echo '</table>';
   }
