@@ -31,14 +31,14 @@ if(isset($_GET['area'])){
 
 	
 	// arrivals
-	$res2 = $_db->query("SELECT * FROM ports, paalgeldeur WHERE ports.portCode = paalgeldeur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'");
+	$res2 = $_db->query("SELECT *, (SELECT COUNT(*) FROM cargo WHERE paalgeldeur.idEur = cargo.idEur) AS cargoCount FROM ports, paalgeldeur WHERE ports.portCode = paalgeldeur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'");
 	if($res2 != null && $res2->num_rows > 0){
 	  echo '<b>Arrivals</b>';
 	  echo '<table class="table table-hover">';
-	  echo '<tr><th>arrival id</th><th>date</th><th>captain</th></tr>';
+	  echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>cargo count</th></tr>';
 	  while($row2 = $res2->fetch_assoc()){
 	    $captain = str_replace(' ', '_', $row2['fullNameCaptain']);
-	    echo '<tr><td><a href="table_arrivals.php?id='.$row2['idEur'].'">'.$row2['idEur'].'</a></td><td>'.$row2['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row2['fullNameCaptain'].'</a></td></tr>';
+	    echo '<tr><td><a href="table_arrivals.php?id='.$row2['idEur'].'">'.$row2['idEur'].'</a></td><td>'.$row2['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row2['fullNameCaptain'].'</a></td><td>'.$row2['cargoCount'].'</td></tr>';
 	  }
 	    echo '</table>';
 	}
