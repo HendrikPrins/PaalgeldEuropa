@@ -23,9 +23,9 @@ if(isset($_GET['id'])){
     if($res2 != null && $res2->num_rows > 0){
       echo '<b>Cargoes</b>';
       echo '<table class="table table-hover">';
-      echo '<tr><th>cargo</th><th>quantity</th></tr>';
+      echo '<tr><th>cargo</th><th>tax</th></tr>';
       while($row2 = $res2->fetch_assoc()){
-        echo '<tr><td><a href="table_cargoes.php?cargo='.$row2['cargo'].'">'.$row2['cargo'].'</a></td><td>'.$row2['quantity'].'</td></tr>';
+        echo '<tr><td><a href="table_cargoes.php?cargo='.$row2['cargo'].'">'.$row2['cargo'].'</a></td><td>'.$row2['taxGuilders'].'</td></tr>';
       }
       echo '</table>';
     }
