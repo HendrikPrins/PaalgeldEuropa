@@ -19,10 +19,10 @@ beginPage('Paalgeld Europa - Namen', true, 'Onderzoek a.h.v. namen');
                             <div class="form-group">
                             <label for="inputDatum" class="col-sm-2 control-label">Datum</label>
                             <div class="col-xs-2">
-                            <input type="date" class="form-control" id="inputBegindatum" placeholder="Begin">
+                            <input type="number" min="0" max="9999" class="form-control" id="inputBegindatum" placeholder="Begin">
                             </div>
                             <div class="col-xs-2">
-                            <input type="date" class="form-control" id="inputEinddatum" placeholder="Eind">
+                            <input type="number" min="0" max="9999" class="form-control" id="inputEinddatum" placeholder="Eind">
                             </div>
                             </div>
                             <div class="form-group">
