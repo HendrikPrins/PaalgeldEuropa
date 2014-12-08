@@ -11,6 +11,7 @@ if(isset($_GET['id'])){
     echo 'Niets gevonden... div class=alert maken';
   }else{
     // details
+  download_knop($query);
 	echo '<table class="table">';
   $row = $res->fetch_assoc();
   $captain = str_replace(' ', '_', $row['fullNameCaptain']);
@@ -35,12 +36,7 @@ if(isset($_GET['id'])){
   // Lijst van alle unieke captains
   $query = "SELECT *,COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC";
   $res = $_db->query($query);
-  echo '<form action="download.php" method="post">';
-  echo '<input type="hidden" name="download_query" value="'.$query.'""><br>';
-  echo '<input type="submit" value="Download CSV">';
-  echo '</form>';
-  echo '<table class="table table-hover">';
-  echo '<tr><th>captain</th><th>arrivals</th></tr>';
+  download_knop($query);
   while($row = $res->fetch_assoc()){
     $captain = str_replace(' ', '_', $row['fullNameCaptain']);
     echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';

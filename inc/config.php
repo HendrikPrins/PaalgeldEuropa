@@ -26,4 +26,13 @@ function endPage(){
   require('inc/pageend.php');
 }
 
+function download_knop($query){
+	echo '<form action="download.php" method="post">';
+	echo '<input type="hidden" name="download_query" value="'.$query.'""><br>';
+	echo '<input type="submit" value="Download CSV">';
+	echo '</form>';
+	echo '<table class="table table-hover">';
+	echo '<tr><th>captain</th><th>arrivals</th></tr>';
+}
+
 ?>
