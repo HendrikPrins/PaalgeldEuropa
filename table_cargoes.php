@@ -4,10 +4,12 @@ beginPage();
 
 if(isset($_GET['cargo'])){
   // alle arrivals met een bepaalde cargo
-  $res = $_db->query("SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'");
+  $query = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
+  $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
     echo '<div class="alert alert-warning">Er zijn geen arrivels met cargo '.$_GET['cargo'].' gevonden. Foutmelding: '.$_db->error.'</div>';
   }else{
+    download_knop($query);
     echo 'Arrivals met cargo <a href="table_cargoes.php?cargo='.$_GET['cargo'].'">'.$_GET['cargo'].'</a>';
     echo '<table class="table table-hover">';
     echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
@@ -19,8 +21,10 @@ if(isset($_GET['cargo'])){
   }
 }else{
   // tabel met unieke cargo
-  $res = $_db->query("SELECT cargo, COUNT(*) AS count FROM cargo GROUP BY cargo ORDER BY count DESC");
-  echo '<table class="table table-hover">';
+  $query = "SELECT cargo, COUNT(*) AS count FROM cargo GROUP BY cargo ORDER BY count DESC";
+  $res = $_db->query($query);
+  download_knop($query);
+    echo '<table class="table table-hover">';
     echo '<tr><th>cargo</th><th>count</th></tr>';
   while($row = $res->fetch_assoc()){
     echo '<tr><td><a href="table_cargoes.php?cargo='.$row['cargo'].'">'.$row['cargo'].'</a></td><td>'.$row['count'].'</td></tr>';
