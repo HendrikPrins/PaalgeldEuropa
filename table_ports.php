@@ -4,11 +4,13 @@ beginPage();
 
 if(isset($_GET['area'])){
   // alle ports in bepaalde area
-  $res = $_db->query("SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND portAreas.area = '".$_db->real_escape_string($_GET['area'])."'");
+  $query = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND portAreas.area = '".$_db->real_escape_string($_GET['area'])."'";
+  $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
     echo '<div class="alert alert-warning">Er zijn geen arrivals met Area code '.$_GET['area'].' gevonden.</div>';
   }else{
 	echo 'Ports in <a href="table_ports.php?area='.$_GET['area'].'">'.$_GET['area'].'</a>';
+  download_knop($query);
     echo '<table class="table table-hover">';
     echo '<tr><th>Port code</th><th>Port</th><th>Area</th><th>Country now</th></tr>';
     while($row = $res->fetch_assoc()){
@@ -17,9 +19,11 @@ if(isset($_GET['area'])){
     echo '</table>';
   }
 }elseif(isset($_GET['portCode'])){
-  $res = $_db->query("SELECT *, Count(paalgeldEur.idEur) AS arrivals FROM ports, portAreas, paalgeldEur WHERE ports.areaCode = portAreas.areaCode AND ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'");
+  $query = "SELECT *, Count(paalgeldEur.idEur) AS arrivals FROM ports, portAreas, paalgeldEur WHERE ports.areaCode = portAreas.areaCode AND ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
+  $res = $_db->query($query);
   if($res != null && $res->num_rows > 0){
     // details
+    download_knop($query);
     echo '<table class="table">';
     $row = $res->fetch_assoc();
 	echo '<tr><td>Port code</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portCode'].'</a></td></tr>';
@@ -31,8 +35,10 @@ if(isset($_GET['area'])){
 
 
 	// arrivals
-	$res2 = $_db->query("SELECT *, (SELECT COUNT(*) FROM cargo WHERE paalgeldEur.idEur = cargo.idEur) AS cargoCount FROM ports, paalgeldEur WHERE ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'");
+  $query = "SELECT *, (SELECT COUNT(*) FROM cargo WHERE paalgeldEur.idEur = cargo.idEur) AS cargoCount FROM ports, paalgeldEur WHERE ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
+	$res2 = $_db->query($query);
 	if($res2 != null && $res2->num_rows > 0){
+    download_knop($query);
 	  echo '<b>Arrivals</b>';
 	  echo '<table class="table table-hover">';
 	  echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>cargo count</th></tr>';
@@ -47,10 +53,12 @@ if(isset($_GET['area'])){
 
 }else{
   // tabel met alle ports
-  $res = $_db->query("SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode ORDER BY portName");
+  $query = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode ORDER BY portName";
+  $res = $_db->query($query);
   if($res == null){
     echo 'DB Error: '.$_db->error;
   }
+  download_knop($query);
   echo '<table class="table table-hover">';
   echo '<tr><th>Port code</th><th>Port</th><th>Area</th><th>Country now</th></tr>';
   while($row = $res->fetch_assoc()){
