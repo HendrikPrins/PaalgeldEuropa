@@ -38,16 +38,63 @@ if(isset($_GET['id'])){
   // Lijst van alle arrivals
   $page = isset($_GET['page']) ? $_GET['page']*1 : 0;
   $length = 25;
-  $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode LIMIT ".($length*$page).", ".$length;
-  $res = $_db->query($query);
-  download_knop($query);
+  $offset = $page * $length;
+  $queryBase = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
+  $queryLimited = $queryBase." LIMIT ".$offset.", ".$length;
+  $resCount = $_db->query("SELECT COUNT(*) AS count FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode");
+  $res = $_db->query($queryLimited);
+  download_knop($queryBase);
+  $rowCount = $resCount->fetch_assoc();
+  $totalCount = $rowCount['count'];
 
-  echo '  <nav>';
+
+  $pageLink = $_SERVER['PHP_SELF'];
+  $get = $_GET;
+  echo '<nav>';
+  echo $length.' / '.$totalCount.'<br>';
   echo '  <ul class="pagination">';
-  echo '    <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>';
-  echo '    <li><a href="#">4</a></li>';
-  echo '    <li><a href="#">5</a></li>';
-  echo '    <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>';
+  // Terug knop
+  if($offset > 0){
+    $get['page'] = $page-1;
+    echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'"><span aria-hidden="true">&laquo;</span><span class="sr-only">Vorige</span></a></li>';
+  }else{
+    echo '    <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Vorige</span></a></li>';
+  }
+  // twee terug
+  if($page > 1){
+    $get['page'] = $page-2;
+    echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'">'.$get['page'].'</a></li>';
+  }
+  // een terug
+  if($page > 0){
+    $get['page'] = $page-1;
+    echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'">'.$get['page'].'</a></li>';
+  }
+  // huidige
+  echo '    <li class="active"><a href="#">'.$page.'</a></li>';
+  if($offset+$length*2 < $totalCount){
+    $get['page'] = $page+1;
+    echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'">'.$get['page'].'</a></li>';
+    $get['page'] = $page+2;
+    echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'">'.$get['page'].'</a></li>';
+    // Geen knop een terug, dus ruimte voor extra vooruit
+    if($page - 1 < 0){
+      $get['page'] = $page+3;
+      echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'">'.$get['page'].'</a></li>';
+    }
+    // Geen knop twee terug, dus ruimte voor extra vooruit
+    if($page - 2 < 0){
+      $get['page'] = $page+4;
+      echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'">'.$get['page'].'</a></li>';
+    }
+  }
+  // Volgende knop
+  if($offset+$length < $totalCount){
+    $get['page'] = $page+1;
+    echo '    <li><a href="'.$pageLink.'?'.http_build_query($get).'"><span aria-hidden="true">&raquo;</span><span class="sr-only">Volgende</span></a></li>';
+  }else{
+    echo '    <li class="disabled"><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Volgende</span></a></li>';
+  }
   echo '  </ul>';
   echo '</nav>';
   echo '<table class="table table-hover">';
