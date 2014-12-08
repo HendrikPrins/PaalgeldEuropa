@@ -1,12 +1,13 @@
 <?php
 
+require("inc/config.php");
+
 $query = $_POST["download_query"];
 
-get_csv($query);
+get_csv($query, $_db);
 
-function get_csv($query){
+function get_csv($query, $_db){
 	// queryresult 1
-	$_db = new mysqli('localhost', 'p13544_paalgeld', 'paalgeld2014', 'p13544_paalgeld');
 	$query_result = $_db->query($query);
 
 	// output headers so that the file is downloaded rather than displayed
@@ -31,7 +32,6 @@ function get_csv($query){
 	fputcsv($output, $column_names);
 	
 	// queryresult 1
-	$_db = new mysqli('localhost', 'p13544_paalgeld', 'paalgeld2014', 'p13544_paalgeld');
 	$rows = $_db->query($query);
 
 	// loop over the rows, outputting them to csv file
