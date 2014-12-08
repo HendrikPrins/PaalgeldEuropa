@@ -36,9 +36,20 @@ if(isset($_GET['id'])){
   }
 }else{
   // Lijst van alle arrivals
-  $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
+  $page = isset($_GET['page']) ? $_GET['page']*1 : 0;
+  $length = 25;
+  $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode LIMIT ".($length*$page).", ".$length;
   $res = $_db->query($query);
   download_knop($query);
+
+  echo '  <nav>';
+  echo '  <ul class="pagination">';
+  echo '    <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>';
+  echo '    <li><a href="#">4</a></li>';
+  echo '    <li><a href="#">5</a></li>';
+  echo '    <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>';
+  echo '  </ul>';
+  echo '</nav>';
   echo '<table class="table table-hover">';
   echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
   while($row = $res->fetch_assoc()){
