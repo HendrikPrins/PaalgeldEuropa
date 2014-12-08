@@ -9,7 +9,7 @@ beginPage('Paalgeld Europa - Plaatsen', true, 'Onderzoek a.h.v. plaatsen');
 	<div class="col-sm-10">
 	  <select name="inputRegio" data-placeholder="Kies &eacute;&eacute;n or meerdere Regio(s)" class="chosen-select" multiple style="width:350px;" tabindex="4">
 		<?php
-		$query = "SELECT DISTINCT area FROM portareas ORDER BY area";
+		$query = "SELECT DISTINCT area FROM portAreas ORDER BY area";
 		$res = $_db->query($query);
 		if($res != null || $res->num_rows > 0){
 		  while($row = $res->fetch_assoc()){
@@ -25,7 +25,7 @@ beginPage('Paalgeld Europa - Plaatsen', true, 'Onderzoek a.h.v. plaatsen');
 	<div class="col-sm-10">
 	  <select name="inputLand" data-placeholder="Kies &eacute;&eacute;n or meerdere Land(en)" class="chosen-select" multiple style="width:350px;" tabindex="4">
 		<?php
-		$query = "SELECT * FROM portareas ORDER BY countriesNow";
+		$query = "SELECT * FROM portAreas ORDER BY countriesNow";
 		$res = $_db->query($query);
 		if($res != null || $res->num_rows > 0){
 		  while($row = $res->fetch_assoc()){
