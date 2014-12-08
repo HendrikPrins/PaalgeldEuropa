@@ -22,7 +22,7 @@ if(isset($_GET['id'])){
 
     // de cargoes
     $query = "SELECT * FROM cargo WHERE idEur = '".$_db->real_escape_string($_GET['id'])."'";
-    $res2 = $_db->query();
+    $res2 = $_db->query($query);
     if($res2 != null && $res2->num_rows > 0){
       download_knop($query);
       echo '<b>Cargoes</b>';
