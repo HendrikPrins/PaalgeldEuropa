@@ -33,7 +33,7 @@ if(isset($_GET['id'])){
  
 }else{
   // Lijst van alle unieke captains
-  $query = "SELECT *,COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC"
+  $query = "SELECT *,COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC";
   $res = $_db->query($query);
   echo '<form action="download.php" method="post">';
   echo '<input type="hidden" name="download_query" value="'.$query.'><br>';
