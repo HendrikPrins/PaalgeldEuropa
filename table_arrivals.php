@@ -4,7 +4,7 @@ beginPage();
 
 if(isset($_GET['id'])){
   // een bepaalde arrival met alle cargo
-  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldeur.portCode = ports.portCode AND idEur = '".$_db->real_escape_string($_GET['id'])."'");
+  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND idEur = '".$_db->real_escape_string($_GET['id'])."'");
   if($res == null || $res->num_rows == 0){
     echo 'Niets gevonden... div class=alert maken';
   }else{

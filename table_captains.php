@@ -5,7 +5,7 @@ beginPage();
 if(isset($_GET['id'])){
   //
   $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));     
-  $res = $_db->query("SELECT * FROM paalgeldeur, ports WHERE paalgeldeur.portCode = ports.portCode AND fullNameCaptain = '".$captain."'");
+  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$captain."'");
   if($res == null || $res->num_rows == 0){
     echo 'Niets gevonden... div class=alert maken';
   }else{
