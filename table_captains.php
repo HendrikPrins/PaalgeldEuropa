@@ -37,6 +37,8 @@ if(isset($_GET['id'])){
   $query = "SELECT *,COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC";
   $res = $_db->query($query);
   download_knop($query);
+  echo '<table class="table table-hover">';
+  echo '<tr><th>captain</th><th>arrivals</th></tr>';
   while($row = $res->fetch_assoc()){
     $captain = str_replace(' ', '_', $row['fullNameCaptain']);
     echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';
