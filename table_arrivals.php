@@ -4,11 +4,13 @@ beginPage();
 
 if(isset($_GET['id'])){
   // een bepaalde arrival met alle cargo
-  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND idEur = '".$_db->real_escape_string($_GET['id'])."'");
+  $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND idEur = '".$_db->real_escape_string($_GET['id'])."'";
+  $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
     echo 'Niets gevonden... div class=alert maken';
   }else{
     // details
+    download_knop($query);
     echo '<table class="table">';
     $row = $res->fetch_assoc();
 	$captain = str_replace(' ', '_', $row['fullNameCaptain']);
@@ -19,8 +21,10 @@ if(isset($_GET['id'])){
     echo '</table>';
 
     // de cargoes
-    $res2 = $_db->query("SELECT * FROM cargo WHERE idEur = '".$_db->real_escape_string($_GET['id'])."'");
+    $query = "SELECT * FROM cargo WHERE idEur = '".$_db->real_escape_string($_GET['id'])."'";
+    $res2 = $_db->query();
     if($res2 != null && $res2->num_rows > 0){
+      download_knop($query);
       echo '<b>Cargoes</b>';
       echo '<table class="table table-hover">';
       echo '<tr><th>cargo</th><th>tax</th></tr>';
@@ -32,7 +36,9 @@ if(isset($_GET['id'])){
   }
 }else{
   // Lijst van alle arrivals
-  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode");
+  $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
+  $res = $_db->query($query);
+  download_knop($query);
   echo '<table class="table table-hover">';
   echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
   while($row = $res->fetch_assoc()){
