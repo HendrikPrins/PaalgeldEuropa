@@ -4,8 +4,9 @@ beginPage();
 
 if(isset($_GET['id'])){
   //
-  $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));     
-  $res = $_db->query("SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$captain."'");
+  $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));
+  $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$captain."'"   
+  $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
     echo 'Niets gevonden... div class=alert maken';
   }else{
@@ -32,7 +33,12 @@ if(isset($_GET['id'])){
  
 }else{
   // Lijst van alle unieke captains
-  $res = $_db->query("SELECT *,COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC");
+  $query = "SELECT *,COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC"
+  $res = $_db->query($query);
+  echo '<form action="download.php" method="post">';
+  echo '<input type="hidden" name="download_query" value="'.$query.'><br>';
+  echo '<input type="submit" value="Download CSV">';
+  echo '</form>';
   echo '<table class="table table-hover">';
   echo '<tr><th>captain</th><th>arrivals</th></tr>';
   while($row = $res->fetch_assoc()){
