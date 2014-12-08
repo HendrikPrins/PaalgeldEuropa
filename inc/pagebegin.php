@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="nl">
+
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
@@ -27,6 +28,9 @@
 
     </head>
 
+
+
+
     <body>
         <!-- Menu -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -50,11 +54,23 @@
                 <li<?php echo ($_pageName == 'plaatsen.php' ? ' class="active"' : '')?>><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Plaatsen</a></li>
                 <li<?php echo ($_pageName == 'lading.php' ? ' class="active"' : '')?>><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Lading</a></li>
               </ul>
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th"></span> Volledige tabellen<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="table_captains.php">Namen</a></li>
+                    <li><a href="table_ports.php">Plaatsen</a></li>
+                    <li><a href="table_cargoes.php">Lading</a></li>
+                    <li><a href="table_arrivals.php">Aankomst</a></li>
+                    <li><a href="#">Placeholder</a></li>           
+                  </ul>
+                </li>
+              </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Paalgeld<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a target="_blank" href="index.php">Paalgeld Europa</a></li>
+                    <li><a target="_blank" href="../PaalgeldEuropa/">Paalgeld Europa</a></li>
                     <li><a target="_blank" href="../paalgeld_win/">Paalgeld West-Indie</a></li>
                     <li><a target="_blank" href="../lastgeld/">Lastgeld</a></li>
                     <li class="divider"></li>
