@@ -29,7 +29,7 @@ function get_csv($query, $_db){
 	}
 
 	// basic csv file, with column names in first row
-	fputcsv($output, $column_names);
+	fputcsv($output, $column_names, ";");
 	
 	// queryresult 1
 	$rows = $_db->query($query);
@@ -37,7 +37,7 @@ function get_csv($query, $_db){
 	// loop over the rows, outputting them to csv file
 	// every row in the csv is same as row in sql result ($query_result)
 	while ($row = $rows->fetch_assoc()) {
-		fputcsv($output, $row);
+		fputcsv($output, $row, ";");
 	}
 
 	// now CSV file is done creating
