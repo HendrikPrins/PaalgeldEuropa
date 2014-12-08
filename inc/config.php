@@ -29,7 +29,7 @@ function endPage(){
 function download_knop($query){
 	echo '<form action="download.php" method="post">';
 	echo '<input type="hidden" name="download_query" value="'.$query.'""><br>';
-	echo '<input type="submit" value="Download CSV">';
+	echo '<input class="btn btn-primary" type="submit" value="Download CSV">';
 	echo '</form>';
 }
 
