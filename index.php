@@ -9,8 +9,13 @@ beginPage('', false);
               <div class="panel-body">
                   <a href="namen.php">
                       <div class="icontext">
-                          <h1 class="text-center"><span class="glyphicon glyphicon-user"></span></h1>
-                          <h4 class="text-center"><span>Onderzoek a.h.v. namen</span></h4>
+                        <div class="text-center">
+                          <h1><span class="glyphicon glyphicon-user"></span></h1>
+                          <h4><span>Onderzoek a.h.v. namen</span></h4>
+                          <div class="icon-desc">
+                            <p class="small">Find your ancestors here</p>
+                          </div>
+                        </div>
                       </div>
                   </a>
               </div>
@@ -21,8 +26,13 @@ beginPage('', false);
               <div class="panel-body">
                   <a href="plaatsen.php">
                       <div class="icontext">
-                          <h1 class="text-center"><span class="glyphicon glyphicon-screenshot"></span></h1>
-                          <h4 class="text-center"><span>Onderzoek a.h.v. plaatsen</span></h4>
+                        <div class="text-center">
+                          <h1><span class="glyphicon glyphicon-screenshot"></span></h1>
+                          <h4><span>Onderzoek a.h.v. plaatsen</span></h4>
+                          <div class="icon-desc">
+                              <p class="small">Get an overview of selected ports</p>
+                          </div>
+                        </div>
                       </div>
                   </a>
               </div>
@@ -33,8 +43,13 @@ beginPage('', false);
               <div class="panel-body">
                   <a href="lading.php">
                       <div class="icontext">
-                          <h1 class="text-center"><span class="glyphicon glyphicon-random"></span></h1>
-                          <h4 class="text-center"><span>Onderzoek a.h.v. lading per jaar</span></h4>
+                        <div class="text-center">
+                          <h1><span class="glyphicon glyphicon-random"></span></h1>
+                          <h4><span>Onderzoek a.h.v. lading per jaar</span></h4>
+                          <div class="icon-desc">
+                            <p class="small">View cargo data from ships</p>
+                          </div>
+                        </div>
                       </div>
                   </a>
               </div>
