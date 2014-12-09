@@ -36,6 +36,7 @@ if(isset($_GET['id'])){
   }
 }else{
   // Lijst van alle arrivals
+  include_once('inc/module_tablesort.php');
   // Een aantal variabelen berekenen voor de pagination
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
@@ -45,7 +46,8 @@ if(isset($_GET['id'])){
   $rowCount = $resCount->fetch_assoc();
   $totalCount = $rowCount['count'];
 
-  $queryBase = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode ORDER BY paalgeldEur.idEur";
+  $queryBase = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
+  $queryBase .= queryOrderPart(array('idEur','date','fullNameCaptain','portName'), 'idEur');
   $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
   $res = $_db->query($queryLimited);
   download_knop($queryBase);
@@ -53,7 +55,7 @@ if(isset($_GET['id'])){
   $pagination = pagination($page, $size, $totalCount);
   echo $pagination;
   echo '<table class="table table-hover">';
-  echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
+  echo '<tr><th>'.sortableHead('Arrival id', 'idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';
   while($row = $res->fetch_assoc()){
     $captain = str_replace(' ', '_', $row['fullNameCaptain']);
     echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';

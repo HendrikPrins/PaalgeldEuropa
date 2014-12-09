@@ -34,6 +34,7 @@ if(isset($_GET['id'])){
  
 }else{
   // Lijst van alle unieke captains
+  include_once('inc/module_tablesort.php');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
   $offset = $page * $size;
@@ -41,14 +42,15 @@ if(isset($_GET['id'])){
   $resCount = $_db->query("SELECT COUNT(DISTINCT fullNameCaptain) AS count FROM paalgeldEur");
   $rowCount = $resCount->fetch_assoc();
   $totalCount = $rowCount['count'];
-  $queryBase = "SELECT *, COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain ORDER BY count DESC";
+  $queryBase = "SELECT *, COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain";
+  $queryBase .= queryOrderPart(array('fullNameCaptain','count'), 'count', 'desc');
   $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
   $res = $_db->query($queryLimited);
   download_knop($queryBase);
   $pagination = pagination($page, $size, $totalCount);
   echo $pagination;
   echo '<table class="table table-hover">';
-  echo '<tr><th>captain</th><th>arrivals</th></tr>';
+  echo '<tr><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Arrivals', 'count').'</th></tr>';
   while($row = $res->fetch_assoc()){
     $captain = str_replace(' ', '_', $row['fullNameCaptain']);
     echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';
