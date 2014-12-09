@@ -3,6 +3,8 @@ session_start();
 // Maak verbinding met de database
 if($_SERVER["SERVER_NAME"] == 'localhost'){
   $_db = new mysqli('localhost', 'f111433', 'mi3ahch3ei', 'f111433');
+}elseif($_SERVER["SERVER_NAME"] == 'hendrikprins.nl' || $_SERVER["SERVER_NAME"] == 'www.hendrikprins.nl'){
+  $_db = new mysqli('localhost', 'p13544_paalgeld', 'paalgeld2014', 'p13544_paalgeld');
 }else{
   $_db = new mysqli('mysql01.service.rug.nl', 'f111433', 'mi3ahch3ei', 'f111433');
 }
