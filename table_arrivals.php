@@ -7,7 +7,7 @@ if(isset($_GET['id'])){
   $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND idEur = '".$_db->real_escape_string($_GET['id'])."'";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with arrival id <strong>'.$_GET['id'].'</strong> found. <script type="text/javascript"> document.write(\'<a class="alert-link href="\' + document.referrer + \'">Go Back</a>\');</script><br>Error code: '.$_db->error.'</div>';
+    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with arrival id <strong>'.$_GET['id'].'</strong> found. <script type="text/javascript"> document.write(\'<a class="alert-link" href="\' + document.referrer + \'">Go Back</a>\');</script><br>Error code: '.$_db->error.'</div>';
   }else{
     // details
     download_knop($query);
