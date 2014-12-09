@@ -67,7 +67,7 @@ html {
     min-height: 85%;
     height: auto;
     padding: 25px;
-    padding-top: 100px;
+    padding-top: 220px;
 }
 
 .welcome a:hover {
@@ -76,11 +76,13 @@ html {
 }
 
 .icontext {
-    color: #19AD6A;
+    /*color: #19AD6A;*/
+    color:#444;
 }
 
 .icontext:hover {
-    color: #1f874b;
+    /*color: #1f874b;*/
+    color:#000;
 }
     
 
@@ -126,9 +128,9 @@ html {
     text-decoration: none;
 }
 .trans {
-    opacity: 0.8;
-    margin: 100px;
-    padding: 60px 0px 60px 0px;
+    opacity: 0.9;
+    margin: 80px;
+    padding: 10px 0px 10px 0px;
 }
 
 /*Landingspagina*/
