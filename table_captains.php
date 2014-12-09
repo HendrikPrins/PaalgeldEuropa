@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
   $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$captain."'";   
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
-    echo 'Niets gevonden... div class=alert maken';
+    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No captain names with name <strong>'.$_GET['id'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
   }else{
     // details
   download_knop($query);
