@@ -26,9 +26,12 @@ function endPage(){
   require('inc/pageend.php');
 }
 
-function download_knop($query){
+function download_knop($query, $array = null){
 	echo '<form action="download.php" method="post">';
 	echo '<input type="hidden" name="download_query" value="'.$query.'""><br>';
+  if ($array) {
+    echo '<input type="hidden" name="column_names" value="'.$array.'""><br>';
+  }
 	echo '<input class="btn btn-primary" type="submit" value="Download CSV">';
 	echo '</form>';
 }

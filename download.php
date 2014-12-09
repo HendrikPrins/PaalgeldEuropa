@@ -3,10 +3,15 @@
 require("inc/config.php");
 
 $query = $_POST["download_query"];
+if ($_POST["column_names"]) {
+	$column_names = $_POST["column_names"];
+}
+else {
+	$column_names = null;
+}
+get_csv($query, $_db, $column_names);
 
-get_csv($query, $_db);
-
-function get_csv($query, $_db){
+function get_csv($query, $_db, $column_names){
 	// queryresult 1
 	$query_result = $_db->query($query);
 
@@ -16,18 +21,19 @@ function get_csv($query, $_db){
 
 	// create a file pointer connected to the output stream
 	$output = fopen('php://output', 'w');
+	if ($column_names == null) {
+		// get fields information
+		$finfo = $query_result->fetch_fields();
 
-	// get fields information
-	$finfo = $query_result->fetch_fields();
+		// new array for the column names
+		$column_names = array();
 
-	// new array for the column names
-	$column_names = array();
-
-	// collecting all column names into an array
-	foreach ($finfo as $val) {
-	    $column_names[] = $val->name;
+		// collecting all column names into an array
+		foreach ($finfo as $val) {
+		    $column_names[] = $val->name;
+		}
 	}
-
+	
 	// basic csv file, with column names in first row
 	fputcsv($output, $column_names, ";");
 	
