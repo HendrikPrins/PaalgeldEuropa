@@ -25,7 +25,7 @@ function pagination($page, $size, $totalSize){
     $get['page'] = $page-1;
     $out .= '<li><a href="'.$pageLink.'?'.http_build_query($get).'"><span aria-hidden="true">&lsaquo;</span><span class="sr-only">Vorige</span></a></li>';
   }else{
-    $out .= '<li class="disabled"><a href="#"><span aria-hidden="true">&lsaquo;</span><span class="sr-only">Vorige</span></a></li>';
+    //$out .= '<li class="disabled"><a href="#"><span aria-hidden="true">&lsaquo;</span><span class="sr-only">Vorige</span></a></li>';
   }
 
   // Start twee pagina's terug, ga TOT 3 verder
@@ -46,10 +46,10 @@ function pagination($page, $size, $totalSize){
     $get['page'] = $page+1;
     $out .= '<li><a href="'.$pageLink.'?'.http_build_query($get).'"><span aria-hidden="true">&rsaquo;</span><span class="sr-only">Volgende</span></a></li>';
   }else{
-    $out .= '<li class="disabled"><a href="#"><span aria-hidden="true">&rsaquo;</span><span class="sr-only">Volgende</span></a></li>';
+    //$out .= '<li class="disabled"><a href="#"><span aria-hidden="true">&rsaquo;</span><span class="sr-only">Volgende</span></a></li>';
   }
-  if($page != ceil($totalSize/$size)){
-    $get['page'] = ceil($totalSize/$size);
+  if($page != ceil($totalSize/$size)-1){
+    $get['page'] = ceil($totalSize/$size)-1;
     $out .= '<li><a href="'.$pageLink.'?'.http_build_query($get).'"><span aria-hidden="true">&raquo;</span><span class="sr-only">Laatste</span></a></li>';
   }
 
