@@ -56,7 +56,7 @@
               </ul>
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th"></span> Volledige tabellen<b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Volledige tabellen<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="table_captains.php">Namen</a></li>
                     <li><a href="table_ports.php">Plaatsen</a></li>
@@ -70,7 +70,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Paalgeld<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a target="_blank" href="../PaalgeldEuropa/">Paalgeld Europa</a></li>
+                    <li><a target="_blank" href="../paalgeld_weu/">Paalgeld Europa</a></li>
                     <li><a target="_blank" href="../paalgeld_win/">Paalgeld West-Indie</a></li>
                     <li><a target="_blank" href="../lastgeld/">Lastgeld</a></li>
                     <li class="divider"></li>
