@@ -3,7 +3,9 @@ require('inc/config.php');
 beginPage();
 
 if(isset($_GET['cargo'])){
+  include_once('inc/module_tablesort.php');
   $queryBase = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
+  $queryBase .= queryOrderPart(array('paalgeldEur.idEur','date','fullNameCaptain','portName'), 'paalgeldEur.idEur');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
   $offset = $page * $size;
@@ -25,7 +27,7 @@ if(isset($_GET['cargo'])){
     download_knop($queryBase);
 
     echo '<table class="table table-hover">';
-    echo '<tr><th>arrival id</th><th>date</th><th>captain</th><th>port of origin</th></tr>';
+    echo '<tr><th>'.sortableHead('Arrival id', 'paalgeldEur.idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';
     while($row = $res->fetch_assoc()){
 	    $captain = str_replace(' ', '_', $row['fullNameCaptain']);
       echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
@@ -34,7 +36,9 @@ if(isset($_GET['cargo'])){
   }
 }else{
   // tabel met unieke cargo
-  $queryBase = "SELECT cargo, COUNT(*) AS count FROM cargo GROUP BY cargo ORDER BY count DESC";
+  include_once('inc/module_tablesort.php');
+  $queryBase = "SELECT cargo, COUNT(*) AS count FROM cargo GROUP BY cargo";
+  $queryBase .= queryOrderPart(array('cargo','count'), 'count');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
   $offset = $page * $size;
@@ -48,7 +52,7 @@ if(isset($_GET['cargo'])){
   $pagination = pagination($page, $size, $totalCount);
   echo $pagination;
   echo '<table class="table table-hover">';
-  echo '<tr><th>cargo</th><th>count</th></tr>';
+  echo '<tr><th>'.sortableHead('Cargo', 'cargo').'</th><th>'.sortableHead('Count', 'count').'</th></tr>';
   while($row = $res->fetch_assoc()){
     echo '<tr><td><a href="table_cargoes.php?cargo='.$row['cargo'].'">'.$row['cargo'].'</a></td><td>'.$row['count'].'</td></tr>';
   }
