@@ -15,32 +15,46 @@ if($_inContainer){
                 <div class="container">
                     <h3>Paalgeld Europa</h3>
                         <div class="row">
-                            <div class="col-md-6">
-                                <h4>About the website</h4>
-                                <p>Lorem ipsum.</p>
+                            <div class="col-md-4">
+                              <h2>About the Website</h2>
+                              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                             </div>
-                            <div class="col-md-6">
-                                <h4>The assignment</h4>
-                                <p>Lorem ipsum2.</p>
+                            <div class="col-md-4">
+                              <h2>About the assignment</h2>
+                              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                           </div>
+                            <div class="col-md-4">
+                              <h2>Something else here</h2>
+                              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                             </div>
                         </div>
                     </div>
             </div>
 
+            <div class="info2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Some more content here</h2>
+                            <p>Ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="footer">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
-                            <h4>Sitemap</h4>
-                            <p>Lorem ipsum.</p>
+                        <div class="col-md-1">
+                            <h5><a href="#">Links</a></h5>
                         </div>
-                        <div class="col-md-4">
-                            <h4>Links</h4>
-                            <p>Lorem ipsum.</p>
+                        <div class="col-md-1">
+                            <h5><a href="#">Contact</a></h5>
                         </div>
-                        <div class="col-md-4">
-                            <h4>Contact</h4>
-                            <p>Lorem ipsum.</p>
+                        <div class="col-md-1">
+                            <h5><a href="#">Sitemap</a></h5>
                         </div>
                     </div>
                 </div>

@@ -95,15 +95,35 @@ html {
     color: #19AD6A;
 }
 
-.footer {
+.info2 {
     background-color: #19AD6A;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 25px;
+    color:#FFF;
+}
+
+.info2 h3 {
+    color: #19AD6A;
+}
+
+.footer {
+    background-color: #111;
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     padding: 25px;
     color: #FFF;
 }
+.footer a{
+    color: #FFF;
+}
 
+.footer a:hover {
+    color: #19AD6A;
+    text-decoration: none;
+}
 .trans {
     opacity: 0.8;
     margin: 50px;
