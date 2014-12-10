@@ -58,11 +58,11 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Volledige tabellen<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="table_captains.php">Namen</a></li>
-                    <li><a href="table_ports.php">Plaatsen</a></li>
-                    <li><a href="table_cargoes.php">Lading</a></li>
-                    <li><a href="table_arrivals.php">Aankomst</a></li>
-                    <li><a href="#">Placeholder</a></li>           
+                    <li><a href="table_captains.php"><span class="glyphicon glyphicon-user"></span> Namen</a></li>
+                    <li><a href="table_ports.php"><span class="glyphicon glyphicon-screenshot"></span> Plaatsen</a></li>
+                    <li><a href="table_cargoes.php"><span class="glyphicon glyphicon-random"></span> Lading</a></li>
+                    <li><a href="table_arrivals.php"><span class="glyphicon glyphicon-flag"></span> Aankomst</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Placeholder</a></li>           
                   </ul>
                 </li>
               </ul>
