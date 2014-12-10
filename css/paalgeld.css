@@ -37,6 +37,19 @@
 }
 /*responsive-fix voor navbar. bron: http://stackoverflow.com/questions/18192082/bootstrap-3-navbar-collapse */
 
+
+::selection {
+  background: #71D6A8; /* WebKit/Blink Browsers */
+  color: #fff;
+}
+::-moz-selection {
+  background: #71D6A8; /* Gecko Browsers */
+  color: #fff;
+
+}
+/*Select colors*/
+
+
 body {
     padding-top:40px;
     height: 100%;
