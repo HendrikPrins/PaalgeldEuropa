@@ -50,18 +50,18 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li<?php echo ($_pageName == 'index.php' ? ' class="active"' : '')?>><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li<?php echo ($_pageName == 'namen.php' ? ' class="active"' : '')?>><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Namen</a></li>
-                <li<?php echo ($_pageName == 'plaatsen.php' ? ' class="active"' : '')?>><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Plaatsen</a></li>
-                <li<?php echo ($_pageName == 'lading.php' ? ' class="active"' : '')?>><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Lading</a></li>
+                <li<?php echo ($_pageName == 'namen.php' ? ' class="active"' : '')?>><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
+                <li<?php echo ($_pageName == 'plaatsen.php' ? ' class="active"' : '')?>><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Ports</a></li>
+                <li<?php echo ($_pageName == 'lading.php' ? ' class="active"' : '')?>><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>
               </ul>
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Volledige tabellen<b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Complete tables<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="table_captains.php"><span class="glyphicon glyphicon-user"></span> Namen</a></li>
-                    <li><a href="table_ports.php"><span class="glyphicon glyphicon-screenshot"></span> Plaatsen</a></li>
-                    <li><a href="table_cargoes.php"><span class="glyphicon glyphicon-random"></span> Lading</a></li>
-                    <li><a href="table_arrivals.php"><span class="glyphicon glyphicon-flag"></span> Aankomst</a></li>
+                    <li><a href="table_captains.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
+                    <li><a href="table_ports.php"><span class="glyphicon glyphicon-screenshot"></span> Ports</a></li>
+                    <li><a href="table_cargoes.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>
+                    <li><a href="table_arrivals.php"><span class="glyphicon glyphicon-flag"></span> Arrivals</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Placeholder</a></li>           
                   </ul>
                 </li>

@@ -110,12 +110,28 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    padding: 25px;
+    padding: 50px;
 }
 
 .info h2 {
     color: #19AD6A;
 }
+
+
+.info3{
+    padding: 25px;
+    background-color: #f8f8f8;
+}
+
+
+
+.projlink{
+    background-color: #f8f8f8;
+    padding: 50px;
+
+}
+
+
 
 .info2 {
     background-color: #19AD6A;
@@ -135,7 +151,7 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    padding: 25px;
+    padding: 5px;
     color: #FFF;
 }
 .footer a{
@@ -154,13 +170,13 @@ html {
 
 
 .page404 {
-    background-image: url('../img/404.jpg');
+    background-image: url('../img/404-v4.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position:center;
+    background-position:bottom;
     width:100%;
     height: auto;
-    min-height: 100%;
+    min-height: 95%;
     color: #fff;
 }
 
