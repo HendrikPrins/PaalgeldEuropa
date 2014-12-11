@@ -62,7 +62,7 @@
                     <li><a href="table_ports.php"><span class="glyphicon glyphicon-screenshot"></span> Ports</a></li>
                     <li><a href="table_cargoes.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>
                     <li><a href="table_arrivals.php"><span class="glyphicon glyphicon-flag"></span> Arrivals</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-gift"></span> Placeholder</a></li>           
+                    <li><a href="table_date.php"><span class="glyphicon glyphicon-time"></span> Date</a></li>           
                   </ul>
                 </li>
               </ul>
