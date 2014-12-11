@@ -48,7 +48,7 @@ if(isset($_GET['area'])){
       $size = 25;
       $offset = $page * $size;
       $queryBase = "SELECT *, (SELECT COUNT(*) FROM cargo WHERE paalgeldEur.idEur = cargo.idEur) AS cargoCount FROM paalgeldEur WHERE paalgeldEur.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
-      $queryBase .= queryOrderPart(array('idEur','date','fullNameCaptain','portName'), 'idEur');
+      $queryBase .= queryOrderPart(array('idEur','date','fullNameCaptain','cargoCount'), 'idEur');
       $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
       $res2 = $_db->query($queryLimited);
       if($res2 == null){
