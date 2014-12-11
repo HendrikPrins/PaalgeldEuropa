@@ -72,7 +72,7 @@ beginPage('', false);
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                            </div>
                             <div class="col-md-4">
-                              <h3>Extra information</h3>
+                              <h3>Background information</h3>
                               <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                             </div>
@@ -98,10 +98,10 @@ beginPage('', false);
                       <div class="row">
                         <div class="col-md-3">
                           <div class="thumbnail">
-                            <img src="..." alt="..." class="img-rounded">
+                            <img src="img/logo-db1-cut.png" alt="..." class="img-rounded">
                             <div class="caption">
                               <h3>Main page</h3>
-                              <p>Lusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada.</p>
+                              <p>Lusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
                             </div>
                           </div>
                         </div>
@@ -139,7 +139,7 @@ beginPage('', false);
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Contact us!</h2>
+                            <h2>Contact us</h2>
                             <p>Ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                         </div>
                     </div>
