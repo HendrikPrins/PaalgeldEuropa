@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Paalgeld Europa</title>
+        <title><?php echo $pageTitle;?></title>
         <meta name="apple-mobile-web-app-title" content="Orderstatus">
         <link rel="apple-touch-icon" href="img/apple/touch-icon-iphone.png">
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple/touch-icon-ipad.png">
