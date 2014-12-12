@@ -63,10 +63,12 @@ beginPage('', false);
                         <div class="row">
                             <div class="col-md-4">
                               <h3>About the project</h3>
-                              <p>Donec id elit non mi porta gravida at eget metus. 
-                                Fusce dapibus, tellus ac cursus commodo, 
-                                tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
-                                Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                              <p>This project bridges the gap between the raw data of the Paalgeld-registers and the ease 
+                                of finding the data you wish to have. Along with Paalgeld West-Indië en Lastgeld this project 
+                                was about making a web-application to facilitate that functionallity.
+                                Created with a team of 14, this project was created for the course 
+                                <a href="http://www.rug.nl/ocasys/let/vak/show?code=LIX021B05">Database driven Webtechnology"</a> 
+                                at the <a href="http://www.rug.nl/">University of Groningen</a>.</p>
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                             </div>
                             <div class="col-md-4">
