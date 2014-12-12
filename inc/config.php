@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // Maak verbinding met de database
 if($_SERVER["SERVER_NAME"] == 'localhost' || $_SERVER["SERVER_NAME"] == '127.0.0.1'){
   $_db = new mysqli('localhost', 'f111433', 'mi3ahch3ei', 'f111433');
