@@ -63,10 +63,7 @@ beginPage('', false);
                         <div class="row">
                             <div class="col-md-4">
                               <h3>About the project</h3>
-                              <p>This project bridges the gap between the raw data of the Paalgeld-registers and the ease 
-                                of finding the data you wish to have. Along with Paalgeld West-Indië en Lastgeld this project 
-                                was about making a web-application to facilitate that functionallity.
-                                Created with a team of 14, this project was created for the course 
+                              <p>The goal of project Paalgeld Europa is to make the raw dataset of the Paalgeld-registers more accessible for academic and amateur research. With a main focus on usability and searchability, this web application employs user-friendly interfaces, predefined search categories, access to complete tables, and the option to download selected data in order to facilitate this goal. This project was realised by a team of 14 university students for the course 
                                 <a href="http://www.rug.nl/ocasys/let/vak/show?code=LIX021B05">Database driven Webtechnology</a> 
                                 at the <a href="http://www.rug.nl/">University of Groningen</a>.</p>
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>

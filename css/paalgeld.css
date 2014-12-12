@@ -118,6 +118,9 @@ html {
     color: #19AD6A;
 }
 
+.info p {
+    text-align: justify;
+}
 
 .info3{
     padding: 25px;
