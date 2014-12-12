@@ -112,7 +112,7 @@ beginPage('', false);
                           <div class="thumbnail">
                             <img src="img/logo-db1-cut.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <a href="../"><h3>Main page</h3>
+                              <a href="../"><h3>Main page</h3></a>
                               <p>An overview of all the project's pages.</p>
                             </div>
                           </div>
