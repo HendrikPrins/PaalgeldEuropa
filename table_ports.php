@@ -61,8 +61,11 @@ if(isset($_GET['area'])){
         echo '<table class="table table-hover">';
         echo '<tr><th>'.sortableHead('Arrival id', 'idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Cargo Count', 'cargoCount').'</th></tr>';
         while($row2 = $res2->fetch_assoc()){
+		  $year = substr($row['date'], 0, -6);	
+		  $month = substr($row['date'], 5, -3);
+	      $day = substr($row['date'], 8);
           $captain = str_replace(' ', '_', $row2['fullNameCaptain']);
-          echo '<tr><td><a href="table_arrivals.php?id='.$row2['idEur'].'">'.$row2['idEur'].'</a></td><td>'.$row2['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row2['fullNameCaptain'].'</a></td><td>'.$row2['cargoCount'].'</td></tr>';
+          echo '<tr><td><a href="table_arrivals.php?id='.$row2['idEur'].'">'.$row2['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row2['fullNameCaptain'].'</a></td><td>'.$row2['cargoCount'].'</td></tr>';
         }
         echo '</table>';
         echo $pagination;

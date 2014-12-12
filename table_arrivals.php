@@ -13,9 +13,12 @@ if(isset($_GET['id'])){
     download_knop($query);
     echo '<table class="table">';
     $row = $res->fetch_assoc();
+	$year = substr($row['date'], 0, -6);	
+	$month = substr($row['date'], 5, -3);
+	$day = substr($row['date'], 8);
 	$captain = str_replace(' ', '_', $row['fullNameCaptain']);
     echo '<tr><td>arrival id</td><td>'.$row['idEur'].'</td></tr>';
-    echo '<tr><td>date</td><td>'.$row['date'].'</td></tr>';
+    echo '<tr><td>date</td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td></tr>';
     echo '<tr><td>fullNameCaptain</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td></tr>';
     echo '<tr><td>departurePort</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
     echo '</table>';
@@ -57,8 +60,11 @@ if(isset($_GET['id'])){
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Arrival id', 'idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';
   while($row = $res->fetch_assoc()){
+    $year = substr($row['date'], 0, -6);	
+	$month = substr($row['date'], 5, -3);
+	$day = substr($row['date'], 8);
     $captain = str_replace(' ', '_', $row['fullNameCaptain']);
-    echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td>'.$row['date'].'</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
+    echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
   }
   echo '</table>';
   echo $pagination;

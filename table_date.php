@@ -73,7 +73,7 @@ if(isset($_GET['year'])){
 }else{
   echo '<table class="table table-hover">';
   echo '<tr><th>Year</th><th>Month</th><th>Day</th></tr>';
-  /*$query1 = "SELECT * FROM paalgeldEur GROUP BY year(date)";
+  $query1 = "SELECT * FROM paalgeldEur GROUP BY year(date)";
   $query2 = "SELECT * FROM paalgeldEur GROUP BY month(date)";
   $query3 = "SELECT * FROM paalgeldEur GROUP BY day(date)";
   $res1 = $_db->query($query1);
@@ -92,7 +92,7 @@ if(isset($_GET['year'])){
   while($row3 = $res3->fetch_assoc()){
 	$day = substr($row3['date'], 8);
     echo '<tr><td><a href="table_date.php?day='.$day.'">'.$day.'</a></td></tr>';
-  }*/
+  }
   echo '</table>';
 }
 endPage();
