@@ -63,18 +63,28 @@ beginPage('', false);
                         <div class="row">
                             <div class="col-md-4">
                               <h3>About the project</h3>
-                              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                              <p>Donec id elit non mi porta gravida at eget metus. 
+                                Fusce dapibus, tellus ac cursus commodo, 
+                                tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
+                                Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                             </div>
                             <div class="col-md-4">
                               <h3>How to use the website</h3>
-                              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                              <p>Donec id elit non mi porta gravida at eget metus. 
+                                Fusce dapibus, tellus ac cursus commodo, 
+                                tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
+                                Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                            </div>
                             <div class="col-md-4">
                               <h3>Background information</h3>
-                              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                              <p>The Paalgeld was a task levied on incoming ships coming from the “high seas” into the port of Amsterdam. 
+                                The purpose of this beaconage was to pay for the maintenance of buoys in the Zuiderzee: 
+                                shallow waters were marked by poles, hence the name of the tax Paalgeld, which means “pole tax”.  
+                                Taxes like the Paalgeld were levied all along the coast of the Zuiderzee, 
+                                North Sea and in the Baltic Area.</p>
+                              <p><a class="btn btn-default" href="background_info.php" role="button">View details &raquo;</a></p>
                             </div>
                         </div>
                     </div>
