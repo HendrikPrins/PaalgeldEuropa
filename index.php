@@ -112,8 +112,8 @@ beginPage('', false);
                           <div class="thumbnail">
                             <img src="img/logo-db1-cut.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <h3>Main page</h3>
-                              <p>Lusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                              <a href="../"><h3>Main page</h3>
+                              <p>An overview of all the project's pages.</p>
                             </div>
                           </div>
                         </div>
@@ -121,8 +121,8 @@ beginPage('', false);
                           <div class="thumbnail">
                             <img src="..." alt="..." class="img-rounded">
                             <div class="caption">
-                              <h3>West Indie</h3>
-                              <p>Tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Ligula porta felis euismod semper. Donec id elit non mi porta gravida at.</p>
+                              <a href="../paalgeld_win"><h3>West Indie</h3></a>
+                              <p>Go to the web-application of the Paalgeld West Indië project.</p>
                             </div>
                           </div>
                         </div>
@@ -130,17 +130,17 @@ beginPage('', false);
                           <div class="thumbnail">
                             <img src="..." alt="..." class="img-rounded">
                             <div class="caption">
-                              <h3>Lastgeld</h3>
-                              <p>Tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Ligula porta felis euismod semper. Donec id elit non mi porta gravida at.</p>
+                              <a href="../lastgeld/"><h3>Lastgeld</h3></a>
+                              <p>Go to the web-application of the Lastgeld project.</p>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3">
                           <div class="thumbnail">
-                            <img src="..." alt="..." class="img-rounded">
+                            <img src="img/apple/touch-icon-ipad-retina.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <h3>Europa</h3>
-                              <p>Egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum sit.</p>
+                              <a href="../paalgeld_weu"><h3>Europa</h3></a>
+                              <p>Go to the web-application of the Paalgeld Europa project.</p>
                             </div>
                           </div>
                         </div>
