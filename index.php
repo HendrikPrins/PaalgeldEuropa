@@ -67,7 +67,7 @@ beginPage('', false);
                                 of finding the data you wish to have. Along with Paalgeld West-Indië en Lastgeld this project 
                                 was about making a web-application to facilitate that functionallity.
                                 Created with a team of 14, this project was created for the course 
-                                <a href="http://www.rug.nl/ocasys/let/vak/show?code=LIX021B05">Database driven Webtechnology"</a> 
+                                <a href="http://www.rug.nl/ocasys/let/vak/show?code=LIX021B05">Database driven Webtechnology</a> 
                                 at the <a href="http://www.rug.nl/">University of Groningen</a>.</p>
                               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                             </div>
