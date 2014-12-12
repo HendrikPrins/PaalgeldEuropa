@@ -28,7 +28,7 @@ beginPage('Paalgeld Europa - Names', true, 'Research based on names');
                                     $query = "SELECT departurePort FROM paalgeldEur GROUP BY departurePort ORDER BY departurePort";
                                     $res = $_db->query($query);
                                       while($row = $res->fetch_array()){
-                                        echo '<option value="'.$row['departurePort'].'">'.$row['departurePort'].'</option>';
+                                        echo '<option value="'.$row['portCode'].'">'.$row['departurePort'].'</option>';
                                         }
                                     ?>  
                                   </select>
