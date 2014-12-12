@@ -109,26 +109,29 @@ beginPage('', false);
                           <div class="thumbnail">
                             <img src="img/logo-db1-cut.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <a href="../"><h3>Main page</h3></a>
-                              <p>An overview of all the project's pages.</p>
+                              <h3>Main page</h3>
+                              <p>This page gives an overview of the three projects.</p>
+                               <p><a href="../" class="btn btn-default btn-sm" role="button">View this page &raquo;</a></p>
                             </div>
                           </div>
                         </div>
                           <div class="col-md-3">
                           <div class="thumbnail">
-                            <img src="..." alt="..." class="img-rounded">
+                            <img src="img/logo-db3-cut.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <a href="../paalgeld_win"><h3>West Indie</h3></a>
+                              <h3>West Indie</h3>
                               <p>Go to the web-application of the Paalgeld West Indië project.</p>
+                               <p><a href="../paalgeld_win" class="btn btn-default btn-sm" role="button">View this page &raquo;</a></p>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3">
                           <div class="thumbnail">
-                            <img src="..." alt="..." class="img-rounded">
+                            <img src="img/logo-db2-cut.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <a href="../lastgeld/"><h3>Lastgeld</h3></a>
+                              <h3>Lastgeld</h3>
                               <p>Go to the web-application of the Lastgeld project.</p>
+                              <p><a href="../lastgeld/" class="btn btn-default btn-sm" role="button">View this page &raquo;</a></p>
                             </div>
                           </div>
                         </div>
@@ -136,8 +139,8 @@ beginPage('', false);
                           <div class="thumbnail">
                             <img src="img/apple/touch-icon-ipad-retina.png" alt="..." class="img-rounded">
                             <div class="caption">
-                              <a href="../paalgeld_weu"><h3>Europa</h3></a>
-                              <p>Go to the web-application of the Paalgeld Europa project.</p>
+                              <h3>Europa</h3>
+                              <p>You are currently on the Paalgeld Europa project website.</p>
                             </div>
                           </div>
                         </div>

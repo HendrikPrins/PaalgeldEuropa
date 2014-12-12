@@ -114,7 +114,7 @@ html {
     padding-top: 20px;
 }
 
-.info h2 {
+.info h3 {
     color: #19AD6A;
 }
 
@@ -127,7 +127,10 @@ html {
     background-color: #f8f8f8;
 }
 
-
+.info a:hover {
+    text-decoration: none;
+    
+}
 
 .projlink{
     background-color: #f8f8f8;
@@ -145,8 +148,10 @@ html {
 }
 
 .projlink a:hover {
-    text-decoration: none;
-    
+    text-decoration: none;  
+}
+.projlink h3{
+    color: #19AD6A;
 }
 
 
