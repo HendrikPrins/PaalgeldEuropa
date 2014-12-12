@@ -144,6 +144,11 @@ html {
     margin-top: 50px;
 }
 
+.projlink a:hover {
+    text-decoration: none;
+    
+}
+
 
 .info2 {
     background-color: #19AD6A;
@@ -213,6 +218,22 @@ html {
 .center-block .btn{
     opacity: 1;
 }
+
+
+.background{
+    padding: 25px;
+    height: 95%;
+
+}
+
+.background p{
+    text-align: justify;
+}
+
+.background h2{
+    color: #19AD6A;
+}
+
 
 /*Landingspagina*/
 
