@@ -35,8 +35,8 @@ beginPage('Paalgeld Europa - Namen', true, 'Onderzoek a.h.v. namen');
                                   <select name="inputPlaats" data-placeholder="Choose a place" class="chosen-select" style="width:350px;" tabindex="2">
                                     <?php
                                     $query = "SELECT departurePort FROM paalgeldwest GROUP BY departurePort ORDER BY departurePort";
-                                    $res = mysql_query($query);
-                                      while($row = mysql_fetch_array($res)){
+                                    $res = $_db->query($query);
+                                      while($row = $res->fetch_array()){
                                         echo '<option value='.$row['departurePort'].'>'.$row['departurePort'].'</option>';
                                         }
                                     ?>  
