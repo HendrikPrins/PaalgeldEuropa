@@ -4,7 +4,7 @@ beginPage();
 
 if(isset($_GET['area'])){
   // alle ports in bepaalde area
-  $query = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND portAreas.area = '".$_db->real_escape_string($_GET['area'])."'";
+  $query = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND portAreas.area = '".$_db->real_escape_string($_GET['area'])."' AND ports.arrivalCount > 0";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
     echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No ports with area code <strong>'.$_GET['area'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
@@ -77,13 +77,13 @@ if(isset($_GET['area'])){
 }else{
   // tabel met alle ports
   include_once('inc/module_tablesort.php');
-  $queryBase = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode";
+  $queryBase = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND ports.arrivalCount > 0";
   $queryBase .= queryOrderPart(array('portCode','portName', 'area', 'countriesNow'), 'portName');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
   $offset = $page * $size;
   include_once('inc/module_pagination.php');
-  $resCount = $_db->query("SELECT COUNT(*) AS count FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode");
+  $resCount = $_db->query("SELECT COUNT(*) AS count FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND ports.arrivalCount > 0");
   $rowCount = $resCount->fetch_assoc();
   $totalCount = $rowCount['count'];
   $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
