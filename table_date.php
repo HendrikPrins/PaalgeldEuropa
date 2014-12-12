@@ -79,19 +79,27 @@ if(isset($_GET['year'])){
   $res1 = $_db->query($query1);
   $res2 = $_db->query($query2);
   $res3 = $_db->query($query3);
+  $days = array();
+  $months = array();
+  $years = array();
   while($row1 = $res1->fetch_assoc()){
-    $year = substr($row1['date'], 0, -6);
-    echo '<tr><td><a href="table_date.php?year='.$year.'">'.$year.'</a></td></tr>';
+    $years[] = substr($row1['date'], 0, -6);
   }
   while($row2 = $res2->fetch_assoc()){
     $month = substr($row2['date'], 5, -3);
     $dateObj   = DateTime::createFromFormat('!m', $month);
-    $monthName = $dateObj->format('F');	 
-    echo '<tr><td><a href="table_date.php?month='.$month.'">'.$monthName.'</a></td></tr>';
+    $monthName = $dateObj->format('F');
+    $months[] = array("number" => $month, "name" => $monthName);
   }
   while($row3 = $res3->fetch_assoc()){
-	$day = substr($row3['date'], 8);
-    echo '<tr><td><a href="table_date.php?day='.$day.'">'.$day.'</a></td></tr>';
+	  $days[] = substr($row3['date'], 8);
+  }
+  for($i = 0;$i < max(array(count($years), count($months), count($days)));$i++){
+    echo '<tr>';
+    echo '<td>'.($i < count($years) ? '<a href="table_date.php?year='.$years[$i].'">'.$years[$i].'</a>' : '').'</td>';
+    echo '<td>'.($i < count($months) ? '<a href="table_date.php?month='.$months[$i]["number"].'">'.$months[$i]["name"].'</a>' : '').'</td>';
+    echo '<td>'.($i < count($days) ? '<a href="table_date.php?day='.$days[$i].'">'.$days[$i].'</a>' : '').'</td>';
+    echo '</tr>';
   }
   echo '</table>';
 }
