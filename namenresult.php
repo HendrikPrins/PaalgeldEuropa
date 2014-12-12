@@ -33,7 +33,7 @@ require_once('inc/config.php');
         $query = "SELECT distinct(fullNameCaptain) FROM paalgeldEur WHERE date between '$inputStartDate' and '$inputEndDate';";
         $res = $_db->query($query);
           while($row = $res->fetch_array()){
-              echo '<tr><td><a href="table_captains.php?id=''">'.$row['fullNameCaptain'].'</a></td></tr>';
+              echo '<tr><td><a href="table_captains.php?id='.'">'.$row['fullNameCaptain'].'</a></td></tr>';
       }
     }
     
