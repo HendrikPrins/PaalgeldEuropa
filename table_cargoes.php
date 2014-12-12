@@ -17,15 +17,20 @@ if(isset($_GET['cargo'])){
   $res = $_db->query($queryLimited);
   $pagination = pagination($page, $size, $totalCount);
   echo 'Arrivals met cargo <a href="table_cargoes.php?cargo='.$_GET['cargo'].'">'.$_GET['cargo'].'</a><br>';
-  echo $pagination;
   // alle arrivals met een bepaalde cargo
   //$query = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
   $res = $_db->query($queryLimited);
   if($res == null || $res->num_rows == 0){
     echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with cargo <strong>'.$_GET['cargo'].' found. </strong><a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
   }else{
+    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>';
+    echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHmhz1TT9nJ1RH0OlptIxXDiu8THJ7vWI">
+        </script>';
+    echo '<script src="js/module_maps.js"></script>';
+    include_once('inc/module_map.php');
+    makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($_GET['cargo'])."' GROUP BY ports.portCode", 'cargoCount', 'pCode');
+  echo $pagination;
     download_knop($queryBase);
-
     echo '<table class="table table-hover">';
     echo '<tr><th>'.sortableHead('Arrival id', 'paalgeldEur.idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';
     while($row = $res->fetch_assoc()){
