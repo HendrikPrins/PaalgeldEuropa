@@ -5,7 +5,7 @@ beginPage();
 
 if(isset($_GET['id'])){
   $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));
-  $resDetail = $_db->query("SELECT * FROM paalgeldEur WHERE fullNameCaptain = '".$captain."' LIMIT 1");
+  $resDetail = $_db->query("SELECT *, (SELECT GROUP_CONCAT(cargo SEPARATOR ', ') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.fullNameCaptain = '".$captain."' AND pe.idEur = cargo.idEur GROUP BY cargo) AS sub) AS cargoString FROM paalgeldEur WHERE fullNameCaptain = '".$captain."' LIMIT 1");
   if($resDetail == null || $resDetail->num_rows == 0){
     echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No captain names with name <strong>'.$_GET['id'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
   }else{
@@ -16,6 +16,7 @@ if(isset($_GET['id'])){
     echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$captain.'">'.$rowDetail['fullNameCaptain'].'</a></td></tr>';
     echo '<tr><td>First name</td><td>'.$rowDetail['firstNameCaptain'].'</td></tr>';
     echo '<tr><td>Last Name</td><td>'.$rowDetail['lastNameCaptain'].'</td></tr>';
+    echo '<tr><td>Cargo</td><td>'.$rowDetail['cargoString'].'</td></tr>';
     echo '</table>';
 
     $query = "SELECT idEur, date, fullNameCaptain, firstNameCaptain, lastNameCaptain, portName, ports.portCode AS pCode, lat, lng FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$rowDetail['fullNameCaptain']."'";
