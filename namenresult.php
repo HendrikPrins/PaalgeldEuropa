@@ -2,10 +2,10 @@
 require_once('inc/config.php');
 
     //Initialize variables
-    $inputName = $_POST['inputName'];
-    $inputStartDate = $_POST['inputStartDate'];
-    $inputEndDate = $_POST['inputEndDate'];
-    $departurePlace = $_POST['departurePlace'];
+    $inputName = $_GET['inputName'];
+    $inputStartDate = $_GET['inputStartDate'];
+    $inputEndDate = $_GET['inputEndDate'];
+    $departurePlace = $_GET['departurePlace'];
     $total = $inputName . $inputStartDate . $inputEndDate . $inputPlate . $departurePlace;
     
     // If all empty
@@ -14,33 +14,27 @@ require_once('inc/config.php');
     }
         
     beginPage('Paalgeld Europa - Names', true, 'Research based on names');
-    
-    // If only name input
-    if ($inputStartDate = "" && $inputEndDate = "" && $departurePlace = ""){
-        echo '<table class="table table-hover">';
-        echo '<tr><th>'.sortableHead('Captain', 'fullNameCaptain').'</th></tr>';
-        $query = "SELECT distinct(fullNameCaptain) FROM paalgeldEur WHERE fullNameCaptain like '$inputName';";
-        $res = $_db->query($query);
-          while($row = $res->fetch_array()){
-              echo '<tr><td><a href="table_captains.php?id=''">'.$row['fullNameCaptain'].'</a></td></tr>';
-      }
+    echo '<table class="table table-hover">';
+    echo '<tr><th>Captain</th></tr>';
+    $query = "SELECT distinct(fullNameCaptain) FROM paalgeldEur WHERE 1";
+    if($inputName != ""){
+      $query .= " AND fullNameCaptain like '$inputName'";
     }
-
-    // If only date input
-    if ($inputName = "" && $departurePlace = ""){
-        echo '<table class="table table-hover">';
-        echo '<tr><th>Captain</th></tr>';
-        $query = "SELECT distinct(fullNameCaptain) FROM paalgeldEur WHERE date between '$inputStartDate' and '$inputEndDate';";
-        $res = $_db->query($query);
-          while($row = $res->fetch_array()){
-              echo '<tr><td><a href="table_captains.php?id='.'">'.$row['fullNameCaptain'].'</a></td></tr>';
-      }
+    if($inputStartDate != "" && $inputEndDate != ""){
+       $query .= " AND date BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
+    }elseif($inputStartDate != ""){
+       $query .= " AND date > '".$inputStartDate."'";
+    }elseif($inputEndDate != ""){
+       $query .= " AND date < '".$inputEndDate."'";
     }
-    
-    
-
-
-    
-
+    if($departurePlace != ""){
+      $query .= " AND portCode = '".$departurePlace."'";
+    }
+    echo $query;
+    $res = $_db->query($query);
+    while($row = $res->fetch_array()){
+        $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+        echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td></tr>';
+    }
 endPage();
 ?>

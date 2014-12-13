@@ -3,7 +3,7 @@ require_once('inc/config.php');
 $_loadChosen = true;
 beginPage('Paalgeld Europa - Names', true, 'Research based on names');
 ?>
-<form class="form-horizontal" role="form" action="namenresult.php" method="post">
+<form class="form-horizontal" role="form" action="namenresult.php" method="get">
                           <div class="form-group">
                             <label for="inputname" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
@@ -25,7 +25,7 @@ beginPage('Paalgeld Europa - Names', true, 'Research based on names');
                                   <select name="departurePlace" data-placeholder="Choose a place" class="chosen-select" style="width:350px;" tabindex="2">
                                     <option value="">Select a place</option>
                                     <?php
-                                    $query = "SELECT departurePort FROM paalgeldEur GROUP BY departurePort ORDER BY departurePort";
+                                    $query = "SELECT departurePort, portCode FROM paalgeldEur GROUP BY departurePort ORDER BY departurePort";
                                     $res = $_db->query($query);
                                       while($row = $res->fetch_array()){
                                         echo '<option value="'.$row['portCode'].'">'.$row['departurePort'].'</option>';
