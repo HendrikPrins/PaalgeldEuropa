@@ -5,7 +5,7 @@ beginPage('', false);
 ?>
 <div class ="background">
 	<div class ="container">
-		<h2>Paalgeld Europa - Background Information</h2>
+		<h2>Background Information</h2>
 		<div class="row">
 			<div class="col-md-12">
 				<p>

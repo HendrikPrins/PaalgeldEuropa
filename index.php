@@ -66,7 +66,7 @@ beginPage('', false);
                               <p>The goal of project Paalgeld Europa is to make the raw dataset of the Paalgeld-registers more accessible for academic and amateur research. With a main focus on usability and searchability, this web application employs user-friendly interfaces, predefined search categories, access to complete tables, and the option to download selected data in order to facilitate this goal. This project was realised by a team of 14 university students for the course 
                                 <a href="http://www.rug.nl/ocasys/let/vak/show?code=LIX021B05">Database driven Webtechnology</a> 
                                 at the <a href="http://www.rug.nl/">University of Groningen</a>.</p>
-                              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                              <p><a class="btn btn-default" href="about_project.php" role="button">View details &raquo;</a></p>
                             </div>
                             <div class="col-md-4">
                               <h3>How to use the website</h3>
@@ -74,7 +74,7 @@ beginPage('', false);
                                 Fusce dapibus, tellus ac cursus commodo, 
                                 tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
                                 Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                              <p><a class="btn btn-default" href="how_to.php" role="button">View details &raquo;</a></p>
                            </div>
                             <div class="col-md-4">
                               <h3>Background information</h3>

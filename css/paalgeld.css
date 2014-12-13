@@ -219,10 +219,12 @@ html {
     opacity: 1;
 }
 
+
+
 .background{
     padding: 25px;
-
-    font-size: 150%;
+    font-size: 130%;
+    min-height: 95%;
 }
 
 .background p{
@@ -232,6 +234,36 @@ html {
 .background h2{
     color: #19AD6A;
 }
+
+.aboutproj{
+    padding: 25px;
+    font-size: 130%;
+    min-height: 95%;
+}
+
+.aboutproj p{
+    text-align: justify;
+}
+
+.aboutproj h2{
+    color: #19AD6A;
+}
+
+.howto{
+    padding: 25px;
+    font-size: 130%;
+    min-height: 95%;
+}
+
+.howto p{
+    text-align: justify;
+}
+
+.howto h2{
+    color: #19AD6A;
+}
+/*Info pages*/
+
 
 
 
