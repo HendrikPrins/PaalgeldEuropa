@@ -1,5 +1,7 @@
 <?php
 require('inc/config.php');
+$_loadGoogleMaps = true;
+$_loadGoogleCharts = true;
 beginPage();
 
 if(isset($_GET['cargo'])){
@@ -23,13 +25,37 @@ if(isset($_GET['cargo'])){
   if($res == null || $res->num_rows == 0){
     echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with cargo <strong>'.$_GET['cargo'].' found. </strong><a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
   }else{
-    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>';
-    echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHmhz1TT9nJ1RH0OlptIxXDiu8THJ7vWI">
-        </script>';
-    echo '<script src="js/module_maps.js"></script>';
     include_once('inc/module_map.php');
+    echo '<div class="row">';
     makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($_GET['cargo'])."' GROUP BY ports.portCode", 'cargoCount', 'pCode');
-  echo $pagination;
+    // Activity chart
+    $activityChart = array(array('Year', 'Arrivals'));
+    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND cargo.cargo = '".$_db->real_escape_string($_GET['cargo'])."' GROUP BY `year` ORDER BY `year` ASC");
+    while($rowActivity = $resActivity->fetch_assoc()){
+        $activityChart[] = array($rowActivity['year']*1, $rowActivity['arrivalCount']*1);
+    }
+    $activityChart = json_encode($activityChart);
+    ?>
+    <script type="text/javascript">
+    // Laad de visualization API
+    google.load("visualization", "1", {packages:["corechart"]});
+    // Teken als het is geladen
+    google.setOnLoadCallback(drawCharts);
+    function drawCharts(){
+      // Zet de data om naar een DataTable
+      var data = new google.visualization.arrayToDataTable(<?php echo $activityChart ?>);
+      // Maak een LineChart
+      var chart = new google.visualization.LineChart(document.getElementById('activityChart'));
+      // Teken de chart met de data en bepaalde opties
+      chart.draw(data, {pointSize: 5, title: 'Activity for <?php echo $_GET['cargo']; ?>', hAxis: {title: 'Year', format:'#'},
+          vAxis: {title: 'Arrivals'}});
+    }
+    </script>
+    <!-- De div waar de chart in komt -->
+    <div id="activityChart" class="col-md-6" style="height:400px;"></div>
+    <?php
+    echo '</div>';
+    echo $pagination;
     download_knop($queryBase);
     echo '<table class="table table-hover">';
     echo '<tr><th>'.sortableHead('Arrival id', 'paalgeldEur.idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';

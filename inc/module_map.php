@@ -21,7 +21,7 @@ function makeGoogleMapsArray($geoQuery){
   echo '  initialize(table);
   });';
   echo '</script>';
-  echo '<div class="row"><div id="map-canvas" class="col-md-6" style="height:400px;"></div></div>';
+  echo '<div id="map-canvas" class="col-md-6" style="height:400px;"></div>';
 }
 
 function makeGoogleMapsQuery($query, $valueField, $titleField1) {
