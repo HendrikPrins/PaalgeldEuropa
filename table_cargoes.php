@@ -28,7 +28,9 @@ if(isset($_GET['cargo'])){
         </script>';
     echo '<script src="js/module_maps.js"></script>';
     include_once('inc/module_map.php');
+    echo '<div class="row">';
     makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($_GET['cargo'])."' GROUP BY ports.portCode", 'cargoCount', 'pCode');
+    echo '</div>';
   echo $pagination;
     download_knop($queryBase);
     echo '<table class="table table-hover">';
