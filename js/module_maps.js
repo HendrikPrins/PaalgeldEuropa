@@ -41,7 +41,7 @@ function initialize(table) {
 		}
 
 		// Construct a line from Amsterdam to the port of origin.
-		var myMarker = "http://siegfried.webhosting.rug.nl/~shipping/paalgeld_weu/img/info.png";
+		var myMarker = "img/info.png";
 		for (var port in portOfOrigin) {
 		  var track = [amsterdam,portOfOrigin[port].center];
 		  var showTrack = new google.maps.Polyline({
