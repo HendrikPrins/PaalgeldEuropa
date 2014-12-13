@@ -85,8 +85,7 @@ html {
 
 
 .welcome a:hover {
-    text-decoration: none;
-    
+    text-decoration: none;  
 }
 
 .icontext {
@@ -101,8 +100,6 @@ html {
     
 .icontext:hover .icon-desc{
     color:#19AD6A;
-
-
 }
 
 .info {
@@ -129,13 +126,11 @@ html {
 
 .info a:hover {
     text-decoration: none;
-    
 }
 
 .projlink{
     background-color: #f8f8f8;
     padding: 50px;
-
 }
 
 .projlink .row{
@@ -154,6 +149,7 @@ html {
     color: #19AD6A;
 }
 
+.projlink .thumbnail{min-height: 330px;}
 
 .info2 {
     background-color: #19AD6A;
@@ -190,7 +186,6 @@ html {
     padding: 10px 0px 10px 0px;
 }
 
-
 .page404 {
     background-image: url('../img/404-v4.jpg');
     background-size: cover;
@@ -224,11 +219,10 @@ html {
     opacity: 1;
 }
 
-
 .background{
     padding: 25px;
-    height: 95%;
 
+    font-size: 150%;
 }
 
 .background p{
@@ -238,6 +232,7 @@ html {
 .background h2{
     color: #19AD6A;
 }
+
 
 
 /*Landingspagina*/

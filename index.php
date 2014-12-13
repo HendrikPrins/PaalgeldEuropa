@@ -99,7 +99,6 @@ beginPage('', false);
                     </div>
                 </div>
             </div>-->
-
                 <div class="projlink">
                   <div class="container">
                   <h2>Project series</h2>
@@ -143,10 +142,11 @@ beginPage('', false);
                               <p>You are currently on the Paalgeld Europa project website.</p>
                             </div>
                           </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-            </div>
+
             <div class="info2">
                 <div class="container">
                     <div class="row">
