@@ -44,7 +44,7 @@ if(isset($_GET['id'])){
       // Maak een LineChart
       var chart = new google.visualization.LineChart(document.getElementById('activityChart'));
       // Teken de chart met de data en bepaalde opties
-      chart.draw(data, {title: 'Activity for <?php echo $rowDetail['fullNameCaptain']; ?>', hAxis: {title: 'Year', format:'#'},
+      chart.draw(data, {pointSize: 5, title: 'Activity for <?php echo $rowDetail['fullNameCaptain']; ?>', hAxis: {title: 'Year', format:'#'},
           vAxis: {title: 'Arrivals'}});
     }
     </script>

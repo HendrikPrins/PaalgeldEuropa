@@ -27,7 +27,7 @@ $jsArray = json_encode($jsArray);
       // Maak een LineChart
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
       // Teken de chart met de data en bepaalde opties
-      chart.draw(data, {title: 'Test Chart', curveType: 'function'});
+      chart.draw(data, {pointSize: 5, title: 'Test Chart', curveType: 'function'});
     }
 </script>
 <!-- De div waar de chart in komt -->

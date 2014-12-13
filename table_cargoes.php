@@ -47,7 +47,7 @@ if(isset($_GET['cargo'])){
       // Maak een LineChart
       var chart = new google.visualization.LineChart(document.getElementById('activityChart'));
       // Teken de chart met de data en bepaalde opties
-      chart.draw(data, {title: 'Activity for <?php echo $_GET['cargo']; ?>', hAxis: {title: 'Year', format:'#'},
+      chart.draw(data, {pointSize: 5, title: 'Activity for <?php echo $_GET['cargo']; ?>', hAxis: {title: 'Year', format:'#'},
           vAxis: {title: 'Arrivals'}});
     }
     </script>
