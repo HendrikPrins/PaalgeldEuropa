@@ -15,10 +15,14 @@ $_pageName = basename($_SERVER['PHP_SELF']);
 $_inContainer = true;
 // Moet de chosen javascript library worden geladen?
 $_loadChosen = false;
+// Moet de Google Charts library worden geladen?
+$_loadGoogleCharts = false;
+// Moet de Google Maps library worden geladen?
+$_loadGoogleMaps = false;
 
 // Print de "bovenkant" van de pagina
 function beginPage($pageTitle = 'Paalgeld Europa', $inContainer = true, $subTitle = ''){
-  global $_inContainer, $_pageName, $_loadChosen;
+  global $_inContainer, $_pageName, $_loadChosen, $_loadGoogleCharts, $_loadGoogleMaps;
   $_inContainer = $inContainer;
   require('inc/pagebegin.php');
 }

@@ -7,7 +7,7 @@
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
-			
+
 			//hierken welke chart
 			function getChart()
 			{
@@ -40,19 +40,19 @@
 			//teken de grafiek naargelang de opties, type en data
 			function drawChart()
 			{
-      var data = new google.visualization.arrayToDataTable(getData());
-     
-			switch(getChart())
-    		{
-    			case "LineChart":
-    			 	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  					chart.draw(data, getOptions());
-    				break;
-    			case "PieChart":
-    			 	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-  					chart.draw(data, getOptions());
-    				break;		 		 			
-    		}
+                var data = new google.visualization.arrayToDataTable(getData());
+
+    			switch(getChart())
+        		{
+        			case "LineChart":
+        			 	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      					chart.draw(data, getOptions());
+        				break;
+        			case "PieChart":
+        			 	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      					chart.draw(data, getOptions());
+        				break;
+        		}
       }
     </script>
 </head>

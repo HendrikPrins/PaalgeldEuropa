@@ -18,6 +18,15 @@
         <link rel="stylesheet" href="css/chosen.css">
         <!-- Own Style -->
         <link rel="stylesheet" href="css/paalgeld.css">
+        <?php
+        if($_loadGoogleCharts){
+          echo '<script type="text/javascript" src="https://www.google.com/jsapi"></script>';
+        }
+        if($_loadGoogleMaps){
+          echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHmhz1TT9nJ1RH0OlptIxXDiu8THJ7vWI"></script>';
+          echo '<script src="js/module_maps.js"></script>';
+        }
+        ?>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
