@@ -1,6 +1,7 @@
 <?php
 require('inc/config.php');
 $_loadGoogleMaps = true;
+$_loadGoogleCharts = true;
 beginPage();
 
 if(isset($_GET['id'])){
@@ -21,8 +22,36 @@ if(isset($_GET['id'])){
 
     $query = "SELECT idEur, date, fullNameCaptain, firstNameCaptain, lastNameCaptain, portName, ports.portCode AS pCode, lat, lng FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$rowDetail['fullNameCaptain']."'";
     include_once('inc/module_map.php');
+    echo '<div class="row">';
     // In de kaart willen we alleen unieke ports, dus nog een group by pCode en tellen
     makeGoogleMapsQuery("SELECT COUNT(*) AS portCount, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portCount', 'pCode');
+    // Activity chart
+    $activityChart = array(array('Year', 'Arrivals'));
+    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur WHERE fullNameCaptain = '".$rowDetail['fullNameCaptain']."' GROUP BY `year` ORDER BY `year` ASC");
+    while($rowActivity = $resActivity->fetch_assoc()){
+        $activityChart[] = array($rowActivity['year']*1, $rowActivity['arrivalCount']*1);
+    }
+    $activityChart = json_encode($activityChart);
+    ?>
+    <script type="text/javascript">
+    // Laad de visualization API
+    google.load("visualization", "1", {packages:["corechart"]});
+    // Teken als het is geladen
+    google.setOnLoadCallback(drawCharts);
+    function drawCharts(){
+      // Zet de data om naar een DataTable
+      var data = new google.visualization.arrayToDataTable(<?php echo $activityChart ?>);
+      // Maak een LineChart
+      var chart = new google.visualization.LineChart(document.getElementById('activityChart'));
+      // Teken de chart met de data en bepaalde opties
+      chart.draw(data, {title: 'Activity for <?php echo $rowDetail['fullNameCaptain']; ?>', hAxis: {title: 'Year', format:'#'},
+          vAxis: {title: 'Arrivals'}});
+    }
+    </script>
+    <!-- De div waar de chart in komt -->
+    <div id="activityChart" class="col-md-6" style="height:400px;"></div>
+    <?php
+    echo '</div>';
     // de arrivals
     download_knop($query);
     echo '<b>Arrivals</b>';
