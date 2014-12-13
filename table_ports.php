@@ -1,5 +1,6 @@
 <?php
 require('inc/config.php');
+$_loadGoogleCharts = true;
 beginPage();
 
 if(isset($_GET['area'])){
@@ -35,6 +36,34 @@ if(isset($_GET['area'])){
     echo '<tr><td>Arrivals</td><td>'.$row['arrivals'].'</td></tr>';
     echo '<tr><td>Cargoes</td><td>'.$row['cargoString'].'</td></tr>';
     echo '</table>';
+    // Activity chart
+    $activityChart = array(array('Year', 'Arrivals'));
+    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."' GROUP BY `year` ORDER BY `year` ASC");
+    while($rowActivity = $resActivity->fetch_assoc()){
+        $activityChart[] = array($rowActivity['year']*1, $rowActivity['arrivalCount']*1);
+    }
+    $activityChart = json_encode($activityChart);
+    ?>
+    <script type="text/javascript">
+    // Laad de visualization API
+    google.load("visualization", "1", {packages:["corechart"]});
+    // Teken als het is geladen
+    google.setOnLoadCallback(drawCharts);
+    function drawCharts(){
+      // Zet de data om naar een DataTable
+      var data = new google.visualization.arrayToDataTable(<?php echo $activityChart ?>);
+      // Maak een LineChart
+      var chart = new google.visualization.LineChart(document.getElementById('activityChart'));
+      // Teken de chart met de data en bepaalde opties
+      chart.draw(data, {pointSize: 5, title: 'Activity for <?php echo $row['portName']; ?>', hAxis: {title: 'Year', format:'#'},
+          vAxis: {title: 'Arrivals'}});
+    }
+    </script>
+    <!-- De div waar de chart in komt -->
+    <div class="row">
+        <div id="activityChart" class="col-md-6" style="height:400px;"></div>
+    </div>
+    <?php
 
 
     // arrivals
