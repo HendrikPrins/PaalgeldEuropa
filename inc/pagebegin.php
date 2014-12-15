@@ -52,12 +52,12 @@
               </button>
               <a class="navbar-brand" href="index.php"><img src="img/logo.png" class="img-responsive" id="hummellogo"></a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li<?php echo ($_pageName == 'index.php' ? ' class="active"' : '')?>><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li<?php echo ($_pageName == 'namen.php' ? ' class="active"' : '')?>><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
+                <!--<li<?php echo ($_pageName == 'namen.php' ? ' class="active"' : '')?>><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>     
+
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-screenshot"></span> Places<b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -73,18 +73,39 @@
                     <li><a href="lading.php?type=area"><span class="glyphicon glyphicon-fullscreen"></span> Area</a></li>
                     <li><a href="lading.php?type=port"><span class="glyphicon glyphicon-screenshot"></span> Port</a></li>      
                   </ul>
+                </li>-->
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span> Search<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
+                    <li><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
+                    <li><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>      
+                  </ul>
                 </li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Analyze<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#"><span class="glyphicon glyphicon glyphicon-user"></span> Names</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>      
+                  </ul>
+                </li>
+
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Complete tables<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="table_captains.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
-                    <li><a href="table_ports.php"><span class="glyphicon glyphicon-screenshot"></span> Ports</a></li>
+                    <li><a href="table_ports.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
                     <li><a href="table_cargoes.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>
                     <li><a href="table_arrivals.php"><span class="glyphicon glyphicon-flag"></span> Arrivals</a></li>
                     <li><a href="table_date.php"><span class="glyphicon glyphicon-time"></span> Date</a></li>           
                   </ul>
                 </li>
               </ul>
+
+
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Paalgeld<b class="caret"></b></a>

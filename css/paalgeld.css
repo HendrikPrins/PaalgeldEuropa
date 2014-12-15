@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* CSS Document */
 
-@media (max-width: 890px) {
+@media (max-width: 805px) {
     .navbar-header {
         float: none;
     }

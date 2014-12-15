@@ -68,15 +68,7 @@ beginPage('', false);
                                 at the <a href="http://www.rug.nl/">University of Groningen</a>.</p>
                               <p><a class="btn btn-default" href="about_project.php" role="button">View details &raquo;</a></p>
                             </div>
-                            <div class="col-md-4">
-                              <h3>How to use the website</h3>
-                              <p>This website supplies information about all the shippings that arrived in Amsterdam during the year 1742 and the periods 1771 to 1810, 1814 to 1828, and 1830 to 1836. The information is based on tax administrations of the cargo of those ships. For more information about this history see Background Information.
-
-Search is based on names, ports of departure, countries, cargo, name of captain and year and relations between. 
-</p>
-                            
-                           </div>
-                            <div class="col-md-4">
+                              <div class="col-md-4">
                               <h3>Background information</h3>
                               <p>The Paalgeld was a task levied on incoming ships coming from the “high seas” into the port of Amsterdam. 
                                 The purpose of this beaconage was to pay for the maintenance of buoys in the Zuiderzee: 
@@ -85,6 +77,12 @@ Search is based on names, ports of departure, countries, cargo, name of captain 
                                 North Sea and in the Baltic Area.</p>
                               <p><a class="btn btn-default" href="background_info.php" role="button">View details &raquo;</a></p>
                             </div>
+                            <div class="col-md-4">
+                              <h3>How to use the website</h3>
+                              <p>This website supplies information about all the shippings that arrived in Amsterdam during the year 1742 and the periods 1771 to 1810, 1814 to 1828, and 1830 to 1836. The information is based on tax administrations of the cargo of those ships. For more information about this history see Background Information.
+                              Search is based on names, ports of departure, countries, cargo, name of captain and year and relations between. 
+                              </p>                            
+                           </div>
                         </div>
                     </div>
             </div>
