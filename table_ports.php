@@ -8,7 +8,7 @@ if(isset($_GET['area'])){
   $query = "SELECT * FROM ports, portAreas WHERE ports.areaCode = portAreas.areaCode AND portAreas.area = '".$_db->real_escape_string($_GET['area'])."' AND ports.arrivalCount > 0";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No ports with area code <strong>'.$_GET['area'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
+    echo '<div class="alert alert-warning" role="alert">No ports with area code <strong>'.$_GET['area'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
   }else{
 	echo 'Ports in <a href="table_ports.php?area='.$_GET['area'].'">'.$_GET['area'].'</a>';
   download_knop($query);

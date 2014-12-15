@@ -7,7 +7,7 @@ if(isset($_GET['year'])){
   $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND year(date) = '".$_db->real_escape_string($_GET['year'])."'";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with year <strong>'.$_GET['year'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>'; 
+    echo '<div class="alert alert-warning" role="alert">No arrivals with year <strong>'.$_GET['year'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>'; 
   }else{
 	echo 'Arrivals in <a href="table_date.php?year='.$_GET['year'].'">'.$_GET['year'].'</a>';
   
@@ -29,7 +29,7 @@ if(isset($_GET['year'])){
   $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND month(date) = '".$_db->real_escape_string($_GET['month'])."'";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with month <strong>'.$_GET['month'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
+    echo '<div class="alert alert-warning" role="alert">No arrivals with month <strong>'.$_GET['month'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
   }else{
 	$dateObj   = DateTime::createFromFormat('!m', $_GET['month']);
     $monthName = $dateObj->format('F');
@@ -53,7 +53,7 @@ if(isset($_GET['year'])){
   $query = "SELECT * FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND day(date) = '".$_db->real_escape_string($_GET['day'])."'";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with day <strong>'.$_GET['day'].'</strong> found. <a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
+    echo '<div class="alert alert-warning" role="alert">No arrivals with day <strong>'.$_GET['day'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
   }else{
 	echo 'Arrivals in <a href="table_date.php?day='.$_GET['day'].'">'.$_GET['day'].'</a>';
   
