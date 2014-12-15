@@ -78,7 +78,7 @@ if(isset($_GET['id'])){
   $rowCount = $resCount->fetch_assoc();
   $totalCount = $rowCount['count'];
   $queryBase = "SELECT *, COUNT(fullNameCaptain) AS count FROM paalgeldEur GROUP BY fullNameCaptain";
-  $queryBase .= queryOrderPart(array('fullNameCaptain','count'), 'count', 'desc');
+  $queryBase .= queryOrderPart(array('fullNameCaptain','count'), 'fullNameCaptain', 'asc');
   $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
   $res = $_db->query($queryLimited);
   download_knop($queryBase);

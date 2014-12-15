@@ -24,9 +24,9 @@ function sortableHead($namePretty, $nameTable){
   return '<a href="'.$pageLink.'?'.http_build_query($get).'">'.$namePretty.'</a>';
 }
 
-function queryOrderPart($allowedFields, $defaultField){
+function queryOrderPart($allowedFields, $defaultField, $defaultSortMode = 'asc'){
   $orderField = isset($_GET['sortby']) ? $_GET['sortby'] : $defaultField;
-  $orderMode = isset($_GET['sortmode']) ? $_GET['sortmode'] : 'asc';
+  $orderMode = isset($_GET['sortmode']) ? $_GET['sortmode'] : $defaultSortMode;
   // Valideer order mode, standaard asc
   if($orderMode != 'asc' && $orderMode != 'desc'){
     $orderMode = 'asc';

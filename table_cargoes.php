@@ -8,7 +8,7 @@ if(isset($_GET['cargo'])){
   include_once('inc/module_tablesort.php');
   $cargo = str_replace('_', ' ', $_db->real_escape_string($_GET['cargo']));
   $queryBase = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$cargo."'";
-  $queryBase .= queryOrderPart(array('paalgeldEur.idEur','date','fullNameCaptain','portName'), 'paalgeldEur.idEur');
+  $queryBase .= queryOrderPart(array('paalgeldEur.idEur','date','fullNameCaptain','portName'), 'date');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
   $offset = $page * $size;
@@ -73,7 +73,7 @@ if(isset($_GET['cargo'])){
   // tabel met unieke cargo
   include_once('inc/module_tablesort.php');
   $queryBase = "SELECT cargo, COUNT(*) AS count FROM cargo GROUP BY cargo";
-  $queryBase .= queryOrderPart(array('cargo','count'), 'count');
+  $queryBase .= queryOrderPart(array('cargo','count'), 'count', 'desc');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
   $offset = $page * $size;
