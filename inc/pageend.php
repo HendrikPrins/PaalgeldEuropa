@@ -12,7 +12,7 @@ if($_inContainer){
                 <div class="container">
                     <div class="row">
                         <div class="col-md-1">
-                            <h5><a href="#">Links</a></h5>
+                            <h5><a href="links.php">Links</a></h5>
                         </div>
                         <div class="col-md-1">
                             <h5><a href="#">Contact</a></h5>
