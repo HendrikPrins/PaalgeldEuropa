@@ -70,11 +70,11 @@ beginPage('', false);
                             </div>
                             <div class="col-md-4">
                               <h3>How to use the website</h3>
-                              <p>Donec id elit non mi porta gravida at eget metus. 
-                                Fusce dapibus, tellus ac cursus commodo, 
-                                tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
-                                Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                              <p><a class="btn btn-default" href="how_to.php" role="button">View details &raquo;</a></p>
+                              <p>This website supplies information about all the shippings that arrived in Amsterdam during the year 1742 and the periods 1771 to 1810, 1814 to 1828, and 1830 to 1836. The information is based on tax administrations of the cargo of those ships. For more information about this history see Background Information.
+
+Search is based on names, ports of departure, countries, cargo, name of captain and year and relations between. 
+</p>
+                            
                            </div>
                             <div class="col-md-4">
                               <h3>Background information</h3>
