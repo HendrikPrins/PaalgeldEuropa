@@ -132,6 +132,7 @@ if ($type == 'port'){
 
 <?php
 }
+if ($type == 'port'||$type == 'area'||$type =='country'){
 ?>
     
 <div class="form-group">
@@ -167,6 +168,27 @@ if ($type == 'port'){
     </div>
 </div>
 </form>
+
+<?php
+}
+if ($type !=='port'&& $type !=='area' && $type !=='country'){
+
+?>
+<div class="row">
+        <div class="col-md-12">
+        <p>
+        Select your search method below.
+        </p>
+    </div>
+    <div class="col-md-12">
+            <a href="plaatsen.php?type=country">Search by Country</a><br>
+            <a href="plaatsen.php?type=port">Search by Port</a><br>
+            <a href="plaatsen.php?type=area">Search by Area</a><br>
+    </div>
+</div>
+<?php
+}
+?>
 <?php
 endPage();
 ?>
