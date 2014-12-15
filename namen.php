@@ -11,12 +11,12 @@ beginPage('Paalgeld Europa - Names', true, 'Research based on names');
                             </div>
                             </div>
                             <div class="form-group">
-                            <label for="inputStartDate" class="col-sm-2 control-label">Date</label>
+                            <label for="inputStartDate" class="col-sm-2 control-label">Year</label>
                             <div class="col-xs-2">
-                            <input type="date" min="1742-01-01" max="1787-12-31" class="form-control" name="inputStartDate" placeholder="Start">
+                            <input type="number" maxlength="4" min="1742" min="1787" class="form-control" name="inputStartDate" placeholder="Start Year">
                             </div>
                             <div class="col-xs-2">
-                            <input type="date" min="1742-01-01" max="1787-12-31" class="form-control" name="inputEndDate" placeholder="End">
+                            <input type="number" maxlength="4" min="1742" min="1787" class="form-control" name="inputEndDate" placeholder="End Year">
                             </div>
                             </div>
                             <div class="form-group">
@@ -36,7 +36,7 @@ beginPage('Paalgeld Europa - Names', true, 'Research based on names');
                               </div>
                           <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Onderzoek</button>
+                        <button type="submit" class="btn btn-default">Research</button>
                         </div>
                         </div>
                         </form>

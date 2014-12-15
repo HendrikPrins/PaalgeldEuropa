@@ -22,11 +22,11 @@ require_once('inc/config.php');
       $query .= " AND fullNameCaptain like '$inputName'";
     }
     if($inputStartDate != "" && $inputEndDate != ""){
-       $query .= " AND date BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
+       $query .= " AND year(date) BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
     }elseif($inputStartDate != ""){
-       $query .= " AND date > '".$inputStartDate."'";
+       $query .= " AND year(date) > '".$inputStartDate."'";
     }elseif($inputEndDate != ""){
-       $query .= " AND date < '".$inputEndDate."'";
+       $query .= " AND year(date) < '".$inputEndDate."'";
     }
     if($departurePlace != ""){
       $query .= " AND ports.portCode = '".$departurePlace."'";
