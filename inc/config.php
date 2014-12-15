@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["query"] = array();
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // Maak verbinding met de database
 if($_SERVER["SERVER_NAME"] == 'localhost' || $_SERVER["SERVER_NAME"] == '127.0.0.1'){
@@ -34,8 +35,10 @@ function endPage(){
 }
 
 function download_knop($query, $array = null){
+  $id = uniqid();
+  $_SESSION["query"][$id] = $query;
 	echo '<form action="download.php" method="post">';
-	echo '<input type="hidden" name="download_query" value="'.$query.'""><br>';
+	echo '<input type="hidden" name="download_query" value="'.$id.'""><br>';
   if ($array) {
     echo '<input type="hidden" name="column_names" value="'.$array.'""><br>';
   }
