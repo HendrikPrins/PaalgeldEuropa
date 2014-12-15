@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!is_array($_SESSION["query"])){
+if(!isset($_SESSION["query"]) || !is_array($_SESSION["query"])){
   $_SESSION["query"] = array();
 }
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
