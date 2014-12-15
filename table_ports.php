@@ -63,7 +63,8 @@ if(isset($_GET['area'])){
     <!-- De div waar de chart in komt -->
     <div class="row">
     <?php
-    makeGoogleMapsQuery("SELECT arrivalCount, portCode FROM ports where portCode='".$_GET['portCode']."'", 'arrivalCount', 'portCode');
+    include_once("inc/module_map.php");
+    makeGoogleMapsQuery("SELECT arrivalCount, portCode, lat, lng, portName FROM ports where portCode='".$_GET['portCode']."'", 'arrivalCount', 'portCode');
     ?>
         <div id="activityChart" class="col-md-6" style="height:400px;"></div>
     </div>
