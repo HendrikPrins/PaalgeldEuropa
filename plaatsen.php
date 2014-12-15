@@ -1,7 +1,14 @@
 <?php
 require_once('inc/config.php');
 $_loadChosen = true;
-beginPage('Paalgeld Europa - Plaatsen', true, 'Onderzoek a.h.v. plaatsen');
+beginPage('Paalgeld Europa - Places', true, 'Onderzoek a.h.v. plaatsen');
+
+    //Initialize variables
+    $type = $_GET['type'];
+
+if 
+
+
 ?>
 <form class="form-horizontal" role="form" action="plaatsenresult.php" method="POST">
   <div class="form-group">
