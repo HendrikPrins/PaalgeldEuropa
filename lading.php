@@ -6,7 +6,10 @@ beginPage('Paalgeld Europa - Cargoes', true, 'Research based on cargoes');
     //Initialize variables
     $type = $_GET['type'];
 ?>
+<?php
 
+if ($type == 'port'||$type == 'area'||$type =='country'){
+?>
 <form class="form-horizontal" role="form" action="plaatsenresult.php" method="POST">
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>
@@ -43,6 +46,7 @@ beginPage('Paalgeld Europa - Cargoes', true, 'Research based on cargoes');
         </div>
     </div>
 <?php
+}
 if ($type == 'country'){
 ?>
     
@@ -112,6 +116,7 @@ if ($type == 'port'){
 
 <?php
 }
+if ($type == 'port'||$type == 'area'||$type =='country'){
 ?>
 
 <div class="form-group">
@@ -130,6 +135,26 @@ if ($type == 'port'){
     </div>
 </div>
 </form>
+<?php
+}
+if ($type !=='port'&& $type !=='area' && $type !=='country'){
+?>
+<div class="row">
+        <div class="col-md-12">
+        <p>
+        Select your search method below.
+        </p>
+    </div>
+    <div class="col-md-12">
+            <a href="lading.php?type=country">Search by Country</a><br>
+            <a href="lading.php?type=port">Search by Port</a><br>
+            <a href="lading.php?type=area">Search by Area</a><br>
+    </div>
+</div>
+
+<?php
+}
+?>
 <?php
 endPage();
 ?>
