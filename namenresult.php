@@ -37,11 +37,10 @@ require_once('inc/config.php');
     $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
     $size = 25;
     $offset = $page * $size;
+    $resCount = $_db->query($query);
+    $totalCount = $resCount->num_rows;
     $pagination = pagination($page, $size, $totalCount);
-    $resCount = $_db->query("SELECT COUNT(*) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode");
-    $rowCount = $resCount->fetch_assoc();
-    $totalCount = $rowCount['count'];
-    $queryBase = "SELECT SUM(arrivalCount) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode";
+    $queryBase = $query;
     $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
     $res = $_db->query($queryLimited);
 
@@ -50,7 +49,7 @@ require_once('inc/config.php');
     }
     else {
         echo '<div class="row">';
-        makeGoogleMapsQuery($queryBase, 'portSum', 'pCode');
+        makeGoogleMapsQuery("SELECT SUM(arrivalCount) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portSum', 'pCode');
         echo '</div>';
         echo $pagination;
         echo '<table class="table table-hover">';
@@ -61,6 +60,7 @@ require_once('inc/config.php');
         }
         echo '</table>';
         echo $pagination;
+        download_knop($queryBase);
     }
 endPage();
 ?>
