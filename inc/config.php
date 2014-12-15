@@ -38,9 +38,9 @@ function download_knop($query, $array = null){
   $id = uniqid();
   $_SESSION["query"][$id] = $query;
 	echo '<form action="download.php" method="post">';
-	echo '<input type="hidden" name="download_query" value="'.$id.'""><br>';
+	echo '<input type="hidden" name="download_query" value="'.$id.'"><br>';
   if ($array) {
-    echo '<input type="hidden" name="column_names" value="'.$array.'""><br>';
+    echo '<input type="hidden" name="column_names" value="'.$array.'"><br>';
   }
 	echo '<input class="btn btn-primary" type="submit" value="Download CSV">';
 	echo '</form>';
