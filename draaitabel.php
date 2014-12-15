@@ -40,7 +40,6 @@ if(isset($_GET['portCode']) && strlen($_GET['portCode']) > 0){
   $restrictions[] = 'departure place = '.$_GET['portCode'];
 }
 $query .= " GROUP BY year(date)";
-echo '<code>'.$query.'</code>';
 $res = $_db->query($query);
 $success = ($res != null && $res->num_rows > 0);
 if($success){
@@ -105,13 +104,10 @@ if($success){
     </div>
     <div class="form-group">
       <label class="control-label col-sm-3" for="startDate">Start date</label>
-      <div class="col-sm-6">
+      <div class="col-sm-3">
         <input type="number" maxlength="4" min="1742" max="1787" name="startDate" id="startDate" class="form-control" placeholder="Start date" value="<?php echo (isset($_GET['startDate']) ? $_GET['startDate'] : '') ?>" />
       </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-3" for="endDate">End date</label>
-      <div class="col-sm-6">
+      <div class="col-sm-3">
         <input type="number" maxlength="4" min="1742" max="1787" name="endDate" id="endDate" class="form-control" placeholder="End date" value="<?php echo (isset($_GET['endDate']) ? $_GET['endDate'] : '') ?>" />
       </div>
     </div>
