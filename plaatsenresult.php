@@ -25,9 +25,10 @@ require_once('inc/config.php');
     beginPage('Paalgeld Europa - Places', true, 'Research based on places');
     echo '<table class="table table-hover">';
     echo '<tr><th>Year</th><th>Arrivals</th></tr>';
-    $query = "SELECT  COUNT(*) AS arrivalCount,ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
+	// SELECT sum(taxGuilders) AS tax FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND countryNow = 'Denmark' AND year(date) = '1742'
+    $query = "SELECT ports.portCode COUNT(*) AS arrivalCount,ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
     if($countryOne != "" && $countryTwo != ""){
-      $query .= " AND fullNameCaptain like '$inputName'";
+      $query .= " AND countryNow = '".$countryOne."' AND countryNow = '".$countryTwo."'";
     }
     /*if($inputStartDate != "" && $inputEndDate != ""){
        $query .= " AND date BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
