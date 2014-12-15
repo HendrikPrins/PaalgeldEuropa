@@ -16,7 +16,7 @@ if(isset($_GET['area'])){
     echo '<table class="table table-hover">';
     echo '<tr><th>Port code</th><th>Port</th><th>Area</th><th>Country now</th></tr>';
     while($row = $res->fetch_assoc()){
-      echo '<tr><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portCode'].'</a></td><td>'.$row['portName'].'</td><td><a href="table_ports.php?area='.$row['area'].'">'.$row['area'].'</a></td><td>'.$row['countriesNow'].'</td></tr>';
+      echo '<tr><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portCode'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td><td><a href="table_ports.php?area='.$row['area'].'">'.$row['area'].'</a></td><td>'.$row['countriesNow'].'</td></tr>';
     }
     echo '</table>';
   }
@@ -129,7 +129,7 @@ if(isset($_GET['area'])){
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Port Code', 'portCode').'</th><th>'.sortableHead('Port', 'portName').'</th><th>'.sortableHead('Area', 'area').'</th><th>'.sortableHead('Country now', 'countriesNow').'</th></tr>';
   while($row = $res->fetch_assoc()){
-    echo '<tr><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portCode'].'</a></td><td>'.$row['portName'].'</td><td><a href="table_ports.php?area='.$row['area'].'">'.$row['area'].'</a></td><td>'.$row['countriesNow'].'</td></tr>';
+    echo '<tr><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portCode'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td><td><a href="table_ports.php?area='.$row['area'].'">'.$row['area'].'</a></td><td>'.$row['countriesNow'].'</td></tr>';
   }
   echo '</table>';
   echo $pagination;
