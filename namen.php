@@ -3,7 +3,8 @@ require_once('inc/config.php');
 $_loadChosen = true;
 beginPage('Paalgeld Europa - Names', true, 'Research based on names');
 ?>
-<form class="form-horizontal" role="form" action="namenresult.php" method="get">
+<script src="js/parsley.min.js"></script>
+<form class="form-horizontal" role="form" action="namenresult.php" method="get" data-parsley-validate>
   <div class="form-group">
     <label for="inputname" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
@@ -13,10 +14,10 @@ beginPage('Paalgeld Europa - Names', true, 'Research based on names');
     <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
     <div class="col-xs-2">
-    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year">
+    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year" data-parsley-maxlength="4">
     </div>
     <div class="col-xs-2">
-    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year">
+    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year" data-parsley-maxlength="4">
     </div>
     </div>
     <div class="form-group">
