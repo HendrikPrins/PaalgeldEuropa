@@ -32,12 +32,15 @@ require_once('inc/config.php');
     }
     $query .= " GROUP BY fullNameCaptain";
     include_once('inc/module_map.php');
+    include_once('inc/module_pagination.php');
 
     $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
     $size = 25;
     $offset = $page * $size;
     $pagination = pagination($page, $size, $totalCount);
-    echo $pagination;
+    $resCount = $_db->query("SELECT COUNT(*) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode");
+    $rowCount = $resCount->fetch_assoc();
+    $totalCount = $rowCount['count'];
     $queryBase = "SELECT SUM(arrivalCount) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode";
     $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
     $res = $_db->query($queryLimited);
@@ -46,8 +49,10 @@ require_once('inc/config.php');
         echo "<div class='alert alert-danger' role='alert'>No results found. Try again.</div>";
     }
     else {
+        echo '<div class="row">';
         makeGoogleMapsQuery($queryBase, 'portSum', 'pCode');
-
+        echo '</div>';
+        echo $pagination;
         echo '<table class="table table-hover">';
         echo '<tr><th>Captain</th><th>Arrivals</th></tr>';
         while($row = $res->fetch_array()){
