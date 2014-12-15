@@ -6,7 +6,8 @@ beginPage();
 
 if(isset($_GET['cargo'])){
   include_once('inc/module_tablesort.php');
-  $queryBase = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
+  $cargo = str_replace('_', ' ', $_db->real_escape_string($_GET['cargo']));
+  $queryBase = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$cargo."'";
   $queryBase .= queryOrderPart(array('paalgeldEur.idEur','date','fullNameCaptain','portName'), 'paalgeldEur.idEur');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
   $size = 25;
@@ -18,19 +19,19 @@ if(isset($_GET['cargo'])){
   $queryLimited = $queryBase." LIMIT ".$offset.", ".$size;
   $res = $_db->query($queryLimited);
   $pagination = pagination($page, $size, $totalCount);
-  echo 'Arrivals met cargo <a href="table_cargoes.php?cargo='.$_GET['cargo'].'">'.$_GET['cargo'].'</a><br>';
+  echo 'Arrivals met cargo <a href="table_cargoes.php?cargo='.$_GET['cargo'].'">'.$cargo.'</a><br>';
   // alle arrivals met een bepaalde cargo
   //$query = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
   $res = $_db->query($queryLimited);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert">No arrivals with cargo <strong>'.$_GET['cargo'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
+    echo '<div class="alert alert-warning" role="alert">No arrivals with cargo <strong>'.$cargo.'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
   }else{
     include_once('inc/module_map.php');
     echo '<div class="row">';
-    makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($_GET['cargo'])."' GROUP BY ports.portCode", 'cargoCount', 'pCode');
+    makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($cargo)."' GROUP BY ports.portCode", 'cargoCount', 'pCode');
     // Activity chart
     $activityChart = array(array('Year', 'Arrivals'));
-    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND cargo.cargo = '".$_db->real_escape_string($_GET['cargo'])."' GROUP BY `year` ORDER BY `year` ASC");
+    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND cargo.cargo = '".$_db->real_escape_string($cargo)."' GROUP BY `year` ORDER BY `year` ASC");
     while($rowActivity = $resActivity->fetch_assoc()){
         $activityChart[] = array($rowActivity['year']*1, $rowActivity['arrivalCount']*1);
     }
@@ -88,7 +89,8 @@ if(isset($_GET['cargo'])){
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Cargo', 'cargo').'</th><th>'.sortableHead('Count', 'count').'</th></tr>';
   while($row = $res->fetch_assoc()){
-    echo '<tr><td><a href="table_cargoes.php?cargo='.$row['cargo'].'">'.$row['cargo'].'</a></td><td>'.$row['count'].'</td></tr>';
+    $cargo = str_replace(' ', '_', $row['cargo']);
+    echo '<tr><td><a href="table_cargoes.php?cargo='.$cargo.'">'.$row['cargo'].'</a></td><td>'.$row['count'].'</td></tr>';
   }
   echo '</table>';
   echo $pagination;

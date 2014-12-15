@@ -32,7 +32,8 @@ if(isset($_GET['id'])){
       echo '<table class="table table-hover">';
       echo '<tr><th>Cargo</th><th>Value</th></tr>';
       while($row2 = $res2->fetch_assoc()){
-        echo '<tr><td><a href="table_cargoes.php?cargo='.$row2['cargo'].'">'.$row2['cargo'].'</a></td><td>'.($row2['taxGuilders']*500).'</td></tr>';
+        $cargo = str_replace(' ', '_', $row2['cargo']);
+        echo '<tr><td><a href="table_cargoes.php?cargo='.$cargo.'">'.$row2['cargo'].'</a></td><td>'.($row2['taxGuilders']*500).'</td></tr>';
       }
       echo '</table>';
     }
