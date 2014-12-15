@@ -5,31 +5,28 @@ beginPage('Paalgeld Europa - Places', true, 'Research based on places');
 
     //Initialize variables
     $type = $_GET['type'];
-?>
 
-<form class="form-horizontal" role="form" action="plaatsenresult.php" method="POST">
-    
-<?php
 if ($type == 'country'){
+
 ?>
-    
+<form class="form-horizontal" role="form" action="plaatsenresult.php" method="get">    
     <div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Country 1</label>
-	<div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose one country" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose one country</option>
-            <?php
-                $query = "SELECT * FROM portAreas ORDER BY countriesNow";
-                $res = $_db->query($query);
-                if($res != null || $res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['countriesNow'].'>'.$row['countriesNow'].'</option>';
-                }
-                }
-            ?>
-        </select>
+		<label for="inputLand" class="col-sm-2 control-label">Country 1</label>
+		<div class="col-sm-10">
+			<select name="countryOne" data-placeholder="Choose one country" class="chosen-select" style="width:350px;" tabindex="2">
+				<option value="">Choose one country</option>
+				<?php
+					$query = "SELECT * FROM portAreas ORDER BY countriesNow";
+					$res = $_db->query($query);
+					if($res != null || $res->num_rows > 0){
+						while($row = $res->fetch_assoc()){
+							echo '<option value='.$row['countriesNow'].'>'.$row['countriesNow'].'</option>';
+						}
+					}
+				?>
+			</select>
+		</div>
     </div>
-  </div>
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Country 2</label>
     <div class="col-sm-10">
@@ -64,7 +61,7 @@ if ($type == 'area'){
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
                         echo '<option value='.$row['area'].'>'.$row['area'].'</option>';
-                }
+					}
                 }
             ?>
         </select>
@@ -104,7 +101,7 @@ if ($type == 'port'){
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
                         echo '<option value='.$row['portName'].'>'.$row['portName'].'</option>';
-                }
+					}
                 }
             ?>
         </select>
@@ -121,7 +118,7 @@ if ($type == 'port'){
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
                         echo '<option value='.$row['portName'].'>'.$row['portName'].'</option>';
-                }
+					}
                 }
             ?>
         </select>

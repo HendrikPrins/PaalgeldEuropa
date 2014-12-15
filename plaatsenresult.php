@@ -2,26 +2,34 @@
 require_once('inc/config.php');
 
     //Initialize variables
-    $inputName = $_GET['inputName'];
-    $inputStartDate = $_GET['inputStartDate'];
+    $countryOne = $_GET['countryOne'];
+    $countryTwo = $_GET['countryTwo'];
+    $areaOne = $_GET['areaOne'];
+    $areaTwo = $_GET['areaTwo'];
+    $portOne = $_GET['portOne'];
+	$portTwo = $_GET['portTwo'];
+	
+	$cargo = $_GET['cargo'];
+	$inputStartDate = $_GET['inputStartDate'];
     $inputEndDate = $_GET['inputEndDate'];
-    $departurePlace = $_GET['departurePlace'];
-    $total = $inputName . $inputStartDate . $inputEndDate . $inputPlate . $departurePlace;
+	
+	
+	$total = $countryOne . $countryTwo . $areaOne . $areaTwo . $portOne . $portTwo . $cargo . $inputStartDate . $inputEndDate;
     
     // If all empty
     if ($total == ""){
-        header("Location: table_captains.php");
+        header("Location: table_ports.php");
     }
 
     $_loadGoogleMaps = true;
     beginPage('Paalgeld Europa - Places', true, 'Research based on places');
     echo '<table class="table table-hover">';
     echo '<tr><th>Year</th><th>Arrivals</th></tr>';
-    $query = "SELECT fullNameCaptain, COUNT(*) AS arrivalCount, lat, lng, ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
-    if($inputName != ""){
+    $query = "SELECT  COUNT(*) AS arrivalCount,ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
+    if($countryOne != "" && $countryTwo != ""){
       $query .= " AND fullNameCaptain like '$inputName'";
     }
-    if($inputStartDate != "" && $inputEndDate != ""){
+    /*if($inputStartDate != "" && $inputEndDate != ""){
        $query .= " AND date BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
     }elseif($inputStartDate != ""){
        $query .= " AND date > '".$inputStartDate."'";
@@ -38,6 +46,7 @@ require_once('inc/config.php');
     while($row = $res->fetch_array()){
         $captain = str_replace(' ', '_', $row['fullNameCaptain']);
         echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['arrivalCount'].'</td></tr>';
-    }
+    */
+	}
 endPage();
 ?>
