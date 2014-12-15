@@ -1,6 +1,7 @@
 <?php
 require('inc/config.php');
 $_loadGoogleCharts = true;
+$_loadGoogleMaps = true;
 beginPage();
 
 if(isset($_GET['area'])){
@@ -61,6 +62,9 @@ if(isset($_GET['area'])){
     </script>
     <!-- De div waar de chart in komt -->
     <div class="row">
+    <?php
+    makeGoogleMapsQuery("SELECT arrivalCount, portCode FROM ports where portCode='".$_GET['portCode']."'", 'arrivalCount', 'portCode');
+    ?>
         <div id="activityChart" class="col-md-6" style="height:400px;"></div>
     </div>
     <?php
