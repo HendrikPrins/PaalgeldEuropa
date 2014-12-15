@@ -2,7 +2,7 @@
 
 require("inc/config.php");
 
-$query = $_SESSION[$_POST["download_query"]];
+$query = $_SESSION["query"][$_POST["download_query"]];
 if ($_POST["column_names"]) {
 	$column_names = $_POST["column_names"];
 }
