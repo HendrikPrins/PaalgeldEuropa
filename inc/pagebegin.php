@@ -62,10 +62,15 @@
               <ul class="nav navbar-nav">
                 <li<?php echo ($_pageName == 'index.php' ? ' class="active"' : '')?>><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li<?php echo ($_pageName == 'namen.php' ? ' class="active"' : '')?>><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
-                <li<?php echo ($_pageName == 'plaatsen.php' ? ' class="active"' : '')?>><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Ports</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-screenshot"></span> Ports<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="plaatsen.php?"><span class="glyphicon glyphicon-map-marker"></span> Country</a></li>
+                    <li><a href="plaatsen.php?"><span class="glyphicon glyphicon-fullscreen"></span> Area</a></li>
+                    <li><a href="plaatsen.php?"><span class="glyphicon glyphicon-screenshot"></span> Port</a></li>      
+                  </ul>
+                </li>
                 <li<?php echo ($_pageName == 'lading.php' ? ' class="active"' : '')?>><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>
-              </ul>
-              <ul class="nav navbar-nav">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Complete tables<b class="caret"></b></a>
                   <ul class="dropdown-menu">
