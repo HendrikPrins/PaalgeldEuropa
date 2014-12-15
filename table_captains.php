@@ -16,8 +16,8 @@ if(isset($_GET['id'])){
     $captain = str_replace(' ', '_', $rowDetail['fullNameCaptain']);
     echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$captain.'">'.$rowDetail['fullNameCaptain'].'</a></td></tr>';
     echo '<tr><td>First name</td><td>'.$rowDetail['firstNameCaptain'].'</td></tr>';
-    echo '<tr><td>Last Name</td><td>'.$rowDetail['lastNameCaptain'].'</td></tr>';
-    echo '<tr><td>Cargo</td><td>'.$rowDetail['cargoString'].'</td></tr>';
+    echo '<tr><td>Last name</td><td>'.$rowDetail['lastNameCaptain'].'</td></tr>';
+    echo '<tr><td>Unique cargoes</td><td>'.$rowDetail['cargoString'].'</td></tr>';
     echo '</table>';
 
     $query = "SELECT idEur, date, fullNameCaptain, firstNameCaptain, lastNameCaptain, portName, ports.portCode AS pCode, lat, lng FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$rowDetail['fullNameCaptain']."'";
@@ -56,7 +56,7 @@ if(isset($_GET['id'])){
     download_knop($query);
     echo '<b>Arrivals</b>';
     echo '<table class="table table-hover">';
-    echo '<tr><th>Arrival id</th><th>Date</th><th>Full name</th><th>Departure port</th></tr>';
+    echo '<tr><th>Arrival id</th><th>Date</th><th>Full name</th><th>Port of departure</th></tr>';
     $res = $_db->query($query);
     while($row = $res->fetch_assoc()){
         $year = substr($row['date'], 0, -6);
@@ -85,7 +85,7 @@ if(isset($_GET['id'])){
   $pagination = pagination($page, $size, $totalCount);
   echo $pagination;
   echo '<table class="table table-hover">';
-  echo '<tr><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Arrivals', 'count').'</th></tr>';
+  echo '<tr><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Amount of shippings', 'count').'</th></tr>';
   while($row = $res->fetch_assoc()){
     $captain = str_replace(' ', '_', $row['fullNameCaptain']);
     echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';

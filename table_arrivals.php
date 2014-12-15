@@ -17,10 +17,10 @@ if(isset($_GET['id'])){
 	$month = substr($row['date'], 5, -3);
 	$day = substr($row['date'], 8);
 	$captain = str_replace(' ', '_', $row['fullNameCaptain']);
-    echo '<tr><td>arrival id</td><td>'.$row['idEur'].'</td></tr>';
-    echo '<tr><td>date</td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td></tr>';
-    echo '<tr><td>fullNameCaptain</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td></tr>';
-    echo '<tr><td>departurePort</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
+    echo '<tr><td>Arrival id</td><td>'.$row['idEur'].'</td></tr>';
+    echo '<tr><td>Date</td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td></tr>';
+    echo '<tr><td>Full name captain</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td></tr>';
+    echo '<tr><td>Port of departure</td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
     echo '</table>';
 
     // de cargoes
@@ -30,7 +30,7 @@ if(isset($_GET['id'])){
       download_knop($query);
       echo '<b>Cargoes</b>';
       echo '<table class="table table-hover">';
-      echo '<tr><th>cargo</th><th>tax</th></tr>';
+      echo '<tr><th>Cargo</th><th>Value</th></tr>';
       while($row2 = $res2->fetch_assoc()){
         echo '<tr><td><a href="table_cargoes.php?cargo='.$row2['cargo'].'">'.$row2['cargo'].'</a></td><td>'.($row2['taxGuilders']*500).'</td></tr>';
       }
