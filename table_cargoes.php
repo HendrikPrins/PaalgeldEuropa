@@ -23,7 +23,7 @@ if(isset($_GET['cargo'])){
   //$query = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
   $res = $_db->query($queryLimited);
   if($res == null || $res->num_rows == 0){
-    echo '<div class="alert alert-warning" role="alert"><strong>Error.</strong> No arrivals with cargo <strong>'.$_GET['cargo'].' found. </strong><a class="alert-link" href="#" onclick="history.go(-1)">Go Back</a><br>Error code: '.$_db->error.'</div>';
+    echo '<div class="alert alert-warning" role="alert">No arrivals with cargo <strong>'.$_GET['cargo'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
   }else{
     include_once('inc/module_map.php');
     echo '<div class="row">';
