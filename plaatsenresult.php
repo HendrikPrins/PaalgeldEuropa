@@ -1,53 +1,78 @@
 <?php
 require_once('inc/config.php');
 
-    //Initialize variables
-    $countryOne = $_GET['countryOne'];
-    $countryTwo = $_GET['countryTwo'];
-    $areaOne = $_GET['areaOne'];
-    $areaTwo = $_GET['areaTwo'];
-    $portOne = $_GET['portOne'];
-	$portTwo = $_GET['portTwo'];
-	
-	$cargo = $_GET['cargo'];
-	$inputStartDate = $_GET['inputStartDate'];
-    $inputEndDate = $_GET['inputEndDate'];
-	
-	
-	$total = $countryOne . $countryTwo . $areaOne . $areaTwo . $portOne . $portTwo . $cargo . $inputStartDate . $inputEndDate;
-    
-    // If all empty
-    if ($total == ""){
-        header("Location: table_ports.php");
-    }
+//Initialize variables
+$countryOne = $_GET['countryOne'];
+$countryTwo = $_GET['countryTwo'];
+$areaOne = $_GET['areaOne'];
+$areaTwo = $_GET['areaTwo'];
+$portOne = $_GET['portOne'];
+$portTwo = $_GET['portTwo'];
 
-    $_loadGoogleMaps = true;
-    beginPage('Paalgeld Europa - Places', true, 'Research based on places');
-    echo '<table class="table table-hover">';
-    echo '<tr><th>Year</th><th>Arrivals</th></tr>';
-	// SELECT sum(taxGuilders) AS tax FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND countryNow = 'Denmark' AND year(date) = '1742'
-    $query = "SELECT ports.portCode COUNT(*) AS arrivalCount,ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
-    if($countryOne != "" && $countryTwo != ""){
-      $query .= " AND countryNow = '".$countryOne."' AND countryNow = '".$countryTwo."'";
-    }
-    /*if($inputStartDate != "" && $inputEndDate != ""){
-       $query .= " AND date BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
-    }elseif($inputStartDate != ""){
-       $query .= " AND date > '".$inputStartDate."'";
-    }elseif($inputEndDate != ""){
-       $query .= " AND date < '".$inputEndDate."'";
-    }
-    if($departurePlace != ""){
-      $query .= " AND ports.portCode = '".$departurePlace."'";
-    }
-    $query .= " GROUP BY fullNameCaptain";
-    include_once('inc/module_map.php');
-    makeGoogleMapsQuery("SELECT SUM(arrivalCount) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portSum', 'pCode');
-    $res = $_db->query($query);
-    while($row = $res->fetch_array()){
-        $captain = str_replace(' ', '_', $row['fullNameCaptain']);
-        echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['arrivalCount'].'</td></tr>';
-    */
+$cargo = $_GET['cargo'];
+$inputStartDate = $_GET['inputStartDate'];
+$inputEndDate = $_GET['inputEndDate'];
+	
+	
+$total = $countryOne . $countryTwo . $areaOne . $areaTwo . $portOne . $portTwo . $cargo . $inputStartDate . $inputEndDate;
+    
+// If all empty
+if ($total == ""){
+	header("Location: table_ports.php");
+}
+
+//$_loadGoogleMaps = true;
+beginPage('Paalgeld Europa - Places', true, 'Research based on places');
+
+if($cargo != ""){
+	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';
+}
+
+echo '<table class="table table-hover">';
+
+//Country
+if($countryOne != "" && $countryTwo != ""){
+    echo '<tr><th>Year</th><th>'.$countryOne.'</th><th>'.$countryTwo.'</th></tr>';
+    $query = "SELECT year(date) AS year, sum(case when countryNow = '".$countryOne."' then taxGuilders end) AS one, sum(case when countryNow = '".$countryTwo."' then taxGuilders end) AS two FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode";
+}
+
+//Area
+if($areaOne != "" && $areaTwo != ""){
+    echo '<tr><th>Year</th><th>'.$areaOne.'</th><th>'.$areaTwo.'</th></tr>';
+    $query = "SELECT year(date) AS year, sum(case when portAreas.areaCode = '".$areaOne."' then taxGuilders end) AS one, sum(case when portAreas.areaCode = '".$areaTwo."' then taxGuilders end) AS two FROM `paalgeldEur`, `ports`, `cargo`, `portareas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portareas.areaCode";
+	
+}
+
+//Port
+if($portOne != "" && $portTwo != ""){
+    echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
+    $query = "SELECT year(date) AS year, sum(case when portCode = '".$portOne."' then taxGuilders end) AS one, sum(case when portCode = '".$portTwo."' then taxGuilders end) AS two FROM `paalgeldEur`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur";
+}
+//Cargo
+if($cargo != ""){
+    $query .= " AND cargo = '".$cargo."'";
+}
+
+//Period
+if($inputStartDate != "" && $inputEndDate != ""){
+	$query .= " AND year(date) BETWEEN '".$inputStartDate."' AND '".$inputEndDate."'";
+}elseif($inputStartDate != ""){
+	$query .= " AND year(date) > '".$inputStartDate."'";
+}elseif($inputEndDate != ""){
+	$query .= " AND year(date) < '".$inputEndDate."'";
+}
+
+$query .= " GROUP BY year(date)";
+$res = $_db->query($query);
+
+if ($res == null or $res->num_rows == 0){
+	echo "<div class='alert alert-danger' role='alert'>No results found. Try again.</div>";
+}else{
+	while($row = $res->fetch_assoc()){
+		echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.$row['one'].'</td><td>'.$row['two'].'</td></tr>';
 	}
+}
+
+
 endPage();
 ?>

@@ -21,11 +21,11 @@ beginPage('Paalgeld Europa - Places', true, 'Research based on places');
 			<select name="countryOne" data-placeholder="Choose one country" class="chosen-select" style="width:350px;" tabindex="2">
 				<option value="">Choose one country</option>
 				<?php
-					$query = "SELECT * FROM portAreas ORDER BY countriesNow";
+					$query = "SELECT * FROM ports GROUP BY countryNow";
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
-							echo '<option value='.$row['countriesNow'].'>'.$row['countriesNow'].'</option>';
+							echo '<option value='.$row['countryNow'].'>'.$row['countryNow'].'</option>';
 						}
 					}
 				?>
@@ -38,11 +38,11 @@ beginPage('Paalgeld Europa - Places', true, 'Research based on places');
 			<select name="countryTwo" data-placeholder="Choose a second country" class="chosen-select" style="width:350px;" tabindex="2">
 				<option value="">Choose a second country</option>
 				<?php
-					$query = "SELECT * FROM portAreas ORDER BY countriesNow";
+					$query = "SELECT * FROM ports GROUP BY countryNow";
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
-							echo '<option value='.$row['countriesNow'].'>'.$row['countriesNow'].'</option>';
+							echo '<option value='.$row['countryNow'].'>'.$row['countryNow'].'</option>';
 						}
 					}
 				?>
@@ -65,7 +65,7 @@ if ($type == 'area'){
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
-							echo '<option value='.$row['area'].'>'.$row['area'].'</option>';
+							echo '<option value='.$row['areaCode'].'>'.$row['area'].'</option>';
 						}
 					}
 				?>
@@ -82,7 +82,7 @@ if ($type == 'area'){
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
-							echo '<option value='.$row['area'].'>'.$row['area'].'</option>';
+							echo '<option value='.$row['areaCode'].'>'.$row['area'].'</option>';
 						}
 					}
 				?>
@@ -105,7 +105,7 @@ if ($type == 'port'){
                 $res = $_db->query($query);
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['portName'].'>'.$row['portName'].'</option>';
+                        echo '<option value='.$row['portCode'].'>'.$row['portName'].'</option>';
 					}
                 }
             ?>
@@ -122,7 +122,7 @@ if ($type == 'port'){
                 $res = $_db->query($query);
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['portName'].'>'.$row['portName'].'</option>';
+                        echo '<option value='.$row['portCode'].'>'.$row['portName'].'</option>';
 					}
                 }
             ?>
