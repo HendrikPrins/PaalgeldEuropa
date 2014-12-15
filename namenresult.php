@@ -44,7 +44,7 @@ require_once('inc/config.php');
 
     if ($res == null or $res->num_rows == 0){
         echo "<div class='alert alert-danger' role='alert'>No results found. Try again.</div>";
-    
+    }
     else {
         makeGoogleMapsQuery($queryBase, 'portSum', 'pCode');
 
