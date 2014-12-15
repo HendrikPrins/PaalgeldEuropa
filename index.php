@@ -28,9 +28,9 @@ beginPage('', false);
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-screenshot"></span></h1>
-                          <h4><span>Search by port name</span></h4>
+                          <h4><span>Search by names</span></h4>
                           <div class="icon-desc">
-                              <p class="small">Get an overview of port arrivals</p>
+                              <p class="small">Choose between country, area or port</p>
                           </div>
                         </div>
                       </div>
