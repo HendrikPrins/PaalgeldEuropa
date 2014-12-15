@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.php');
 $_loadChosen = true;
-beginPage('Paalgeld Europa - Places', true, 'Onderzoek a.h.v. plaatsen');
+beginPage('Paalgeld Europa - Places', true, 'Research based on places');
 
     //Initialize variables
     $type = $_GET['type'];
@@ -56,7 +56,7 @@ if ($type == 'area'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Area 1</label>
     <div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose one area" class="chosen-select" style="width:350px;" tabindex="2">
+        <select name="areaOne" data-placeholder="Choose one area" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose one area</option>
             <?php
                 $query = "SELECT * FROM portAreas ORDER BY area";
@@ -73,7 +73,7 @@ if ($type == 'area'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Area 2</label>
     <div class="col-sm-10">
-        <select name="countryTwo" data-placeholder="Choose a second area" class="chosen-select" style="width:350px;" tabindex="2">
+        <select name="areaTwo" data-placeholder="Choose a second area" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose a second area</option>
             <?php
                 $query = "SELECT * FROM portAreas ORDER BY area";
@@ -96,7 +96,7 @@ if ($type == 'port'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Port 1</label>
     <div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose one port" class="chosen-select" style="width:350px;" tabindex="2">
+        <select name="portOne" data-placeholder="Choose one port" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose one port</option>
             <?php
                 $query = "SELECT * FROM ports ORDER BY portName";
@@ -113,7 +113,7 @@ if ($type == 'port'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Port 2</label>
     <div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose a second port" class="chosen-select" style="width:350px;" tabindex="2">
+        <select name="portTwo" data-placeholder="Choose a second port" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose a second port</option>
             <?php
                 $query = "SELECT * FROM ports ORDER BY portName";
@@ -135,7 +135,7 @@ if ($type == 'port'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Cargo</label>
     <div class="col-sm-10">
-      <select name="countryTwo" data-placeholder="Choose a cargo to compare" class="chosen-select" style="width:350px;" tabindex="2">
+      <select name="cargo" data-placeholder="Choose a cargo to compare" class="chosen-select" style="width:350px;" tabindex="2">
         <option value="">Choose a cargo to compare</option>
         <?php
             $query = "SELECT distinct(cargo) FROM cargo ORDER BY cargo";
