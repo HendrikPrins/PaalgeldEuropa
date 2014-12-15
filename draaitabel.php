@@ -4,7 +4,19 @@ $_loadGoogleCharts = true;
 $_loadChosen = true;
 beginPage();
 $restrictions = array();
-$query = "SELECT COUNT(*) AS value, year(date) AS `year` FROM cargo, paalgeldEur, ports WHERE ports.portCode = paalgeldEur.portCode AND cargo.idEur = paalgeldEur.idEur ";
+if(isset($_GET['mode'])){
+  if($_GET['mode'] == 'count'){
+    $mode = 'COUNT(*)';
+  }elseif($_GET['mode'] == 'sum'){
+    $mode = 'SUM(taxGuilders)*500';
+  }else{
+    $mode = 'COUNT(*)';
+  }
+}else{
+  $mode = 'COUNT(*)';
+}
+$query = "SELECT ".$mode." AS value, year(date) AS `year` FROM cargo, paalgeldEur, ports WHERE ports.portCode = paalgeldEur.portCode AND cargo.idEur = paalgeldEur.idEur ";
+
 if(isset($_GET['cargo']) && strlen($_GET['cargo']) > 0){
   $query .= " AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
   $restrictions[] = 'cargo = '.$_GET['cargo'];
@@ -43,9 +55,29 @@ if($success){
 <div class="row">
   <form class="form-horizontal col-md-8" role="form" action="draaitabel.php" method="get">
     <div class="form-group">
+      <label class="control-label col-sm-3" for="mode">Value mode</label>
+      <div class="col-sm-6">
+        <select name="mode" data-placeholder="mode" class="form-control" style="width:350px;">
+            <option value="count" <?php echo (isset($_GET['mode']) && $_GET['mode'] == 'count' ? 'selected="selected"' : '');?>>count</option>
+            <option value="sum" <?php echo (isset($_GET['mode']) && $_GET['mode'] == 'sum' ? 'selected="selected"' : '');?>>sum tax</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
       <label class="control-label col-sm-3" for="cargo">Cargo</label>
       <div class="col-sm-6">
-        <input type="text" name="cargo" id="cargo" class="form-control" placeholder="Cargo" value="<?php echo (isset($_GET['cargo']) ? $_GET['cargo'] : '') ?>" />
+      <select name="cargo" data-placeholder="Cargo" class="chosen-select" style="width:350px;">
+            <option value="">Cargo</option>
+            <?php
+                $query = "SELECT DISTINCT cargo FROM cargo ORDER BY cargo";
+                $res = $_db->query($query);
+                if($res != null || $res->num_rows > 0){
+                    while($row = $res->fetch_assoc()){
+                        echo '<option value="'.$row['cargo'].'"'.(isset($_GET['cargo']) && $_GET['cargo'] == $row['cargo'] ? ' selected="selected"' : '').'>'.$row['cargo'].'</option>';
+                    }
+                }
+            ?>
+        </select>
       </div>
     </div>
     <div class="form-group">

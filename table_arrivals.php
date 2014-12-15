@@ -32,7 +32,7 @@ if(isset($_GET['id'])){
       echo '<table class="table table-hover">';
       echo '<tr><th>cargo</th><th>tax</th></tr>';
       while($row2 = $res2->fetch_assoc()){
-        echo '<tr><td><a href="table_cargoes.php?cargo='.$row2['cargo'].'">'.$row2['cargo'].'</a></td><td>'.$row2['taxGuilders'].'</td></tr>';
+        echo '<tr><td><a href="table_cargoes.php?cargo='.$row2['cargo'].'">'.$row2['cargo'].'</a></td><td>'.$row2['taxGuilders']*500.'</td></tr>';
       }
       echo '</table>';
     }
