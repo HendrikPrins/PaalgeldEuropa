@@ -68,8 +68,7 @@ if($success){
       <select name="cargo" data-placeholder="Cargo" class="chosen-select" style="width:350px;">
             <option value="">Cargo</option>
             <?php
-                $query = "SELECT DISTINCT cargo FROM cargo ORDER BY cargo";
-                $res = $_db->query($query);
+                $res = $_db->query("SELECT DISTINCT cargo FROM cargo ORDER BY cargo");
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
                         echo '<option value="'.$row['cargo'].'"'.(isset($_GET['cargo']) && $_GET['cargo'] == $row['cargo'] ? ' selected="selected"' : '').'>'.$row['cargo'].'</option>';
@@ -85,8 +84,7 @@ if($success){
       <select name="portCode" data-placeholder="Choose one port" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose one port</option>
             <?php
-                $query = "SELECT * FROM ports WHERE arrivalCount > 0 ORDER BY portName";
-                $res = $_db->query($query);
+                $res = $_db->query("SELECT * FROM ports WHERE arrivalCount > 0 ORDER BY portName");
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
                         echo '<option value="'.$row['portCode'].'"'.(isset($_GET['portCode']) && $_GET['portCode'] == $row['portCode'] ? ' selected="selected"' : '').'>'.$row['portName'].'</option>';
@@ -138,6 +136,7 @@ function drawCharts(){
 </script>
 <?php
 }
+echo download_knop($query);
 ?>
 <div class="row">
   <div id="activityChart" class="col-md-9" style="height:500px;">
