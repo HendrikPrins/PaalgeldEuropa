@@ -39,7 +39,7 @@ if($countryOne != "" && $countryTwo != ""){
 //Area
 if($areaOne != "" && $areaTwo != ""){
     echo '<tr><th>Year</th><th>'.$areaOne.'</th><th>'.$areaTwo.'</th></tr>';
-    $query = "SELECT year(date) AS year, sum(case when portAreas.areaCode = '".$areaOne."' then taxGuilders end) AS one, sum(case when portAreas.areaCode = '".$areaTwo."' then taxGuilders end) AS two FROM `paalgeldEur`, `ports`, `cargo`, `portareas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portareas.areaCode";
+    $query = "SELECT year(date) AS year, sum(case when portAreas.areaCode = '".$areaOne."' then taxGuilders end) AS one, sum(case when portAreas.areaCode = '".$areaTwo."' then taxGuilders end) AS two FROM `paalgeldEur`, `ports`, `cargo`, `portAreas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portAreas.areaCode";
 	
 }
 
