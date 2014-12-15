@@ -19,31 +19,31 @@ $query = "SELECT ".$mode." AS value, year(date) AS `year` FROM cargo, paalgeldEu
 
 if(isset($_GET['cargo']) && strlen($_GET['cargo']) > 0){
   $query .= " AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
-  $restrictions[] = 'cargo = '.$_GET['cargo'];
+  $restrictions[] = array('cargo', '=', $_GET['cargo']);
 }
 if(isset($_GET['fullNameCaptain']) && strlen($_GET['fullNameCaptain']) > 0){
   $query .= " AND fullNameCaptain like '".$_GET['fullNameCaptain']."'";
-  $restrictions[] = 'captain ~ '.$_GET['fullNameCaptain'];
+  $restrictions[] = array('captain', 'like', $_GET['fullNameCaptain']);
 }
 if(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0 && isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
    $query .= " AND year(date) BETWEEN '".$_GET['startDate']."' AND '".$_GET['endDate']."'";
-   $restrictions[] = 'date between '.$_GET['startDate'].' and '.$_GET['endDate'];
+   $restrictions[] = array('date', 'between', $_GET['startDate'].' and '.$_GET['endDate']);
 }elseif(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0){
    $query .= " AND year(date) > '".$_GET['startDate']."'";
-   $restrictions[] = 'date > '.$_GET['startDate'];
+   $restrictions[] = array('date', '>', $_GET['startDate']);
 }elseif(isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
    $query .= " AND year(date) < '".$_GET['endDate']."'";
-   $restrictions[] = 'date < '.$_GET['endDate'];
+   $restrictions[] = array('date', '<', $_GET['endDate']);
 }
 if(isset($_GET['portCode']) && strlen($_GET['portCode']) > 0){
   $query .= " AND ports.portCode = '".$_GET['portCode']."'";
-  $restrictions[] = 'departure place = '.$_GET['portCode'];
+  $restrictions[] = array('departure place', '=', $_GET['portCode']);
 }
 $query .= " GROUP BY year(date)";
 $res = $_db->query($query);
 $success = ($res != null && $res->num_rows > 0);
 if($success){
-  $chartData = array(array('Year','Frequency'));
+  $chartData = array(array('Year',($mode == 'COUNT(*)' ? 'Frequency' : 'Total Tax')));
   while($row = $res->fetch_assoc()){
     $chartData[] = array($row['year']*1, $row['value']*1);
   }
@@ -57,8 +57,8 @@ if($success){
       <label class="control-label col-sm-3" for="mode">Value mode</label>
       <div class="col-sm-6">
         <select name="mode" data-placeholder="mode" class="form-control" style="width:350px;">
-            <option value="count" <?php echo (isset($_GET['mode']) && $_GET['mode'] == 'count' ? 'selected="selected"' : '');?>>count</option>
-            <option value="sum" <?php echo (isset($_GET['mode']) && $_GET['mode'] == 'sum' ? 'selected="selected"' : '');?>>sum tax</option>
+            <option value="count" <?php echo (isset($_GET['mode']) && $_GET['mode'] == 'count' ? 'selected="selected"' : '');?>>Frequency</option>
+            <option value="sum" <?php echo (isset($_GET['mode']) && $_GET['mode'] == 'sum' ? 'selected="selected"' : '');?>>Total tax</option>
         </select>
       </div>
     </div>
@@ -85,7 +85,7 @@ if($success){
       <select name="portCode" data-placeholder="Choose one port" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose one port</option>
             <?php
-                $query = "SELECT * FROM ports ORDER BY portName";
+                $query = "SELECT * FROM ports WHERE arrivalCount > 0 ORDER BY portName";
                 $res = $_db->query($query);
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
@@ -133,16 +133,25 @@ function drawCharts(){
   var chart = new google.visualization.LineChart(document.getElementById('activityChart'));
   // Teken de chart met de data en bepaalde opties
   chart.draw(data, {pointSize: 5, title: 'Draaitabel', hAxis: {title: 'Year', format:'#'},
-      vAxis: {title: 'Frequency'}});
+      vAxis: {title: '<?php echo ($mode == 'COUNT(*)' ? 'Frequency' : 'Total Tax');?>'}});
 }
 </script>
 <?php
 }
-echo '<h5>Restrictions: '.implode(', ', $restrictions).'</h5>';
 ?>
 <div class="row">
-  <div id="activityChart" class="col-md-6" style="height:400px;">
+  <div id="activityChart" class="col-md-9" style="height:500px;">
     <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> No results</div>
+  </div>
+  <div class="col-md-3">
+  <?php
+  echo '<h5>Restrictions:</h5>';
+  echo '<table class="table table-condensed">';
+  foreach($restrictions as $restriction){
+    echo '<tr><td>'.$restriction[0].'</td><td>'.$restriction[1].'</td><td>'.$restriction[2].'</td></tr>';
+  }
+  echo '</table>';
+  ?>
   </div>
 </div>
 <?php
