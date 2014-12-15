@@ -41,6 +41,7 @@ function initialize(table) {
 	}
 
 	var myMarker = "http://siegfried.webhosting.rug.nl/~shipping/paalgeld_weu/img/info.png";
+	var markerAmsterdam = "http://siegfried.webhosting.rug.nl/~shipping/paalgeld_weu/img/info-2.png";
 	for (var port in portOfOrigin) {
 	  // Construct a line from Amsterdam to the port of origin.
 	  var track = [amsterdam,portOfOrigin[port].center];
@@ -68,7 +69,7 @@ function initialize(table) {
 	var customMarker = new google.maps.Marker({
 	  position: amsterdam,
 	  map: map,
-	  icon: myMarker,
+	  icon: markerAmsterdam,
 	  title: 'Amsterdam'.concat(', Port of Arrival')
 	});
 }
