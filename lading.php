@@ -7,17 +7,50 @@ beginPage('Paalgeld Europa - Cargoes', true, 'Research based on cargoes');
     $type = $_GET['type'];
 ?>
 
-<form class="form-horizontal" role="form" action="ladingresult.php" method="POST">
-    
+<form class="form-horizontal" role="form" action="plaatsenresult.php" method="POST">
+    <div class="form-group">
+        <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>
+        <div class="col-sm-10">
+            <select name="cargoOne" data-placeholder="Choose one cargo" class="chosen-select" style="width:350px;" tabindex="2">
+            <option value="">Choose one cargo</option>
+            <?php
+                $query = "SELECT distinct(cargo) FROM cargo ORDER BY cargo";
+                $res = $_db->query($query);
+                if($res != null || $res->num_rows > 0){
+                  while($row = $res->fetch_assoc()){
+                    echo '<option value='.$row['cargo'].'>'.$row['cargo'].'</option>';
+                    }
+                }
+            ?>
+          </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputLand" class="col-sm-2 control-label">Cargo 2</label>
+        <div class="col-sm-10">
+            <select name="cargoTwo" data-placeholder="Choose a second cargo" class="chosen-select" style="width:350px;" tabindex="2">
+            <option value="">Choose a second cargo</option>
+            <?php
+                $query = "SELECT distinct(cargo) FROM cargo ORDER BY cargo";
+                $res = $_db->query($query);
+                if($res != null || $res->num_rows > 0){
+                  while($row = $res->fetch_assoc()){
+                    echo '<option value='.$row['cargo'].'>'.$row['cargo'].'</option>';
+                    }
+                }
+            ?>
+          </select>
+        </div>
+    </div>
 <?php
 if ($type == 'country'){
 ?>
     
-    <div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Country 1</label>
+<div class="form-group">
+    <label for="inputLand" class="col-sm-2 control-label">Country</label>
 	<div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose one country" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose one country</option>
+        <select name="country" data-placeholder="Choose a country" class="chosen-select" style="width:350px;" tabindex="2">
+            <option value="">Choose a country</option>
             <?php
                 $query = "SELECT * FROM portAreas ORDER BY countriesNow";
                 $res = $_db->query($query);
@@ -30,23 +63,6 @@ if ($type == 'country'){
         </select>
     </div>
   </div>
-<div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Country 2</label>
-    <div class="col-sm-10">
-        <select name="countryTwo" data-placeholder="Choose a second country" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose a second country</option>
-            <?php
-                $query = "SELECT * FROM portAreas ORDER BY countriesNow";
-                $res = $_db->query($query);
-                if($res != null || $res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['countriesNow'].'>'.$row['countriesNow'].'</option>';
-                    }
-                }
-            ?>
-        </select>
-    </div>
-</div>
     
 <?php
 }
@@ -54,10 +70,10 @@ if ($type == 'area'){
 ?>
     
 <div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Area 1</label>
+    <label for="inputLand" class="col-sm-2 control-label">Area</label>
     <div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose one area" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose one area</option>
+        <select name="area" data-placeholder="Choose a area" class="chosen-select" style="width:350px;" tabindex="2">
+            <option value="">Choose a area</option>
             <?php
                 $query = "SELECT * FROM portAreas ORDER BY area";
                 $res = $_db->query($query);
@@ -65,23 +81,6 @@ if ($type == 'area'){
                     while($row = $res->fetch_assoc()){
                         echo '<option value='.$row['area'].'>'.$row['area'].'</option>';
                 }
-                }
-            ?>
-        </select>
-    </div>
-</div>
-<div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Area 2</label>
-    <div class="col-sm-10">
-        <select name="countryTwo" data-placeholder="Choose a second area" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose a second area</option>
-            <?php
-                $query = "SELECT * FROM portAreas ORDER BY area";
-                $res = $_db->query($query);
-                if($res != null || $res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['area'].'>'.$row['area'].'</option>';
-                    }
                 }
             ?>
         </select>
@@ -94,27 +93,10 @@ if ($type == 'port'){
 ?>
 
 <div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Port 1</label>
+    <label for="inputLand" class="col-sm-2 control-label">Port</label>
     <div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose one port" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose one port</option>
-            <?php
-                $query = "SELECT * FROM ports ORDER BY portName";
-                $res = $_db->query($query);
-                if($res != null || $res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['portName'].'>'.$row['portName'].'</option>';
-                }
-                }
-            ?>
-        </select>
-    </div>
-</div>
-<div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Port 2</label>
-    <div class="col-sm-10">
-        <select name="countryOne" data-placeholder="Choose a second port" class="chosen-select" style="width:350px;" tabindex="2">
-            <option value="">Choose a second port</option>
+        <select name="port" data-placeholder="Choose a port" class="chosen-select" style="width:350px;" tabindex="2">
+            <option value="">Choose a port</option>
             <?php
                 $query = "SELECT * FROM ports ORDER BY portName";
                 $res = $_db->query($query);
@@ -131,24 +113,7 @@ if ($type == 'port'){
 <?php
 }
 ?>
-    
-<div class="form-group">
-    <label for="inputLand" class="col-sm-2 control-label">Cargo</label>
-    <div class="col-sm-10">
-      <select name="countryTwo" data-placeholder="Choose a cargo to compare" class="chosen-select" style="width:350px;" tabindex="2">
-        <option value="">Choose a cargo to compare</option>
-        <?php
-            $query = "SELECT distinct(cargo) FROM cargo ORDER BY cargo";
-            $res = $_db->query($query);
-            if($res != null || $res->num_rows > 0){
-              while($row = $res->fetch_assoc()){
-                echo '<option value='.$row['cargo'].'>'.$row['cargo'].'</option>';
-                }
-            }
-        ?>
-      </select>
-    </div>
-</div>
+
 <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
     <div class="col-xs-2">
