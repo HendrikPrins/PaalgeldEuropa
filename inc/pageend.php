@@ -15,7 +15,7 @@ if($_inContainer){
                             <h5><a href="links.php">Links</a></h5>
                         </div>
                         <div class="col-md-1">
-                            <h5><a href="#">Contact</a></h5>
+                            <h5><a href="mailto:#">Contact</a></h5>
                         </div>
                         <div class="col-md-1">
                             <h5><a href="#">Sitemap</a></h5>

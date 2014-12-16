@@ -164,6 +164,15 @@ html {
     color: #19AD6A;
 }
 
+.info2 a {
+    color:#fff;
+    text-decoration: none;
+}
+
+.info2 a:hover{
+    color:#333;
+}
+
 .footer {
     background-color: #111;
     background-size: cover;
