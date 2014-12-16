@@ -1,6 +1,6 @@
 <?php
 require('inc/config.php');
-beginPage();
+beginPage('Paalgeld Europa - Complete tables', true, 'The complete arrivals table');
 
 if(isset($_GET['id'])){
   // een bepaalde arrival met alle cargo

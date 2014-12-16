@@ -1,6 +1,6 @@
 <?php
 require('inc/config.php');
-beginPage();
+beginPage('Paalgeld Europa - Complete tables', true, 'The complete date table');
 
 if(isset($_GET['year'])){
   // alle arrivals in bepaalde jaar

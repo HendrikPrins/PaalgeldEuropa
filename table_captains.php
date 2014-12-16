@@ -2,7 +2,7 @@
 require('inc/config.php');
 $_loadGoogleMaps = true;
 $_loadGoogleCharts = true;
-beginPage();
+beginPage('Paalgeld Europa - Complete tables', true, 'The complete names table');
 
 if(isset($_GET['id'])){
   $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));

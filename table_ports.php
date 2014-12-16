@@ -2,7 +2,7 @@
 require('inc/config.php');
 $_loadGoogleCharts = true;
 $_loadGoogleMaps = true;
-beginPage();
+beginPage('Paalgeld Europa - Complete tables', true, 'The complete ports table');
 
 if(isset($_GET['area'])){
   // alle ports in bepaalde area

@@ -2,7 +2,7 @@
 require('inc/config.php');
 $_loadGoogleMaps = true;
 $_loadGoogleCharts = true;
-beginPage();
+beginPage('Paalgeld Europa - Complete tables', true, 'The complete cargoes table');
 
 if(isset($_GET['cargo'])){
   include_once('inc/module_tablesort.php');
