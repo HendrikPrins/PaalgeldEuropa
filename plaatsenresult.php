@@ -22,7 +22,7 @@ if ($total == ""){
 }
 
 //$_loadGoogleMaps = true;
-beginPage('Paalgeld Europa - Places', true, 'Research based on places');
+beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 
 if($cargo != ""){
 	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';

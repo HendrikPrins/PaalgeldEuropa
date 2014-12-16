@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.php');
 $_loadChosen = true;
-beginPage('Paalgeld Europa - Names', true, 'Research based on names');
+beginPage('Paalgeld Europa - Search', true, 'Search through the database finding Names');
 ?>
 <script src="js/parsley.min.js"></script>
 <form class="form-horizontal" role="form" action="namenresult.php" method="get" data-parsley-validate>
@@ -37,7 +37,7 @@ beginPage('Paalgeld Europa - Names', true, 'Research based on names');
       </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-<button type="submit" class="btn btn-default">Research</button>
+<button type="submit" class="btn btn-default">Search</button>
 </div>
 </div>
 </form>

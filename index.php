@@ -4,7 +4,7 @@ beginPage('', false);
 ?>
 <div class="welcome">
   <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
                   <a href="namen.php">
@@ -21,16 +21,71 @@ beginPage('', false);
               </div>
           </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
                   <a href="plaatsen.php">
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-screenshot"></span></h1>
-                          <h4><span>Search by places</span></h4>
+                          <h4><span>Analyse using places</span></h4>
                           <div class="icon-desc">
-                              <p class="small"> Get an overview by country, area or port</p>
+                              <p class="small">Compare two places using cargo</p>
+                          </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="panel panel-default trans">
+              <div class="panel-body">
+                  <a href="lading.php">
+                      <div class="icontext">
+                        <div class="text-center">
+                          <h1><span class="glyphicon glyphicon-random"></span></h1>
+                          <h4><span>Analyse using cargos</span></h4>
+                          <div class="icon-desc">
+                            <p class="small">Compare two cargos using places</p>
+                          </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="panel panel-default trans">
+              <div class="panel-body">
+                  <a href="lading.php">
+                      <div class="icontext">
+                        <div class="text-center">
+                          <h1><span class="glyphicon glyphicon-tasks"></span></h1>
+                          <h4><span>Analyse using a turntable</span></h4>
+                          <div class="icon-desc">
+                            <p class="small">Get nice graph views by combining data</p>
+                          </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+          <div class="panel panel-default trans">
+              <div class="panel-body">
+                  <a href="completetables.php">
+                      <div class="icontext">
+                        <div class="text-center">
+                          <h1><span class="glyphicon glyphicon-book"></span></h1>
+                          <h4><span>Complete tables</span></h4>
+                          <div class="icon-desc">
+                            <p class="small">Get into the data</p>
                           </div>
                         </div>
                       </div>
@@ -39,21 +94,6 @@ beginPage('', false);
           </div>
       </div>
       <div class="col-md-4">
-          <div class="panel panel-default trans">
-              <div class="panel-body">
-                  <a href="lading.php">
-                      <div class="icontext">
-                        <div class="text-center">
-                          <h1><span class="glyphicon glyphicon-random"></span></h1>
-                          <h4><span>Search by cargo</span></h4>
-                          <div class="icon-desc">
-                            <p class="small">View cargo data from ships</p>
-                          </div>
-                        </div>
-                      </div>
-                  </a>
-              </div>
-          </div>
       </div>
   </div>
 </div>

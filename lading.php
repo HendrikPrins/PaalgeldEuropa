@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.php');
 $_loadChosen = true;
-beginPage('Paalgeld Europa - Cargoes', true, 'Research based on cargoes');
+beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two cargoes');
 
     //Initialize variables
     $type = $_GET['type'];
@@ -10,7 +10,7 @@ beginPage('Paalgeld Europa - Cargoes', true, 'Research based on cargoes');
 
 if ($type == 'port'||$type == 'area'||$type =='country'){
 ?>
-<form class="form-horizontal" role="form" action="plaatsenresult.php" method="POST">
+<form class="form-horizontal" role="form" action="ladingresult.php" method="POST">
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>
         <div class="col-sm-10">
@@ -121,10 +121,10 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 
 <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
-    <div class="col-xs-2">
+    <div class="col-md-2">
     <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year">
     </div>
-    <div class="col-xs-2">
+    <div class="col-md-2">
     <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year">
     </div>
     </div>
@@ -142,13 +142,13 @@ if ($type !=='port'&& $type !=='area' && $type !=='country'){
 <div class="row">
         <div class="col-md-12">
         <p>
-        Select your search method below.
-        </p>
+        Select your analyse method below.
+        </p><br/>
     </div>
-    <div class="col-md-12">
-            <a href="lading.php?type=country">Search by Country</a><br>
-            <a href="lading.php?type=port">Search by Port</a><br>
-            <a href="lading.php?type=area">Search by Area</a><br>
+    <div class="col-md-6">
+        <a href="lading.php?type=country" type="button" class="btn btn-default">Analyse using Country's</a><br/><br/>
+        <a href="lading.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a><br/><br/>
+        <a href="lading.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a>
     </div>
 </div>
 

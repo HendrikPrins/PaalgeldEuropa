@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.php');
 $_loadChosen = true;
-beginPage('Paalgeld Europa - Places', true, 'Research based on places');
+beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 
     //Initialize variables
     $type = $_GET['type'];
@@ -154,10 +154,10 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 </div>
 <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
-    <div class="col-xs-2">
+    <div class="col-md-2">
     <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year">
     </div>
-    <div class="col-xs-2">
+    <div class="col-md-2">
     <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year">
     </div>
     </div>
@@ -177,13 +177,13 @@ if ($type !=='port'&& $type !=='area' && $type !=='country'){
 <div class="row">
         <div class="col-md-12">
         <p>
-        Select your search method below.
-        </p>
+        Select your analyse method below.
+        </p><br/>
     </div>
-    <div class="col-md-12">
-            <a href="plaatsen.php?type=country">Search by Country</a><br>
-            <a href="plaatsen.php?type=port">Search by Port</a><br>
-            <a href="plaatsen.php?type=area">Search by Area</a><br>
+    <div class="col-md-6">
+        <a href="plaatsen.php?type=country" type="button" class="btn btn-default">Analyse using Country's</a><br/><br/>
+        <a href="plaatsen.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a><br/><br/>
+        <a href="plaatsen.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a>
     </div>
 </div>
 <?php

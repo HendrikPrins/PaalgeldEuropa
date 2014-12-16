@@ -79,17 +79,17 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span> Search<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="namen.php"><span class="glyphicon glyphicon-user"></span> Names</a></li>
-                    <li><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
-                    <li><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>      
+                    <!--<li><a href="placessearch.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
+                    <li><a href="cargoessearch.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>-->      
                   </ul>
                 </li>
 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Analyze<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#"><span class="glyphicon glyphicon glyphicon-user"></span> Names</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>      
+                    <li><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
+                    <li><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>    
+                    <li><a href="draaitabel.php"><span class="glyphicon glyphicon-tasks"></span> Turntable</a></li>
                   </ul>
                 </li>
 

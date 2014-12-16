@@ -2,7 +2,7 @@
 require('inc/config.php');
 $_loadGoogleCharts = true;
 $_loadChosen = true;
-beginPage();
+beginPage('Paalgeld Europa - Analyse', true, 'Analyse using a turntable');
 $restrictions = array();
 if(isset($_GET['mode'])){
   if($_GET['mode'] == 'count'){

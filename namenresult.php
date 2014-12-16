@@ -14,7 +14,7 @@ require_once('inc/config.php');
     }
 
     $_loadGoogleMaps = true;
-    beginPage('Paalgeld Europa - Names', true, 'Research based on names');
+    beginPage('Paalgeld Europa - Search', true, 'Search through the database finding Names');
     
     $query = "SELECT fullNameCaptain, COUNT(*) AS arrivalCount, lat, lng, ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
     if($inputName != ""){

@@ -80,7 +80,7 @@ html {
     min-height: 85%;
     height: auto;
     padding: 25px;
-    padding-top: 220px;
+    padding-top: 150px;
 }
 
 
@@ -191,7 +191,7 @@ html {
 }
 .trans {
     opacity: 0.9;
-    margin: 80px;
+    margin: 20px;
     padding: 10px 0px 10px 0px;
 }
 
@@ -305,6 +305,14 @@ input.parsley-error, select.parsley-error, textarea.parsley-error {
 
 .parsley-errors-list.filled {
 	  opacity: 1;
+}
+
+.h1extra {
+    font-size: 2em;
+}
+
+.h4extra {
+    font-size: 1em;
 }
 
 /* end of input validation layout */
