@@ -62,7 +62,7 @@ beginPage('', false);
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-tasks"></span></h1>
-                          <h4><span>Analyse using a turntable</span></h4>
+                          <h4><span>Analyse using a pivot table</span></h4>
                           <div class="icon-desc">
                             <p class="small">Get nice graph views by combining data</p>
                           </div>

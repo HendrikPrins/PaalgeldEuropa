@@ -89,7 +89,7 @@
                   <ul class="dropdown-menu">
                     <li><a href="plaatsen.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
                     <li><a href="lading.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>    
-                    <li><a href="draaitabel.php"><span class="glyphicon glyphicon-tasks"></span> Turntable</a></li>
+                    <li><a href="draaitabel.php"><span class="glyphicon glyphicon-tasks"></span> Pivot table</a></li>
                   </ul>
                 </li>
 
