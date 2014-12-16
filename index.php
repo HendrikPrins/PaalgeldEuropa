@@ -58,7 +58,7 @@ beginPage('', false);
       <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
-                  <a href="lading.php">
+                  <a href="draaitabel.php">
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-tasks"></span></h1>
