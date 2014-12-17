@@ -4,55 +4,61 @@ $_loadGoogleCharts = true;
 $_loadChosen = true;
 beginPage('Paalgeld Europa - Analyse', true, 'Analyse using a pivot table');
 $restrictions = array();
-if(isset($_GET['mode'])){
-  if($_GET['mode'] == 'count'){
-    $mode = 'COUNT(*)';
-  }elseif($_GET['mode'] == 'sum'){
-    $mode = 'SUM(taxGuilders)*500';
+// Alleen tekenen als het vanuit het formulier komt (draw is een hidden input)
+if(isset($_GET['draw'])){
+  if(isset($_GET['mode'])){
+    if($_GET['mode'] == 'count'){
+      $mode = 'COUNT(*)';
+    }elseif($_GET['mode'] == 'sum'){
+      $mode = 'SUM(taxGuilders)*500';
+    }else{
+      $mode = 'COUNT(*)';
+    }
   }else{
     $mode = 'COUNT(*)';
   }
-}else{
-  $mode = 'COUNT(*)';
-}
-$query = "SELECT ".$mode." AS value, year(date) AS `year` FROM cargo, paalgeldEur, ports WHERE ports.portCode = paalgeldEur.portCode AND cargo.idEur = paalgeldEur.idEur ";
+  $query = "SELECT ".$mode." AS value, year(date) AS `year` FROM cargo, paalgeldEur, ports WHERE ports.portCode = paalgeldEur.portCode AND cargo.idEur = paalgeldEur.idEur ";
 
-if(isset($_GET['cargo']) && strlen($_GET['cargo']) > 0){
-  $query .= " AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
-  $restrictions[] = array('cargo', '=', $_GET['cargo']);
-}
-if(isset($_GET['fullNameCaptain']) && strlen($_GET['fullNameCaptain']) > 0){
-  $query .= " AND fullNameCaptain like '".$_GET['fullNameCaptain']."'";
-  $restrictions[] = array('captain', 'like', $_GET['fullNameCaptain']);
-}
-if(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0 && isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
-   $query .= " AND year(date) BETWEEN '".$_GET['startDate']."' AND '".$_GET['endDate']."'";
-   $restrictions[] = array('date', 'between', $_GET['startDate'].' and '.$_GET['endDate']);
-}elseif(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0){
-   $query .= " AND year(date) > '".$_GET['startDate']."'";
-   $restrictions[] = array('date', '>', $_GET['startDate']);
-}elseif(isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
-   $query .= " AND year(date) < '".$_GET['endDate']."'";
-   $restrictions[] = array('date', '<', $_GET['endDate']);
-}
-if(isset($_GET['portCode']) && strlen($_GET['portCode']) > 0){
-  $query .= " AND ports.portCode = '".$_GET['portCode']."'";
-  $restrictions[] = array('departure place', '=', $_GET['portCode']);
-}
-$query .= " GROUP BY year(date)";
-$res = $_db->query($query);
-$success = ($res != null && $res->num_rows > 0);
-if($success){
-  $chartData = array(array('Year',($mode == 'COUNT(*)' ? 'Frequency' : 'Total Tax')));
-  while($row = $res->fetch_assoc()){
-    $chartData[] = array($row['year']*1, $row['value']*1);
+  if(isset($_GET['cargo']) && strlen($_GET['cargo']) > 0){
+    $query .= " AND cargo = '".$_db->real_escape_string($_GET['cargo'])."'";
+    $restrictions[] = array('cargo', '=', $_GET['cargo']);
   }
-  $chartData = json_encode($chartData);
+  if(isset($_GET['fullNameCaptain']) && strlen($_GET['fullNameCaptain']) > 0){
+    $query .= " AND fullNameCaptain like '".$_GET['fullNameCaptain']."'";
+    $restrictions[] = array('captain', 'like', $_GET['fullNameCaptain']);
+  }
+  if(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0 && isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
+     $query .= " AND year(date) BETWEEN '".$_GET['startDate']."' AND '".$_GET['endDate']."'";
+     $restrictions[] = array('date', 'between', $_GET['startDate'].' and '.$_GET['endDate']);
+  }elseif(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0){
+     $query .= " AND year(date) > '".$_GET['startDate']."'";
+     $restrictions[] = array('date', '>', $_GET['startDate']);
+  }elseif(isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
+     $query .= " AND year(date) < '".$_GET['endDate']."'";
+     $restrictions[] = array('date', '<', $_GET['endDate']);
+  }
+  if(isset($_GET['portCode']) && strlen($_GET['portCode']) > 0){
+    $query .= " AND ports.portCode = '".$_GET['portCode']."'";
+    $restrictions[] = array('departure place', '=', $_GET['portCode']);
+  }
+  $query .= " GROUP BY year(date)";
+  $res = $_db->query($query);
+  $success = ($res != null && $res->num_rows > 0);
+  if($success){
+    $chartData = array(array('Year',($mode == 'COUNT(*)' ? 'Frequency' : 'Total Tax')));
+    while($row = $res->fetch_assoc()){
+      $chartData[] = array($row['year']*1, $row['value']*1);
+    }
+    $chartData = json_encode($chartData);
+  }
+}else{
+  $success = false;
 }
 
 ?>
 <div class="row">
   <form class="form-horizontal col-md-8" role="form" action="draaitabel.php" method="get">
+    <input type="hidden" name="draw" value="" />
     <div class="form-group">
       <label class="control-label col-sm-3" for="mode">Value mode</label>
       <div class="col-sm-6">
@@ -135,12 +141,16 @@ function drawCharts(){
 }
 </script>
 <?php
+    echo download_knop($query);
 }
-echo download_knop($query);
 ?>
 <div class="row">
   <div id="activityChart" class="col-md-9" style="height:500px;">
-    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> No results</div>
+  <?php
+  if(isset($_GET['draw'])){
+    echo '<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> No results</div>';
+  }
+  ?>
   </div>
   <div class="col-md-3">
   <?php
