@@ -25,7 +25,8 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
-							echo '<option value='.$row['countryNow'].'>'.$row['countryNow'].'</option>';
+							$country = urlencode($row['countryNow']);
+							echo '<option value='.$country.'>'.$row['countryNow'].'</option>';
 						}
 					}
 				?>
@@ -42,7 +43,8 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
-							echo '<option value='.$row['countryNow'].'>'.$row['countryNow'].'</option>';
+							$country = urlencode($row['countryNow']);
+							echo '<option value='.$country.'>'.$row['countryNow'].'</option>';
 						}
 					}
 				?>

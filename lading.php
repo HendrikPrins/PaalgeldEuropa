@@ -10,7 +10,7 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two cargoes')
 
 if ($type == 'port'||$type == 'area'||$type =='country'){
 ?>
-<form class="form-horizontal" role="form" action="ladingresult.php" method="POST">
+<form class="form-horizontal" role="form" action="ladingresult.php" method="get">
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>
         <div class="col-sm-10">
@@ -56,13 +56,14 @@ if ($type == 'country'){
         <select name="country" data-placeholder="Choose a country" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose a country</option>
             <?php
-                $query = "SELECT * FROM portAreas ORDER BY countriesNow";
-                $res = $_db->query($query);
-                if($res != null || $res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['countriesNow'].'>'.$row['countriesNow'].'</option>';
-                }
-                }
+                $query = "SELECT * FROM ports GROUP BY countryNow";
+				$res = $_db->query($query);
+				if($res != null || $res->num_rows > 0){
+					while($row = $res->fetch_assoc()){
+						$country = urlencode($row['countryNow']);
+						echo '<option value='.$country.'>'.$row['countryNow'].'</option>';
+					}
+				}
             ?>
         </select>
     </div>

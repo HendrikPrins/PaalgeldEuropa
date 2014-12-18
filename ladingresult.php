@@ -2,33 +2,40 @@
 require_once('inc/config.php');
 
 //Initialize variables
-$countryOne = urldecode($_GET['countryOne']);
-$countryTwo = urldecode($_GET['countryTwo']);
-$areaOne = $_GET['areaOne'];
-$areaTwo = $_GET['areaTwo'];
-$portOne = $_GET['portOne'];
-$portTwo = $_GET['portTwo'];
+$cargoOne = urldecode($_GET['cargoOne']);
+$cargoTwo = urldecode($_GET['cargoTwo']);
+$country = $_GET['country'];
+$area = $_GET['area'];
+$port = $_GET['port'];
 
-$cargo = $_GET['cargo'];
 $inputStartDate = $_GET['inputStartDate'];
 $inputEndDate = $_GET['inputEndDate'];
-		
-$total = $countryOne . $countryTwo . $areaOne . $areaTwo . $portOne . $portTwo . $cargo . $inputStartDate . $inputEndDate;
+	
+$total = $cargoOne . $cargoTwo . $country . $area . $port . $inputStartDate . $inputEndDate;
 
 // If all empty
 if ($total == ""){
-	header("Location: table_ports.php");
+	header("Location: table_cargoes.php");
 }
 
 //$_loadGoogleMaps = true;
-beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
+beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two cargoes');
 
-if($cargo != ""){
-	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';
+if($country != ""){
+	echo 'Country: '.$country.'';
+}
+
+if($area != ""){
+	echo 'Area: '.$area.'';
+}
+
+if($port != ""){
+	echo 'Port: '.$port.'';
 }
 
 echo '<table class="table table-hover">';
 
+/*
 //Country
 if($countryOne != "" && $countryTwo != ""){
     echo '<tr><th>Year</th><th>'.$countryOne.'</th><th>'.$countryTwo.'</th></tr>';
@@ -60,6 +67,7 @@ if($inputStartDate != "" && $inputEndDate != ""){
 }elseif($inputEndDate != ""){
 	$query .= " AND year(date) < '".$inputEndDate."'";
 }
+*/
 
 $query .= " GROUP BY year(date)";
 $res = $_db->query($query);
