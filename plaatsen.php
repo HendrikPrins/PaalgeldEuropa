@@ -184,8 +184,8 @@ if ($type !=='port'&& $type !=='area' && $type !=='country'){
     </div>
     <div class="col-md-6">
         <a href="plaatsen.php?type=country" type="button" class="btn btn-default">Analyse using Countries</a><br/><br/>
-        <a href="plaatsen.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a><br/><br/>
-        <a href="plaatsen.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a>
+		<a href="plaatsen.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a><br/><br/>
+        <a href="plaatsen.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a>
     </div>
 </div>
 <?php
