@@ -6,10 +6,20 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two cargoes')
     //Initialize variables
     $type = $_GET['type'];
 ?>
+
 <?php
 
 if ($type == 'port'||$type == 'area'||$type =='country'){
 ?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            <b>Explaination</b> Choose two cargoes to compare the total tax rate. You can also compare a specifc place and/or period.
+        </div>
+    </div>
+</div>
+
 <form class="form-horizontal" role="form" action="ladingresult.php" method="get">
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>

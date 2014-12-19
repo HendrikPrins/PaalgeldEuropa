@@ -7,6 +7,21 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
     $type = $_GET['type'];
 ?>
 	
+<?php
+
+if ($type == 'port'||$type == 'area'||$type =='country'){
+?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            <b>Explaination</b> Choose two places to compare the total tax rate. You can also compare a specifc cargo and/or period.
+        </div>
+    </div>
+</div>
+<?php
+}
+?>
+
 <form class="form-horizontal" role="form" action="plaatsenresult.php" method="get">   
 
 <?php
@@ -14,14 +29,6 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 	if ($type == 'country'){
 
 ?>
- 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-info" role="alert">
-                <b>Explaination</b> Don't know exactly how to spell a name? Or want to get results for multiple name variations? Use the % sign as a wildcard. It replaces any letter or letter combination and it can also be empty. Example: Jans%en will cover both Jansen and Janssen. Also, when you don't know the first name of a captain, use the % sign to get all the first names. Example: %jansen will cover every name that ends with jansen.
-            </div>
-        </div>
-    </div>
     
     <div class="form-group">
 		<label for="inputLand" class="col-sm-2 control-label">Country 1</label>
