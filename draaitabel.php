@@ -57,6 +57,13 @@ if(isset($_GET['draw'])){
 
 ?>
 <div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            <b>Explaination</b> Use this piviot table to see the frequency or total tax of specific attributes.
+        </div>
+    </div>
+</div>
+<div class="row">
   <form class="form-horizontal col-md-8" role="form" action="draaitabel.php" method="get">
     <input type="hidden" name="draw" value="" />
     <div class="form-group">
@@ -141,7 +148,6 @@ function drawCharts(){
 }
 </script>
 <?php
-    echo download_knop($query);
 }
 
 if(isset($_GET['draw'])){
@@ -160,6 +166,17 @@ if(isset($_GET['draw'])){
   echo '</table>';
   ?>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+        <?php
+              echo download_knop($query);
+        ?>
+        <br/>
+        <div class="alert alert-warning" role="alert">
+            <b>Beaware!</b> The total tax depends on the frequency or the value of a cargo.
+        </div>
+    </div>
+</div>
   <?php
   }
   ?>

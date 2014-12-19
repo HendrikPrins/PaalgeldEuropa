@@ -78,9 +78,9 @@ html {
     background-position:center;
     width: auto;
     min-height: 85%;
-    height: auto;
+    height: 100%;
     padding: 25px;
-    padding-top: 150px;
+    padding-top: 100px;
 }
 
 
