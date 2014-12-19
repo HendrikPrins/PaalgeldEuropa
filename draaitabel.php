@@ -85,7 +85,7 @@ if(isset($_GET['draw'])){
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-3" for="portCode">Departure place</label>
+      <label class="control-label col-sm-3" for="portCode">Place of departure</label>
       <div class="col-sm-6">
       <select name="portCode" data-placeholder="Choose one port" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose one port</option>
@@ -107,12 +107,12 @@ if(isset($_GET['draw'])){
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-3" for="startDate">Start date</label>
+      <label class="control-label col-sm-3" for="startDate">Period</label>
       <div class="col-sm-3">
-        <input type="number" maxlength="4" min="1742" max="1787" name="startDate" id="startDate" class="form-control" placeholder="Start date" value="<?php echo (isset($_GET['startDate']) ? $_GET['startDate'] : '') ?>" />
+        <input type="number" maxlength="4" min="1742" max="1787" name="startDate" id="startDate" class="form-control" placeholder="Start year" value="<?php echo (isset($_GET['startDate']) ? $_GET['startDate'] : '') ?>" />
       </div>
       <div class="col-sm-3">
-        <input type="number" maxlength="4" min="1742" max="1787" name="endDate" id="endDate" class="form-control" placeholder="End date" value="<?php echo (isset($_GET['endDate']) ? $_GET['endDate'] : '') ?>" />
+        <input type="number" maxlength="4" min="1742" max="1787" name="endDate" id="endDate" class="form-control" placeholder="End year" value="<?php echo (isset($_GET['endDate']) ? $_GET['endDate'] : '') ?>" />
       </div>
     </div>
     <div class="form-group">

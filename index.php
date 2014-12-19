@@ -45,9 +45,9 @@ beginPage('', false);
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-random"></span></h1>
-                          <h4><span>Analyse using cargos</span></h4>
+                          <h4><span>Analyse using cargoes</span></h4>
                           <div class="icon-desc">
-                            <p class="small">Compare two cargos using places</p>
+                            <p class="small">Compare two cargoes using places</p>
                           </div>
                         </div>
                       </div>
@@ -120,7 +120,7 @@ beginPage('', false);
                             <div class="col-md-4">
                               <h3>How to use the website</h3>
                               <p>This website supplies information about all the shippings that arrived in Amsterdam during the year 1742 and the periods 1771 to 1810, 1814 to 1828, and 1830 to 1836. The information is based on tax administrations of the cargo of those ships. For more information about this history see Background Information.
-                              Search is based on names, ports of departure, countries, cargo, name of captain and year and relations between. 
+                              Search is based on names, ports of departure, countries, cargo, name of captain, year and relations between. 
                               </p>                            
                            </div>
                         </div>

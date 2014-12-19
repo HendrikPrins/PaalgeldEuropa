@@ -143,11 +143,11 @@ if ($type !=='port'&& $type !=='area' && $type !=='country'){
 <div class="row">
         <div class="col-md-12">
         <p>
-        Select your analyse method below.
+        Select your analysis method below.
         </p><br/>
     </div>
     <div class="col-md-6">
-        <a href="lading.php?type=country" type="button" class="btn btn-default">Analyse using Country's</a><br/><br/>
+        <a href="lading.php?type=country" type="button" class="btn btn-default">Analyse using Countries</a><br/><br/>
         <a href="lading.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a><br/><br/>
         <a href="lading.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a>
     </div>
