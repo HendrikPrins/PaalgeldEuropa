@@ -36,7 +36,7 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 			<select name="countryOne" data-placeholder="Choose one country" class="chosen-select" style="width:350px;" tabindex="2" required>
 				<option value="">Choose one country</option>
 				<?php
-					$query = "SELECT * FROM ports GROUP BY countryNow";
+					$query = "SELECT * FROM ports WHERE arrivalCount > 0 GROUP BY countryNow";
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
@@ -54,7 +54,7 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 			<select name="countryTwo" data-placeholder="Choose a second country" class="chosen-select" style="width:350px;" tabindex="2" required>
 				<option value="">Choose a second country</option>
 				<?php
-					$query = "SELECT * FROM ports GROUP BY countryNow";
+					$query = "SELECT * FROM ports WHERE arrivalCount > 0 GROUP BY countryNow";
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){
