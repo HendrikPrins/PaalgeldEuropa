@@ -75,7 +75,7 @@ if ($res == null or $res->num_rows == 0){
 	echo "<div class='alert alert-danger' role='alert'>No results found. Try again.</div>";
 }else{
 	while($row = $res->fetch_assoc()){
-		echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.$row['one'].'</td><td>'.$row['two'].'</td></tr>';
+		echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.(isset($row['one']) && $row['one'] >= 0 ? $row['one']*1 : 0).'</td><td>'.(isset($row['two']) && $row['two'] >= 0 ? $row['two']*1 : 0).'</td></tr>';
 	}
 }
 
