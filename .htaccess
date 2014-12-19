@@ -1,0 +1,7 @@
+Options -Indexes
+Options +FollowSymLinks
+ErrorDocument 400 /~shipping/paalgeld_weu/404.php
+ErrorDocument 401 /~shipping/paalgeld_weu/404.php
+ErrorDocument 403 /~shipping/paalgeld_weu/404.php
+ErrorDocument 404 /~shipping/paalgeld_weu/404.php
+ErrorDocument 500 /~shipping/paalgeld_weu/404.php
