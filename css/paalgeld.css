@@ -80,7 +80,7 @@ html {
     min-height: 100%;
     height: auto;
     padding: 25px;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 
@@ -191,8 +191,8 @@ html {
 }
 .trans {
     opacity: 0.9;
-    margin: 20px;
-    padding: 10px 0px 10px 0px;
+    margin: 12px;
+    padding: 8px 0px 8px 0px;
 }
 
 .page404 {

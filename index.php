@@ -102,7 +102,7 @@ beginPage('', false);
     <div class="col-md-4" id="info">
         <a href="#info">
           <div class="text-center">
-              <br /><br />
+              <br />
                 <h2 style="color:white;">More information</h2>
                 <span style="font-size:50px;" class="glyphicon glyphicon-chevron-down"></span>
           </div>
