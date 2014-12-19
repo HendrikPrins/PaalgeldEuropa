@@ -20,8 +20,14 @@ function sortableHead($namePretty, $nameTable){
   // Asc als: niet desc
   $get['sortmode'] = (!isset($get['sortmode']) || $get['sortmode'] == 'asc' ? 'desc' : 'asc');
   $get['sortby'] = $nameTable;
+
+  if(isset($_GET['sortby']) && $_GET['sortby'] == $nameTable){
+    $icon = ' <span style="font-size:8pt;" class="glyphicon glyphicon-chevron-'.(!isset($get['sortmode']) || $get['sortmode'] == 'asc' ? 'down' : 'up').'" aria-hidden="true"></span>';
+  }else{
+    $icon = '';
+  }
   // Maak een link met
-  return '<a href="'.$pageLink.'?'.http_build_query($get).'">'.$namePretty.'</a>';
+  return '<a href="'.$pageLink.'?'.http_build_query($get).'">'.$namePretty.$icon.'</a>';
 }
 
 function queryOrderPart($allowedFields, $defaultField, $defaultSortMode = 'asc'){
