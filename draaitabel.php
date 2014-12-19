@@ -143,14 +143,12 @@ function drawCharts(){
 <?php
     echo download_knop($query);
 }
-?>
+
+if(isset($_GET['draw'])){
+    ?>
 <div class="row">
   <div id="activityChart" class="col-md-9" style="height:500px;">
-  <?php
-  if(isset($_GET['draw'])){
-    echo '<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> No results</div>';
-  }
-  ?>
+    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> No results</div>
   </div>
   <div class="col-md-3">
   <?php
@@ -162,8 +160,10 @@ function drawCharts(){
   echo '</table>';
   ?>
   </div>
+  <?php
+  }
+  ?>
 </div>
 <?php
-
 endPage();
 ?>
