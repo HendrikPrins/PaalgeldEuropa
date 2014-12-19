@@ -15,6 +15,14 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 
 ?>
  
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                <b>Explaination</b> Don't know exactly how to spell a name? Or want to get results for multiple name variations? Use the % sign as a wildcard. It replaces any letter or letter combination and it can also be empty. Example: Jans%en will cover both Jansen and Janssen. Also, when you don't know the first name of a captain, use the % sign to get all the first names. Example: %jansen will cover every name that ends with jansen.
+            </div>
+        </div>
+    </div>
+    
     <div class="form-group">
 		<label for="inputLand" class="col-sm-2 control-label">Country 1</label>
 		<div class="col-sm-10">
