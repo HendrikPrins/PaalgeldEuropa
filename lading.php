@@ -84,7 +84,7 @@ if ($type == 'area'){
                 $res = $_db->query($query);
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['area'].'>'.$row['area'].'</option>';
+                        echo '<option value='.$row['areaCode'].'>'.$row['area'].'</option>';
                 }
                 }
             ?>
@@ -107,7 +107,7 @@ if ($type == 'port'){
                 $res = $_db->query($query);
                 if($res != null || $res->num_rows > 0){
                     while($row = $res->fetch_assoc()){
-                        echo '<option value='.$row['portName'].'>'.$row['portName'].'</option>';
+                        echo '<option value='.$row['portCode'].'>'.$row['portName'].'</option>';
                 }
                 }
             ?>

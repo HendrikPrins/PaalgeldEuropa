@@ -35,29 +35,28 @@ if($port != ""){
 
 echo '<table class="table table-hover">';
 
-/*
+
+//Cargo
+if($cargoOne != "" && $cargoTwo != ""){
+    echo '<tr><th>Year</th><th>'.$cargoOne.'</th><th>'.$cargoTwo.'</th></tr>';
+    $query = "SELECT year(date) AS year, sum(case when cargo = '".$cargoOne."' then taxGuilders end)*500 AS one, sum(case when cargo = '".$cargoTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo`, `portAreas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portAreas.areaCode";
+}
+
 //Country
-if($countryOne != "" && $countryTwo != ""){
-    echo '<tr><th>Year</th><th>'.$countryOne.'</th><th>'.$countryTwo.'</th></tr>';
-    $query = "SELECT year(date) AS year, sum(case when countryNow = '".$countryOne."' then taxGuilders end)*500 AS one, sum(case when countryNow = '".$countryTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode";
+if($country != ""){
+    $query .= " AND ports.countryNow = '".$country."'";
 }
 
 //Area
-if($areaOne != "" && $areaTwo != ""){
-    echo '<tr><th>Year</th><th>'.$areaOne.'</th><th>'.$areaTwo.'</th></tr>';
-    $query = "SELECT year(date) AS year, sum(case when portAreas.areaCode = '".$areaOne."' then taxGuilders end)*500 AS one, sum(case when portAreas.areaCode = '".$areaTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo`, `portAreas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portAreas.areaCode";
-	
+if($area != ""){
+    $query .= " AND portAreas.areaCode = '".$area."'";
 }
 
 //Port
-if($portOne != "" && $portTwo != ""){
-    echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
-    $query = "SELECT year(date) AS year, sum(case when portCode = '".$portOne."' then taxGuilders end)*500 AS one, sum(case when portCode = '".$portTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur";
+if($port != ""){
+    $query .= " AND ports.portCode = '".$port."'";
 }
-//Cargo
-if($cargo != ""){
-    $query .= " AND cargo = '".$cargo."'";
-}
+
 
 //Period
 if($inputStartDate != "" && $inputEndDate != ""){
@@ -67,7 +66,7 @@ if($inputStartDate != "" && $inputEndDate != ""){
 }elseif($inputEndDate != ""){
 	$query .= " AND year(date) < '".$inputEndDate."'";
 }
-*/
+
 
 $query .= " GROUP BY year(date)";
 $res = $_db->query($query);
