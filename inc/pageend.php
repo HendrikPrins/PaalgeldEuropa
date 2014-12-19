@@ -11,14 +11,8 @@ if($_inContainer){
             <div class="footer">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-1">
-                            <h5><a href="links.php">Links</a></h5>
-                        </div>
-                        <div class="col-md-1">
-                            <h5><a href="mailto:#">Contact</a></h5>
-                        </div>
-                        <div class="col-md-1">
-                            <h5><a href="#">Sitemap</a></h5>
+                        <div class="col-md-12">
+                            <h5>Copyright &copy; <?php echo date("Y"); ?> Rijksuniversiteit Groningen</h5>
                         </div>
                     </div>
                 </div>

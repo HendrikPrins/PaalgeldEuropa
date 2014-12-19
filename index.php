@@ -142,17 +142,6 @@ beginPage('', false);
                         </div>
                     </div>
             </div>
-
-                        <!--<div class="info3">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Content</h2>
-                            <p>Ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
                 <div class="projlink">
                   <div class="container">
                   <h2>Project series</h2>
