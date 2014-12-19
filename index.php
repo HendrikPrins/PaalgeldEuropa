@@ -96,7 +96,23 @@ beginPage('', false);
       <div class="col-md-4">
       </div>
   </div>
+    <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4" id="info">
+        <a href="#info">
+          <div class="text-center">
+              <br /><br />
+                <h2 style="color:white;">More information</h2>
+                <span style="font-size:50px;" class="glyphicon glyphicon-chevron-down"></span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+      </div>
+  </div>
 </div>
+
 <div class="info">
                 <div class="container">
                     <h2>Paalgeld Europa</h2>

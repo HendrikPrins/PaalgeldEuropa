@@ -77,10 +77,10 @@ html {
     background-repeat: no-repeat;
     background-position:center;
     width: auto;
-    min-height: 85%;
+    min-height: 100%;
     height: auto;
     padding: 25px;
-    padding-top: 150px;
+    padding-top: 100px;
 }
 
 
