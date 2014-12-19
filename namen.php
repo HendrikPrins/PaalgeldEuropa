@@ -21,10 +21,10 @@ beginPage('Paalgeld Europa - Search', true, 'Search through the database finding
     <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
     <div class="col-xs-2">
-    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year" data-parsley-maxlength="4" data-parsley-type="digits">
+    <input type="text" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year" data-parsley-maxlength="4" data-parsley-type="digits">
     </div>
     <div class="col-xs-2">
-    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year" data-parsley-maxlength="4" data-parsley-type="digits">
+    <input type="text" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year" data-parsley-maxlength="4" data-parsley-type="digits">
     </div>
     </div>
     <div class="form-group">
