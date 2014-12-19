@@ -11,7 +11,7 @@ beginPage('Paalgeld Europa - Search', true, 'Search through the database finding
     </div>
 </div>
 <script src="js/parsley.min.js"></script>
-<form class="form-horizontal" role="form" action="namenresult.php" method="get" data-parsley-validate>
+<form class="form-horizontal" role="form" action="captainsresult.php" method="get" data-parsley-validate>
   <div class="form-group">
     <label for="inputname" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">

@@ -22,7 +22,7 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 }
 ?>
 <script src="js/parsley.min.js"></script>
-<form class="form-horizontal" role="form" action="plaatsenresult.php" method="get" data-parsley-validate>   
+<form class="form-horizontal" role="form" action="placesresult.php" method="get" data-parsley-validate>   
 
 <?php
 	
@@ -198,9 +198,9 @@ if ($type !=='port'&& $type !=='area' && $type !=='country'){
         </p><br/>
     </div>
     <div class="col-md-6">
-        <a href="plaatsen.php?type=country" type="button" class="btn btn-default">Analyse using Countries</a><br/><br/>
-		<a href="plaatsen.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a><br/><br/>
-        <a href="plaatsen.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a>
+        <a href="places.php?type=country" type="button" class="btn btn-default">Analyse using Countries</a><br/><br/>
+		<a href="places.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a><br/><br/>
+        <a href="places.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a>
     </div>
 </div>
 <?php

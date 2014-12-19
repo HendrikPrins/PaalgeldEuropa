@@ -20,7 +20,7 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
     </div>
 </div>
 <script src="js/parsley.min.js"></script>
-<form class="form-horizontal" role="form" action="ladingresult.php" method="get" data-parsley-validate>
+<form class="form-horizontal" role="form" action="cargoesresult.php" method="get" data-parsley-validate>
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>
         <div class="col-sm-10">
@@ -157,9 +157,9 @@ if ($type !=='port'&& $type !=='area' && $type !=='country'){
         </p><br/>
     </div>
     <div class="col-md-6">
-        <a href="lading.php?type=country" type="button" class="btn btn-default">Analyse using Countries</a><br/><br/>
-		<a href="lading.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a><br/><br/>
-        <a href="lading.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a>
+        <a href="cargoes.php?type=country" type="button" class="btn btn-default">Analyse using Countries</a><br/><br/>
+		<a href="cargoes.php?type=area" type="button" class="btn btn-default">Analyse using Areas</a><br/><br/>
+        <a href="cargoes.php?type=port" type="button" class="btn btn-default">Analyse using Ports</a>
     </div>
 </div>
 

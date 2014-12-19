@@ -57,7 +57,7 @@ if(isset($_GET['draw'])){
 
 ?>
 <div class="row">
-  <form class="form-horizontal col-md-8" role="form" action="draaitabel.php" method="get">
+  <form class="form-horizontal col-md-8" role="form" action="pivottable.php" method="get">
     <input type="hidden" name="draw" value="" />
     <div class="form-group">
       <label class="control-label col-sm-3" for="mode">Value mode</label>

@@ -7,7 +7,7 @@ beginPage('', false);
       <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
-                  <a href="namen.php">
+                  <a href="captains.php">
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-user"></span></h1>
@@ -24,7 +24,7 @@ beginPage('', false);
       <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
-                  <a href="plaatsen.php">
+                  <a href="places.php">
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-screenshot"></span></h1>
@@ -41,7 +41,7 @@ beginPage('', false);
       <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
-                  <a href="lading.php">
+                  <a href="cargoes.php">
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-random"></span></h1>
@@ -58,7 +58,7 @@ beginPage('', false);
       <div class="col-md-3">
           <div class="panel panel-default trans">
               <div class="panel-body">
-                  <a href="draaitabel.php">
+                  <a href="pivottable.php">
                       <div class="icontext">
                         <div class="text-center">
                           <h1><span class="glyphicon glyphicon-tasks"></span></h1>
