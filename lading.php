@@ -19,12 +19,12 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
         </div>
     </div>
 </div>
-
-<form class="form-horizontal" role="form" action="ladingresult.php" method="get">
+<script src="js/parsley.min.js"></script>
+<form class="form-horizontal" role="form" action="ladingresult.php" method="get" data-parsley-validate>
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 1</label>
         <div class="col-sm-10">
-            <select name="cargoOne" data-placeholder="Choose one cargo" class="chosen-select" style="width:350px;" tabindex="2">
+            <select name="cargoOne" data-placeholder="Choose one cargo" class="chosen-select" style="width:350px;" tabindex="2" required>
             <option value="">Choose one cargo</option>
             <?php
                 $query = "SELECT distinct(cargo) FROM cargo ORDER BY cargo";
@@ -41,7 +41,7 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
     <div class="form-group">
         <label for="inputLand" class="col-sm-2 control-label">Cargo 2</label>
         <div class="col-sm-10">
-            <select name="cargoTwo" data-placeholder="Choose a second cargo" class="chosen-select" style="width:350px;" tabindex="2">
+            <select name="cargoTwo" data-placeholder="Choose a second cargo" class="chosen-select" style="width:350px;" tabindex="2" required>
             <option value="">Choose a second cargo</option>
             <?php
                 $query = "SELECT distinct(cargo) FROM cargo ORDER BY cargo";
@@ -87,7 +87,7 @@ if ($type == 'area'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Area</label>
     <div class="col-sm-10">
-        <select name="area" data-placeholder="Choose a area" class="chosen-select" style="width:350px;" tabindex="2">
+        <select name="area" data-placeholder="Choose a area" class="chosen-select" style="width:350px;" tabindex="2" required>
             <option value="">Choose a area</option>
             <?php
                 $query = "SELECT * FROM portAreas ORDER BY area";
@@ -110,7 +110,7 @@ if ($type == 'port'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Port</label>
     <div class="col-sm-10">
-        <select name="port" data-placeholder="Choose a port" class="chosen-select" style="width:350px;" tabindex="2">
+        <select name="port" data-placeholder="Choose a port" class="chosen-select" style="width:350px;" tabindex="2" required>
             <option value="">Choose a port</option>
             <?php
                 $query = "SELECT * FROM ports ORDER BY portName";
@@ -133,10 +133,10 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
     <div class="col-md-2">
-    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year">
+    <input type="text" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year" data-parsley-maxlength="4" data-parsley-type="digits">
     </div>
     <div class="col-md-2">
-    <input type="number" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year">
+    <input type="text" maxlength="4" min="1742" max="1787" class="form-control" name="inputEndDate" placeholder="End Year" data-parsley-maxlength="4" data-parsley-type="digits">
     </div>
     </div>
     
