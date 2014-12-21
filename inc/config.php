@@ -23,6 +23,9 @@ $_loadGoogleCharts = false;
 // Moet de Google Maps library worden geladen?
 $_loadGoogleMaps = false;
 
+// Include validatie functie
+require_once('inc/module_validate.php');
+
 // Print de "bovenkant" van de pagina
 function beginPage($pageTitle = 'Paalgeld Europa', $inContainer = true, $subTitle = ''){
   global $_inContainer, $_pageName, $_loadChosen, $_loadGoogleCharts, $_loadGoogleMaps;
