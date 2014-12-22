@@ -24,12 +24,12 @@ function makeGoogleMapsArray($geoQuery){
   echo '<div id="map-canvas" class="col-md-6" style="height:400px;"></div>';
 }
 
-function makeGoogleMapsQuery($query, $valueField, $titleField1) {
+function makeGoogleMapsQuery($query, $valueField, $subject) {
   global $_db;
   $result = $_db->query($query);
   // create return array
   while($row = $result->fetch_array()) {
-    $queryList[] = array($row[$titleField1],$row[$valueField], $row['portName'],$row['lat'],$row['lng']);
+    $queryList[] = array($subject, $row[$valueField], $row['portName'], $row['lat'], $row['lng']);
   }
   makeGoogleMapsArray($queryList);
 }

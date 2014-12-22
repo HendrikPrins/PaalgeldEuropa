@@ -24,7 +24,7 @@ if(isset($_GET['id'])){
     include_once('inc/module_map.php');
     echo '<div class="row">';
     // In de kaart willen we alleen unieke ports, dus nog een group by pCode en tellen
-    makeGoogleMapsQuery("SELECT COUNT(*) AS portCount, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portCount', 'pCode');
+    makeGoogleMapsQuery("SELECT COUNT(*) AS portCount, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portCount', 'Departures');
     // Activity chart
     $activityChart = array(array('Year', 'Arrivals'));
     $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur WHERE fullNameCaptain = '".$rowDetail['fullNameCaptain']."' GROUP BY `year` ORDER BY `year` ASC");

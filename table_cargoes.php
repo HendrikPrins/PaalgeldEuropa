@@ -28,7 +28,7 @@ if(isset($_GET['cargo'])){
   }else{
     include_once('inc/module_map.php');
     echo '<div class="row">';
-    makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($cargo)."' GROUP BY ports.portCode", 'cargoCount', 'pCode');
+    makeGoogleMapsQuery("SELECT COUNT(*) AS cargoCount, lat, lng, portName, ports.portCode AS pCode FROM ports, paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND cargo.cargo = '".$_db->real_escape_string($cargo)."' GROUP BY ports.portCode", 'cargoCount', $cargo);
     // Activity chart
     $activityChart = array(array('Year', 'Arrivals'));
     $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur, cargo WHERE paalgeldEur.idEur = cargo.idEur AND cargo.cargo = '".$_db->real_escape_string($cargo)."' GROUP BY `year` ORDER BY `year` ASC");

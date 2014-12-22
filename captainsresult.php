@@ -49,7 +49,7 @@ require_once('inc/config.php');
     }
     else {
         echo '<div class="row">';
-        makeGoogleMapsQuery("SELECT SUM(arrivalCount) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portSum', 'pCode');
+        makeGoogleMapsQuery("SELECT SUM(arrivalCount) AS portSum, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portSum', 'Departures');
         echo '</div>';
         echo $pagination;
         echo '<table class="table table-hover">';
