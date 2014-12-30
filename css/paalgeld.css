@@ -315,6 +315,9 @@ input.parsley-error, select.parsley-error, textarea.parsley-error {
     font-size: 1em;
 }
 
+.explan{
+    text-align: justify;
+}
 /* end of input validation layout */
 
 /*Info pages*/

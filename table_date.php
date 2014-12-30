@@ -107,6 +107,18 @@ if(isset($_GET['year'])){
     echo $pagination;
   } 
 }else{
+  echo '<div class="row explan">
+              <div class="col-md-12">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Explanation</h3>
+                  </div>
+                  <div class="panel-body">
+                    This table gives the possibility to search by year, by month or by the day of a month. Searching by month gives a table with only this particular month in different years, searching by day gives a table with only this particular day in different months. Whether one searches by year, month or day, results in a table with dates of arrivals, captain names and ports. Clicking the name of a captain gives an overview of the cargoes this particular captain shipped, the dates of arrival in Amsterdam and port of departure of every single shipping. Clicking on the name of a port supplies information about the cargoes shipped from this port and the shippings from this port with captain name and arrival date. It also shows a chart with the shippings over time. 
+                    </div>
+              </div>
+              </div>
+              </div>';
   $queryYear = "SELECT YEAR(date) AS `year` FROM paalgeldEur GROUP BY year(date)";
   $resYear = $_db->query($queryYear);
   echo '<div class="row">';

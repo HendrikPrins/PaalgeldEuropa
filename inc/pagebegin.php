@@ -64,7 +64,7 @@
                 </li>
 
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Analyze<b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Analyse<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="places.php"><span class="glyphicon glyphicon-screenshot"></span> Places</a></li>
                     <li><a href="cargoes.php"><span class="glyphicon glyphicon-random"></span> Cargoes</a></li>    

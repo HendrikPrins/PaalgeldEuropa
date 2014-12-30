@@ -57,6 +57,14 @@ if(isset($_GET['id'])){
   download_knop($queryBase);
 
   $pagination = pagination($page, $size, $totalCount);
+    echo '<br><div class="row explan"><div class="col-md-12"><div class="panel panel-primary">
+  <div class="panel-heading"><h3 class="panel-title">Explanation</h3></div><div class="panel-body">This table shows the dates of arrival in combination of the name of the captain and the port of origin.
+Clicking the name of a captain gives an overview of the cargoes this particular captain shipped, the dates of arrival in Amsterdam and port of departure of every single shipping. Clicking on the name of a port supplies information about the cargoes shipped from this port and the shippings from this port with captain name and arrival date. It also shows a chart with the shippings over time.
+  </div>
+  </div>
+  </div>
+  </div>';
+
   echo $pagination;
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Arrival id', 'idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';

@@ -83,6 +83,12 @@ if(isset($_GET['id'])){
   $res = $_db->query($queryLimited);
   download_knop($queryBase);
   $pagination = pagination($page, $size, $totalCount);
+  echo '<br><div class="row explan"><div class="col-md-12"><div class="panel panel-primary">
+  <div class="panel-heading"><h3 class="panel-title">Explanation</h3></div><div class="panel-body">This table shows the names of the captains in alphabetical order and the amount of shippings of a particular captain. When clicking ‘Amount of Shippings’ the table will change in order beginning with the highest amount of shippings. Clicking the name of a captain gives an overview of the cargoes this particular captain shipped, the dates of arrival in Amsterdam and port of departure of every single shipping. A map shows the different ports of arrival and departure marked by I’s. When hovering over an I the name of the port is shown. A chart gives an overview of the activity of this captain, the amount of arrivals over the years.
+  </div>
+  </div>
+  </div>
+  </div>';
   echo $pagination;
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Amount of shippings', 'count').'</th></tr>';

@@ -15,7 +15,7 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-info" role="alert">
-            <b>Explaination</b> Choose two cargoes to compare the total tax rate. You can also compare a specifc place and/or period.
+            <b>Explanation</b> Choose two cargoes to compare the total tax rate. You can also compare a specifc place and/or period.
         </div>
     </div>
 </div>

@@ -125,6 +125,12 @@ if(isset($_GET['area'])){
   download_knop($queryBase);
 
   $pagination = pagination($page, $size, $totalCount);
+  echo '<br><div class="row explan"><div class="col-md-12"><div class="panel panel-primary">
+  <div class="panel-heading"><h3 class="panel-title">Explanation</h3></div><div class="panel-body">This table gives information about all single ports, in which area they are found and to which country they belong nowadays. Clicking on the name of a port supplies information about the cargoes shipped from this port and the shippings from this port with captain name and arrival date. It also shows a chart with the shippings over time. Clicking on the name of the area gives a table with all the different ports in this particular area.
+  </div>
+  </div>
+  </div>
+  </div>';
   echo $pagination;
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Port Code', 'portCode').'</th><th>'.sortableHead('Port', 'portName').'</th><th>'.sortableHead('Area', 'area').'</th><th>'.sortableHead('Country now', 'countriesNow').'</th></tr>';

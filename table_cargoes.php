@@ -85,6 +85,13 @@ if(isset($_GET['cargo'])){
   $res = $_db->query($queryLimited);
   download_knop($queryBase);
   $pagination = pagination($page, $size, $totalCount);
+  echo '<br><div class="row explan"><div class="col-md-12"><div class="panel panel-primary">
+  <div class="panel-heading"><h3 class="panel-title">Explanation</h3></div><div class="panel-body">This table shows the cargoes in alphabetical order and the amount of a particular cargo.When clicking Count’’ the table will change in order beginning with the cargo that has been mostly shipped.Clicking a cargo gives a new table with the captains shipping this particular cargo combined with arrival date and port of departure.A map shows the different ports of arrival and departure marked by I’s for this particular cargo. When hovering over an I the name of the port is shown. The intensity of the color red corresponding with the amount. A chart gives an overview of the activity of this captain, the amount of arrivals over the years.
+  </div>
+  </div>
+  </div>
+  </div>';
+
   echo $pagination;
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Cargo', 'cargo').'</th><th>'.sortableHead('Count', 'count').'</th></tr>';
