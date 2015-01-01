@@ -257,7 +257,6 @@ function drawCharts(){
 }
 </script>
 <?php
-    echo download_knop($query);
 }
 
 if(isset($_GET['draw'])){
@@ -277,6 +276,7 @@ if(isset($_GET['draw'])){
   ?>
   </div>
   <?php
+  echo download_knop($query);
   }
   ?>
 </div>
