@@ -78,7 +78,7 @@ if ($type == 'area'){
 			<select name="areaOne" data-placeholder="Choose one area" class="chosen-select" style="width:350px;" tabindex="2" required>
 				<option value="">Choose one area</option>
 				<?php
-					$query = "SELECT * FROM portAreas ORDER BY area";
+					$query = "SELECT portAreas.* FROM portAreas, ports WHERE ports.areaCode = portAreas.areaCode AND ports.arrivalCount > 0 GROUP BY ports.areaCode ORDER BY area";
 					$res = $_db->query($query);
 					if($res != null || $res->num_rows > 0){
 						while($row = $res->fetch_assoc()){

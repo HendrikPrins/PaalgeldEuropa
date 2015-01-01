@@ -179,7 +179,7 @@ if(isset($_GET['draw'])){
                 $areas[] = validate($area);
               }
             }
-            $res = $_db->query("SELECT areaCode, area FROM portAreas ORDER BY area");
+            $res = $_db->query("SELECT portAreas.area, portAreas.areaCode FROM portAreas, ports WHERE ports.areaCode = portAreas.areaCode AND ports.arrivalCount > 0 GROUP BY ports.areaCode ORDER BY area");
             if($res != null || $res->num_rows > 0){
                 while($row = $res->fetch_assoc()){
                     echo '<option value="'.$row['areaCode'].'"'.(in_array($row['areaCode'], $areas) ? ' selected="selected"' : '').'>'.$row['area'].'</option>';
