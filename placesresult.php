@@ -31,7 +31,6 @@ if($cargo != ""){
 
 //Country
 if($countryOne != "" && $countryTwo != ""){
-    echo '<tr><th>Year</th><th>'.$countryOne.'</th><th>'.$countryTwo.'</th></tr>';
     $query = "SELECT year(date) AS year, sum(case when countryNow = '".$countryOne."' then taxGuilders end)*500 AS one, sum(case when countryNow = '".$countryTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode";
 }
 
