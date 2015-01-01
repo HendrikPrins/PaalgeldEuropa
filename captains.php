@@ -6,7 +6,7 @@ beginPage('Paalgeld Europa - Search', true, 'Search through the database finding
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-info" role="alert">
-            <b>Hint!</b> Don't know exactly how to spell a name? Or want to get results for multiple name variations? Use the % sign as a wildcard. It replaces any letter or letter combination and it can also be empty. Example: Jans%en will cover both Jansen and Janssen. Also, when you don't know the first name of a captain, use the % sign to get all the first names. Example: %jansen will cover every name that ends with jansen.
+            <b>Hint!</b> Don't know exactly how to spell a name? Or want to get results for multiple name variations? Use the % sign or the _ sign as a wildcard. _ replaces only one letter, % replaces any letter or letter combination and it can also be empty. Example: Jans%en will cover both Jansen and Janssen. Also, when you don't know the first name of a captain, use the % sign to get all the first names. Example: %jansen will cover every name that ends with jansen.
         </div>
     </div>
 </div>
