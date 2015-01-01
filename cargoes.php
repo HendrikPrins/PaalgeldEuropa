@@ -110,7 +110,7 @@ if ($type == 'port'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Port</label>
     <div class="col-sm-10">
-        <select name="port" data-placeholder="Choose a port" class="chosen-select" style="width:350px;" tabindex="2" required>
+        <select name="port" data-placeholder="Choose a port" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose a port</option>
             <?php
                 $query = "SELECT * FROM ports ORDER BY portName";

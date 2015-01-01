@@ -1,5 +1,6 @@
 <?php
 require_once('inc/config.php');
+$_loadGoogleCharts = true;
 
 //Initialize variables
 $countryOne = validate(urldecode($_GET['countryOne']));
@@ -27,7 +28,6 @@ if($cargo != ""){
 	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';
 }
 
-echo '<table class="table table-hover">';
 
 //Country
 if($countryOne != "" && $countryTwo != ""){
@@ -44,7 +44,6 @@ if($areaOne != "" && $areaTwo != ""){
 
 //Port
 if($portOne != "" && $portTwo != ""){
-    echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
     $query = "SELECT year(date) AS year, sum(case when portCode = '".$portOne."' then taxGuilders end)*500 AS one, sum(case when portCode = '".$portTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur";
 }
 //Cargo
@@ -67,9 +66,37 @@ $res = $_db->query($query);
 if ($res == null or $res->num_rows == 0){
 	echo "<div class='alert alert-danger' role='alert'>No results found. Try again.</div>";
 }else{
+  $data = array();
+  $chartData = array(array('Year', $portOne, $portTwo));
 	while($row = $res->fetch_assoc()){
+    $chartData[] = array($row['year']*1, $row['one']*1, $row['two']*1);
+    $data[] = $row;
+	}
+  $chartData = json_encode($chartData);
+  ?>
+  <script type="text/javascript">
+  // Laad de visualization API
+  google.load("visualization", "1", {packages:["corechart"]});
+  // Teken als het is geladen
+  google.setOnLoadCallback(drawCharts);
+  function drawCharts(){
+    // Zet de data om naar een DataTable
+    var data = new google.visualization.arrayToDataTable(<?php echo $chartData ?>);
+    // Maak een LineChart
+    var chart = new google.visualization.LineChart(document.getElementById('chart'));
+    // Teken de chart met de data en bepaalde opties
+    chart.draw(data, {pointSize: 5, title: 'Result', hAxis: {title: 'Year', format:'#'},
+        vAxis: {title: 'Value'}});
+  }
+  </script>
+  <div id="chart" class="col-md-9" style="height:500px;"></div>
+  <?php
+  echo '<table class="table table-hover">';
+  echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
+	foreach($data as $row){
 		echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.$row['one'].'</td><td>'.$row['two'].'</td></tr>';
 	}
+  echo '</table>';
 }
 
 
