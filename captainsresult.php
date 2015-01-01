@@ -2,10 +2,10 @@
 require_once('inc/config.php');
 
     //Initialize variables
-    $inputName = $_GET['inputName'];
-    $inputStartDate = $_GET['inputStartDate'];
-    $inputEndDate = $_GET['inputEndDate'];
-    $departurePlace = $_GET['departurePlace'];
+    $inputName = validate($_GET['inputName']);
+    $inputStartDate = validate($_GET['inputStartDate']);
+    $inputEndDate = validate($_GET['inputEndDate']);
+    $departurePlace = validate($_GET['departurePlace']);
     $total = $inputName . $inputStartDate . $inputEndDate . $inputPlate . $departurePlace;
     
     // If all empty

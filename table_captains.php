@@ -20,14 +20,14 @@ if(isset($_GET['id'])){
     echo '<tr><td>Unique cargoes</td><td>'.$rowDetail['cargoString'].'</td></tr>';
     echo '</table>';
 
-    $query = "SELECT idEur, date, fullNameCaptain, firstNameCaptain, lastNameCaptain, portName, ports.portCode AS pCode, lat, lng FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".$rowDetail['fullNameCaptain']."'";
+    $query = "SELECT idEur, date, fullNameCaptain, firstNameCaptain, lastNameCaptain, portName, ports.portCode AS pCode, lat, lng FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".validate($rowDetail['fullNameCaptain'])."'";
     include_once('inc/module_map.php');
     echo '<div class="row">';
     // In de kaart willen we alleen unieke ports, dus nog een group by pCode en tellen
     makeGoogleMapsQuery("SELECT COUNT(*) AS portCount, sub.* FROM (".$query.") AS sub GROUP BY pCode", 'portCount', 'Departures');
     // Activity chart
     $activityChart = array(array('Year', 'Arrivals'));
-    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur WHERE fullNameCaptain = '".$rowDetail['fullNameCaptain']."' GROUP BY `year` ORDER BY `year` ASC");
+    $resActivity = $_db->query("SELECT YEAR(date) AS `year`, COUNT(*) AS arrivalCount FROM paalgeldEur WHERE fullNameCaptain = '".validate($rowDetail['fullNameCaptain'])."' GROUP BY `year` ORDER BY `year` ASC");
     while($rowActivity = $resActivity->fetch_assoc()){
         $activityChart[] = array($rowActivity['year']*1, $rowActivity['arrivalCount']*1);
     }

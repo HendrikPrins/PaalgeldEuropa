@@ -2,14 +2,14 @@
 require_once('inc/config.php');
 
 //Initialize variables
-$cargoOne = urldecode($_GET['cargoOne']);
-$cargoTwo = urldecode($_GET['cargoTwo']);
-$country = $_GET['country'];
-$area = $_GET['area'];
-$port = $_GET['port'];
+$cargoOne = validate(urldecode($_GET['cargoOne']));
+$cargoTwo = validate(urldecode($_GET['cargoTwo']));
+$country = validate($_GET['country']);
+$area = validate($_GET['area']);
+$port = validate($_GET['port']);
 
-$inputStartDate = $_GET['inputStartDate'];
-$inputEndDate = $_GET['inputEndDate'];
+$inputStartDate = validate($_GET['inputStartDate']);
+$inputEndDate = validate($_GET['inputEndDate']);
 	
 $total = $cargoOne . $cargoTwo . $country . $area . $port . $inputStartDate . $inputEndDate;
 
