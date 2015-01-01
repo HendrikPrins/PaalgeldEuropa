@@ -87,7 +87,7 @@ if ($type == 'area'){
 <div class="form-group">
     <label for="inputLand" class="col-sm-2 control-label">Area</label>
     <div class="col-sm-10">
-        <select name="area" data-placeholder="Choose a area" class="chosen-select" style="width:350px;" tabindex="2" required>
+        <select name="area" data-placeholder="Choose a area" class="chosen-select" style="width:350px;" tabindex="2">
             <option value="">Choose a area</option>
             <?php
                 $query = "SELECT * FROM portAreas ORDER BY area";
