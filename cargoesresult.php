@@ -101,7 +101,7 @@ if ($res == null or $res->num_rows == 0){
   echo '<table class="table table-hover">';
   echo '<tr><th>Year</th><th>'.$cargoOne.'</th><th>'.$cargoTwo.'</th></tr>';
   foreach($data as $row){
-    echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.(isset($row['one']) && $row['one'] >= 0 ? $row['one']*1 : 0).'</td><td>'.(isset($row['two']) && $row['two'] >= 0 ? $row['two']*1 : 0).'</td></tr>';
+    echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.(isset($row['one']) && $row['one'] >= 0 ? $row['one']*1 : '-').'</td><td>'.(isset($row['two']) && $row['two'] >= 0 ? $row['two']*1 : '-').'</td></tr>';
   }
   echo '</table>';
 }
