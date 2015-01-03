@@ -10,7 +10,7 @@ $areaTwo = validate($_GET['areaTwo']);
 $portOne = validate($_GET['portOne']);
 $portTwo = validate($_GET['portTwo']);
 
-$cargo = validate(urldecode($_GET['cargo'])0;
+$cargo = validate(urldecode($_GET['cargo']);
 $inputStartDate = validate($_GET['inputStartDate']);
 $inputEndDate = validate($_GET['inputEndDate']);
 		
