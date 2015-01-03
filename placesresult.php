@@ -24,13 +24,16 @@ if ($total == ""){
 //$_loadGoogleMaps = true;
 beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 
+
 if($cargo != ""){
 	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';
 }
 
+echo '<table class="table table-hover">';
 
 //Country
 if($countryOne != "" && $countryTwo != ""){
+	echo '<tr><th>Year</th><th>'.$countryOne.'</th><th>'.$countryOne.'</th></tr>';
     $query = "SELECT year(date) AS year, sum(case when countryNow = '".$countryOne."' then taxGuilders end)*500 AS one, sum(case when countryNow = '".$countryTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode";
 }
 
@@ -43,6 +46,7 @@ if($areaOne != "" && $areaTwo != ""){
 
 //Port
 if($portOne != "" && $portTwo != ""){
+	echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
     $query = "SELECT year(date) AS year, sum(case when portCode = '".$portOne."' then taxGuilders end)*500 AS one, sum(case when portCode = '".$portTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur";
 }
 //Cargo
@@ -90,8 +94,6 @@ if ($res == null or $res->num_rows == 0){
   </script>
   <div id="chart" class="col-md-9" style="height:500px;"></div>
   <?php
-  echo '<table class="table table-hover">';
-  echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
 	foreach($data as $row){
 		echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.(isset($row['one']) && $row['one'] >= 0 ? $row['one']*1 : '-').'</td><td>'.(isset($row['two']) && $row['two'] >= 0 ? $row['two']*1 : '-').'</td></tr>';
 	}
