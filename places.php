@@ -162,7 +162,8 @@ if ($type == 'port'||$type == 'area'||$type =='country'){
             $res = $_db->query($query);
             if($res != null || $res->num_rows > 0){
               while($row = $res->fetch_assoc()){
-                echo '<option value='.$row['cargo'].'>'.$row['cargo'].'</option>';
+			    $cargo = urlencode($row['cargo']);
+                echo '<option value='.$cargo.'>'.$row['cargo'].'</option>';
                 }
             }
         ?>

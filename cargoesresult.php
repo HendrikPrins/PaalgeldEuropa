@@ -5,7 +5,7 @@ $_loadGoogleCharts = true;
 //Initialize variables
 $cargoOne = validate(urldecode($_GET['cargoOne']));
 $cargoTwo = validate(urldecode($_GET['cargoTwo']));
-$country = validate($_GET['country']);
+$country = validate(urldecode($_GET['country']));
 $area = validate($_GET['area']);
 $port = validate($_GET['port']);
 
