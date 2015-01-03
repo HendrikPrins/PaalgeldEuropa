@@ -26,7 +26,7 @@ beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two places');
 
 
 if($cargo != ""){
-	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';
+	echo '<div class="row">Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a></div>';
 }
 
 
@@ -42,14 +42,19 @@ if($areaOne != "" && $areaTwo != ""){
     $one = $areaOne;
     $two = $areaTwo;
     $query = "SELECT year(date) AS year, sum(case when portAreas.areaCode = '".$areaOne."' then taxGuilders end)*500 AS one, sum(case when portAreas.areaCode = '".$areaTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo`, `portAreas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portAreas.areaCode";
-	
+	  $resNames = $_db->query("SELECT (SELECT area FROM portAreas WHERE areaCode = '".$areaOne."') AS nameOne, (SELECT area FROM portAreas WHERE areaCode = '".$areaTwo."') AS nameTwo");
+    $names = $resNames->fetch_assoc();
+    $one = $names['nameOne'];
+    $two = $names['nameTwo'];
 }
 
 //Port
 if($portOne != "" && $portTwo != ""){
-    $one = $portOne;
-    $two = $portTwo;
     $query = "SELECT year(date) AS year, sum(case when portCode = '".$portOne."' then taxGuilders end)*500 AS one, sum(case when portCode = '".$portTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur";
+    $resNames = $_db->query("SELECT (SELECT portName FROM ports WHERE portCode = '".$portOne."') AS nameOne, (SELECT portName FROM ports WHERE portCode = '".$portTwo."') AS nameTwo");
+    $names = $resNames->fetch_assoc();
+    $one = $names['nameOne'];
+    $two = $names['nameTwo'];
 }
 //Cargo
 if($cargo != ""){

@@ -23,15 +23,15 @@ if ($total == ""){
 beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two cargoes');
 
 if($country != ""){
-	echo 'Country: '.$country.'';
+	echo '<div class="row">Country: '.$country.'</div>';
 }
 
 if($area != ""){
-	echo 'Area: '.$area.'';
+	echo '<div class="row">Area: '.$area.'</div>';
 }
 
 if($port != ""){
-	echo 'Port: '.$port.'';
+	echo '<div class="row">Port: '.$port.'</div>';
 }
 
 
