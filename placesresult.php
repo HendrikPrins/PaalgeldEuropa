@@ -29,24 +29,26 @@ if($cargo != ""){
 	echo 'Cargo <a href="table_cargoes.php?cargo='.$cargo.'">'.$cargo.'</a>';
 }
 
-echo '<table class="table table-hover">';
 
 //Country
 if($countryOne != "" && $countryTwo != ""){
-	echo '<tr><th>Year</th><th>'.$countryOne.'</th><th>'.$countryOne.'</th></tr>';
+    $one = $countryOne;
+    $two = $countryTwo;
     $query = "SELECT year(date) AS year, sum(case when countryNow = '".$countryOne."' then taxGuilders end)*500 AS one, sum(case when countryNow = '".$countryTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode";
 }
 
 //Area
 if($areaOne != "" && $areaTwo != ""){
-    echo '<tr><th>Year</th><th>'.$areaOne.'</th><th>'.$areaTwo.'</th></tr>';
+    $one = $areaOne;
+    $two = $areaTwo;
     $query = "SELECT year(date) AS year, sum(case when portAreas.areaCode = '".$areaOne."' then taxGuilders end)*500 AS one, sum(case when portAreas.areaCode = '".$areaTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `ports`, `cargo`, `portAreas` WHERE paalgeldEur.idEur = cargo.idEur AND paalgeldEur.portCode = ports.portCode AND ports.areaCode = portAreas.areaCode";
 	
 }
 
 //Port
 if($portOne != "" && $portTwo != ""){
-	echo '<tr><th>Year</th><th>'.$portOne.'</th><th>'.$portTwo.'</th></tr>';
+    $one = $portOne;
+    $two = $portTwo;
     $query = "SELECT year(date) AS year, sum(case when portCode = '".$portOne."' then taxGuilders end)*500 AS one, sum(case when portCode = '".$portTwo."' then taxGuilders end)*500 AS two FROM `paalgeldEur`, `cargo` WHERE paalgeldEur.idEur = cargo.idEur";
 }
 //Cargo
@@ -70,7 +72,7 @@ if ($res == null or $res->num_rows == 0){
 	echo "<div class='alert alert-danger' role='alert'>No results found. Try again.</div>";
 }else{
   $data = array();
-  $chartData = array(array('Year', $portOne, $portTwo));
+  $chartData = array(array('Year', $one, $two));
 	while($row = $res->fetch_assoc()){
     $chartData[] = array($row['year']*1, $row['one']*1, $row['two']*1);
     $data[] = $row;
@@ -94,6 +96,8 @@ if ($res == null or $res->num_rows == 0){
   </script>
   <div id="chart" class="col-md-9" style="height:500px;"></div>
   <?php
+  echo '<table class="table table-hover">';
+	echo '<tr><th>Year</th><th>'.$one.'</th><th>'.$two.'</th></tr>';
 	foreach($data as $row){
 		echo '<tr><td><a href="table_date.php?year='.$row['year'].'">'.$row['year'].'</a></td><td>'.(isset($row['one']) && $row['one'] >= 0 ? $row['one']*1 : '-').'</td><td>'.(isset($row['two']) && $row['two'] >= 0 ? $row['two']*1 : '-').'</td></tr>';
 	}
