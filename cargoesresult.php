@@ -22,6 +22,8 @@ if ($total == ""){
 //$_loadGoogleMaps = true;
 beginPage('Paalgeld Europa - Analyse', true, 'Analyse by comparing two cargoes');
 
+echo '<p><a class="btn btn-default" href="cargoes.php" role="button">&laquo; Back</a></p>';
+
 if($country != ""){
 	echo '<div class="row">Country: '.$country.'</div>';
 }

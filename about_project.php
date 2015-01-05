@@ -19,6 +19,7 @@ beginPage('', false);
 					The books inform us of the name of the ships, the captain's name, the cargo of the ships and the tax paid per cargo, and 
 					the harbour the ship sailed from. One can search on ship name, captain name, cargo, departing harbour and period. 
                </p>   
+               <p><a class="btn btn-default" href="index.php#info" role="button">&laquo; Back</a></p>
             </div>
             <div class="col-md-5">
 				<img class="img-responsive" src="img/boek.jpg" />

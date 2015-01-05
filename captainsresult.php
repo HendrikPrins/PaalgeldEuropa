@@ -16,6 +16,8 @@ require_once('inc/config.php');
     $_loadGoogleMaps = true;
     beginPage('Paalgeld Europa - Search', true, 'Search through the database finding Names');
     
+    echo '<p><a class="btn btn-default" href="captains.php" role="button">&laquo; Back</a></p>';
+
     $query = "SELECT fullNameCaptain, COUNT(*) AS arrivalCount, lat, lng, ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
     if($inputName != ""){
       $query .= " AND fullNameCaptain like '$inputName'";

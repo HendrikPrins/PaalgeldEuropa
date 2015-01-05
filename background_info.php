@@ -59,6 +59,11 @@ beginPage('', false);
 				</p>
 			</div>
 		</div>
+        <div class="row">
+            <div class="md-col-12">
+                <p><a class="btn btn-default" href="index.php#info" role="button">&laquo; Back</a></p>
+            </div>
+        </div>
 	</div>
 </div>
 <?php
