@@ -320,19 +320,7 @@ input.parsley-error, select.parsley-error, textarea.parsley-error {
 }
 /* end of input validation layout */
 
-/*Info pages*/
-
-
-
-
-/*Landingspagina*/
-
-
-
-/*Zoekpagina*/
-
-
-
-/*Resultatenpagina*/
-
+.downloadknop{
+    margin-bottom: 20px;
+}
 

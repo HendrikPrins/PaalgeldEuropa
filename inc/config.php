@@ -47,7 +47,7 @@ function download_knop($query, $array = null){
   if ($array) {
     echo '<input type="hidden" name="column_names" value="'.$array.'"><br>';
   }
-	echo '<input class="btn btn-primary" type="submit" value="Download CSV">';
+	echo '<input class="btn btn-primary downloadknop" type="submit" value="Download CSV">';
 	echo '</form>';
 }
 
