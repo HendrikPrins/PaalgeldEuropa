@@ -195,7 +195,7 @@ beginPage('', false);
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Contact us</h2>
-                            <p>Got questions, remarks or feedback about the website or about the project itself?  Send us an email at <a href="mailto:#">first.last@example.com</a>.</p>
+                            <p>Got questions, remarks or feedback about the website or about the project itself?  Send us an email at <a href="mailto:paalgeldeuropa@reinardvandalen.nl">paalgeldeuropa@reinardvandale.nl</a>.</p>
                         </div>
                     </div>
                 </div>
