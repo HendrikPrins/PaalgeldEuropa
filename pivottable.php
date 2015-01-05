@@ -40,11 +40,11 @@ if(isset($_GET['draw'])){
      $query .= " AND year(date) BETWEEN '".$_GET['startDate']."' AND '".$_GET['endDate']."'";
      $restrictions[] = array('date', 'between', $_GET['startDate'].' and '.$_GET['endDate']);
   }elseif(isset($_GET['startDate']) && strlen($_GET['startDate']) > 0){
-     $query .= " AND year(date) > '".$_GET['startDate']."'";
-     $restrictions[] = array('date', '>', $_GET['startDate']);
+     $query .= " AND year(date) >= '".$_GET['startDate']."'";
+     $restrictions[] = array('date', '>=', $_GET['startDate']);
   }elseif(isset($_GET['endDate']) && strlen($_GET['endDate']) > 0){
-     $query .= " AND year(date) < '".$_GET['endDate']."'";
-     $restrictions[] = array('date', '<', $_GET['endDate']);
+     $query .= " AND year(date) =< '".$_GET['endDate']."'";
+     $restrictions[] = array('date', '=<', $_GET['endDate']);
   }
 
 
@@ -71,24 +71,24 @@ if(isset($_GET['draw'])){
   $placeQueryParts = array();
   if(count($ports) > 1){
     $placeQueryParts[] = "ports.portCode IN('".implode('\',\'', $ports)."')";
-    $restrictions[] = array('departure port', 'is any of', implode(', ', $ports));
+    //$restrictions[] = array('departure port', 'is any of', implode(', ', $ports));
   }elseif(count($ports) == 1){
     $placeQueryParts[] = "ports.portCode = '".$ports[0]."'";
-    $restrictions[] = array('departure port', '=', $ports[0]);
+    //$restrictions[] = array('departure port', '=', $ports[0]);
   }
   if(count($areas) > 1){
     $placeQueryParts[] = "ports.areaCode IN('".implode('\',\'', $areas)."')";
-    $restrictions[] = array('departure area', 'is any of', implode(', ', $areas));
+    //$restrictions[] = array('departure area', 'is any of', implode(', ', $areas));
   }elseif(count($areas) == 1){
     $placeQueryParts[] = "ports.areaCode = '".$areas[0]."'";
-    $restrictions[] = array('departure area', '=', $areas[0]);
+    //$restrictions[] = array('departure area', '=', $areas[0]);
   }
   if(count($countries) > 1){
     $placeQueryParts[] = "ports.countryNow IN('".implode('\',\'', $countries)."')";
-    $restrictions[] = array('departure country', 'is any of', implode(', ', $countries));
+    //$restrictions[] = array('departure country', 'is any of', implode(', ', $countries));
   }elseif(count($countries) == 1){
     $placeQueryParts[] = "ports.countryNow = '".$countries[0]."'";
-    $restrictions[] = array('departure country', '=', $countries[0]);
+    //$restrictions[] = array('departure country', '=', $countries[0]);
   }
 
   if(count($placeQueryParts) > 0){
