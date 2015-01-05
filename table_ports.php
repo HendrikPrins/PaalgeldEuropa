@@ -21,7 +21,7 @@ if(isset($_GET['area'])){
     echo '</table>';
   }
 }elseif(isset($_GET['portCode'])){
-  $query = "SELECT *, Count(paalgeldEur.idEur) AS arrivals, (SELECT GROUP_CONCAT(cargo SEPARATOR ', ') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.portCode = '".$_db->real_escape_string($_GET['portCode'])."' AND pe.idEur = cargo.idEur GROUP BY cargo) AS sub) AS cargoString FROM ports, portAreas, paalgeldEur WHERE ports.areaCode = portAreas.areaCode AND ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
+  $query = "SELECT *, Count(paalgeldEur.idEur) AS arrivals, (SELECT GROUP_CONCAT(cargo SEPARATOR ', ') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.portCode = '".$_db->real_escape_string($_GET['portCode'])."' AND pe.idEur = cargo.idEur GROUP BY cargo ORDER BY COUNT(*) DESC LIMIT 7) AS sub) AS cargoString FROM ports, portAreas, paalgeldEur WHERE ports.areaCode = portAreas.areaCode AND ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
      echo '<div class="alert alert-warning">error '.$_db->error.'.</div>';
@@ -35,7 +35,7 @@ if(isset($_GET['area'])){
     echo '<tr><td>Area</td><td><a href="table_ports.php?area='.$row['area'].'">'.$row['area'].'</a></td></tr>';
     echo '<tr><td>Country now</td><td>'.$row['countriesNow'].'</td></tr>';
     echo '<tr><td>Arrivals</td><td>'.$row['arrivals'].'</td></tr>';
-    echo '<tr><td>Cargoes</td><td>'.$row['cargoString'].'</td></tr>';
+    echo '<tr><td>Common cargoes</td><td>'.$row['cargoString'].'</td></tr>';
     echo '</table>';
     // Activity chart
     $activityChart = array(array('Year', 'Arrivals'));
