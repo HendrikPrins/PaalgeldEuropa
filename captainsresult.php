@@ -2,7 +2,7 @@
 require_once('inc/config.php');
 
     //Initialize variables
-    $inputName = validate($_GET['inputName']);
+    $inputName = "%".validate($_GET['inputName'])."%";
     $inputStartDate = validate($_GET['inputStartDate']);
     $inputEndDate = validate($_GET['inputEndDate']);
     $departurePlace = validate($_GET['departurePlace']);
