@@ -57,13 +57,9 @@ beginPage('', false);
 					printed list is from 1660 and there are lists from 1695, 1710 and 1747. They differ very little:
 					there are only additions of new products.
 				</p>
+                <p><a class="btn btn-default" href="index.php#info" role="button">&laquo; Back</a></p>
 			</div>
 		</div>
-        <div class="row">
-            <div class="md-col-12">
-                <p><a class="btn btn-default" href="index.php#info" role="button">&laquo; Back</a></p>
-            </div>
-        </div>
 	</div>
 </div>
 <?php
