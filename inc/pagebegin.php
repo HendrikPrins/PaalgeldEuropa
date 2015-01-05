@@ -93,6 +93,8 @@
                     <li><a target="_blank" href="../paalgeld_win/">Paalgeld West-Indie</a></li>
                     <li><a target="_blank" href="../lastgeld/">Lastgeld</a></li>
                     <li class="divider"></li>
+                    <li><a target="_blank" href="http://www.soundtoll.nl/">Soundtoll Registers</a></li>
+                    <li><a target="_blank" href="../forum/">Forum</a></li>
                     <li><a target="_blank" href="http://www.rug.nl">Rijksuniversiteit Groningen</a></li>
                   </ul>
                 </li>

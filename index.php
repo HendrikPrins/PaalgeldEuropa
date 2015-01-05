@@ -117,14 +117,19 @@ beginPage('', false);
                 <div class="container">
                     <h2>Paalgeld Europa</h2>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                               <h3>About the project</h3>
                               <p>The goal of project Paalgeld Europa is to make the raw dataset of the Paalgeld-registers more accessible for academic and amateur research. With a main focus on usability and searchability, this web application employs user-friendly interfaces, predefined search categories, access to complete tables, and the option to download selected data in order to facilitate this goal. This project was realised by a team of 14 university students for the course 
                                 <a href="http://www.rug.nl/ocasys/let/vak/show?code=LIX021B05">Database driven Webtechnology</a> 
                                 at the <a href="http://www.rug.nl/">University of Groningen</a>.</p>
                               <p><a class="btn btn-default" href="about_project.php" role="button">View details &raquo;</a></p>
                             </div>
-                              <div class="col-md-4">
+                            <div class="col-md-3">
+                                <h3>The authors</h3>
+                                <p>In a group of 14 students we created this awesome website. This are 2nd year Information Science students from the Rijksuniversiteit Groningen. During the course Database Driven Webtechnology as a group we were given the exercise to make a website about the Paalgeld Europa. All the credits for this website go to the students beloning to the group. More information about these students and our Slack and Github accounts one can find in the Credits page.</p>
+                                <p><a class="btn btn-default" href="credits.php" role="button">View details &raquo;</a></p>
+                            </div>
+                              <div class="col-md-3">
                               <h3>Background information</h3>
                               <p>The Paalgeld was a task levied on incoming ships coming from the “high seas” into the port of Amsterdam. 
                                 The purpose of this beaconage was to pay for the maintenance of buoys in the Zuiderzee: 
@@ -133,7 +138,7 @@ beginPage('', false);
                                 North Sea and in the Baltic Area.</p>
                               <p><a class="btn btn-default" href="background_info.php" role="button">View details &raquo;</a></p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                               <h3>How to use the website</h3>
                               <p>This website supplies information about all the shippings that arrived in Amsterdam during the year 1742 and the periods 1771 to 1810, 1814 to 1828, and 1830 to 1836. The information is based on tax administrations of the cargo of those ships. For more information about this history see Background Information.
                               Search is based on names, ports of departure, countries, cargo, name of captain, year and relations between. 
@@ -195,7 +200,7 @@ beginPage('', false);
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Contact us</h2>
-                            <p>Got questions, remarks or feedback about the website or about the project itself?  Send us an email at <a href="mailto:paalgeldeuropa@reinardvandalen.nl">paalgeldeuropa@reinardvandalen.nl</a>.</p>
+                            <p>Got questions, remarks or feedback about the website or about the project itself?  Send us an email at <a href="mailto:paalgeld.europa@gmail.com">paalgeld.europa@gmail.com</a>.</p>
                         </div>
                     </div>
                 </div>
