@@ -3,10 +3,9 @@ require('inc/config.php');
 $_loadGoogleMaps = true;
 $_loadGoogleCharts = true;
 beginPage('Paalgeld Europa - Complete tables', true, 'The complete names table');
-
 if(isset($_GET['id']) && $_GET['id'] == "WELLING"){
-  echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="171" height="193" id="guitar" align="right">';
-  echo '<param name="movie" value="guitar.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="img/guitar.swf" quality="high" bgcolor="#FFFFFF" width="171" height="193" name="guitar" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';
+  echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="342" height="386" id="guitar" align="center">';
+  echo '<param name="movie" value="guitar.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="img/guitar.swf" quality="high" bgcolor="#FFFFFF" width="342" height="386" name="guitar" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';
   echo '</object>';
 }elseif(isset($_GET['id'])){
   $captain = rawurldecode($_db->real_escape_string($_GET['id']));
