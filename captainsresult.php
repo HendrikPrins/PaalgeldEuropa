@@ -2,7 +2,8 @@
 require_once('inc/config.php');
 
     //Initialize variables
-    $inputName = "%".validate($_GET['inputName'])."%";
+    $inputName = validate($_GET['inputName']);
+    $exact = validate($_GET['exact']);
     $inputStartDate = validate($_GET['inputStartDate']);
     $inputEndDate = validate($_GET['inputEndDate']);
     $departurePlace = validate($_GET['departurePlace']);
@@ -19,7 +20,10 @@ require_once('inc/config.php');
     echo '<p><a class="btn btn-default" href="captains.php" role="button">&laquo; Back</a></p>';
 
     $query = "SELECT fullNameCaptain, COUNT(*) AS arrivalCount, lat, lng, ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
-    if($inputName != ""){
+    if($inputName != "" && $exact != "yes"){
+      $query .= " AND fullNameCaptain like '%'.'$inputName'.'%'";
+    }
+    if($inputName != "" && $exact == "yes"){
       $query .= " AND fullNameCaptain like '$inputName'";
     }
     if($inputStartDate != "" && $inputEndDate != ""){
