@@ -4,7 +4,13 @@ $_loadGoogleMaps = true;
 $_loadGoogleCharts = true;
 beginPage('Paalgeld Europa - Complete tables', true, 'The complete names table');
 
-if(isset($_GET['id'])){
+if(($_GET['id']) == "WELLING"){
+  echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="171" height="193" id="guitar" align="right">';
+  echo '<param name="movie" value="guitar.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="img/guitar.swf" quality="high" bgcolor="#FFFFFF" width="171" height="193" name="guitar" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';
+  echo '</object>';
+}
+
+elseif(isset($_GET['id'])){
   $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));
   $resDetail = $_db->query("SELECT *, (SELECT GROUP_CONCAT(cargo SEPARATOR ', ') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.fullNameCaptain = '".$captain."' AND pe.idEur = cargo.idEur GROUP BY cargo ORDER BY COUNT(*) DESC LIMIT 10) AS sub) AS cargoString FROM paalgeldEur WHERE fullNameCaptain = '".$captain."' LIMIT 1");
   if($resDetail == null || $resDetail->num_rows == 0){
