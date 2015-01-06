@@ -6,7 +6,7 @@ beginPage('Paalgeld Europa - Complete tables', true, 'The complete cargoes table
 
 if(isset($_GET['cargo'])){
   include_once('inc/module_tablesort.php');
-  $cargo = str_replace('_', ' ', $_db->real_escape_string($_GET['cargo']));
+  $cargo = (rawurldecode($_GET['cargo']));
   $queryBase = "SELECT * FROM cargo, paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND cargo.idEur = paalgeldEur.idEur AND cargo = '".$cargo."'";
   $queryBase .= queryOrderPart(array('paalgeldEur.idEur','date','fullNameCaptain','portName'), 'date');
   $page = isset($_GET['page']) && $_GET['page'] >= 0 ? $_GET['page']*1 : 0;
@@ -61,10 +61,10 @@ if(isset($_GET['cargo'])){
     echo '<table class="table table-hover">';
     echo '<tr><th>'.sortableHead('Arrival id', 'paalgeldEur.idEur').'</th><th>'.sortableHead('Date', 'date').'</th><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Port Of Origin', 'portName').'</th></tr>';
     while($row = $res->fetch_assoc()){
-      $year = substr($row['date'], 0, -6);	
+      $year = substr($row['date'], 0, -6);
 	  $month = substr($row['date'], 5, -3);
 	  $day = substr($row['date'], 8);
-	  $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+	  $captain = rawurlencode($row['fullNameCaptain']);
       echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
     }
     echo '</table>';
@@ -96,7 +96,7 @@ if(isset($_GET['cargo'])){
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Cargo', 'cargo').'</th><th>'.sortableHead('Count', 'count').'</th></tr>';
   while($row = $res->fetch_assoc()){
-    $cargo = str_replace(' ', '_', $row['cargo']);
+    $cargo = rawurlencode($row['cargo']);
     echo '<tr><td><a href="table_cargoes.php?cargo='.$cargo.'">'.$row['cargo'].'</a></td><td>'.$row['count'].'</td></tr>';
   }
   echo '</table>';

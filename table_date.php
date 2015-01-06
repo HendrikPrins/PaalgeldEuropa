@@ -29,7 +29,7 @@ if(isset($_GET['year'])){
 	  $year = substr($row['date'], 0, -6);	
 	  $month = substr($row['date'], 5, -3);
 	  $day = substr($row['date'], 8);
-	  $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+	  $captain = rawurlencode($row['fullNameCaptain']);
       echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
 	}
     echo '</table>';
@@ -65,7 +65,7 @@ if(isset($_GET['year'])){
 	  $year = substr($row['date'], 0, -6);	
 	  $month = substr($row['date'], 5, -3);
 	  $day = substr($row['date'], 8);
-	  $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+	  $captain = rawurlencode($row['fullNameCaptain']);
       echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
 	}
     echo '</table>';
@@ -99,7 +99,7 @@ if(isset($_GET['year'])){
 	  $year = substr($row['date'], 0, -6);	
 	  $month = substr($row['date'], 5, -3);
 	  $day = substr($row['date'], 8);
-	  $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+	  $captain = rawurlencode($row['fullNameCaptain']);
       echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
 	}
     echo '</table>';

@@ -21,7 +21,7 @@ if(isset($_GET['area'])){
     echo '</table>';
   }
 }elseif(isset($_GET['portCode'])){
-  $query = "SELECT *, Count(paalgeldEur.idEur) AS arrivals, (SELECT GROUP_CONCAT(cargo SEPARATOR ', ') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.portCode = '".$_db->real_escape_string($_GET['portCode'])."' AND pe.idEur = cargo.idEur GROUP BY cargo ORDER BY COUNT(*) DESC LIMIT 10) AS sub) AS cargoString FROM ports, portAreas, paalgeldEur WHERE ports.areaCode = portAreas.areaCode AND ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
+  $query = "SELECT *, Count(paalgeldEur.idEur) AS arrivals, (SELECT GROUP_CONCAT(cargo SEPARATOR '|') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.portCode = '".$_db->real_escape_string($_GET['portCode'])."' AND pe.idEur = cargo.idEur GROUP BY cargo ORDER BY COUNT(*) DESC LIMIT 10) AS sub) AS cargoString FROM ports, portAreas, paalgeldEur WHERE ports.areaCode = portAreas.areaCode AND ports.portCode = paalgeldEur.portCode AND ports.portCode = '".$_db->real_escape_string($_GET['portCode'])."'";
   $res = $_db->query($query);
   if($res == null || $res->num_rows == 0){
      echo '<div class="alert alert-warning">error '.$_db->error.'.</div>';
@@ -35,7 +35,13 @@ if(isset($_GET['area'])){
     echo '<tr><td>Area</td><td><a href="table_ports.php?area='.$row['area'].'">'.$row['area'].'</a></td></tr>';
     echo '<tr><td>Country now</td><td>'.$row['countriesNow'].'</td></tr>';
     echo '<tr><td>Arrivals</td><td>'.$row['arrivals'].'</td></tr>';
-    echo '<tr><td>Top cargoes</td><td>'.$row['cargoString'].'</td></tr>';
+    echo '<tr><td>Top cargoes</td><td>';
+    $top = explode('|', $row['cargoString']);
+    for($i = 0;$i < count($top);$i++){
+      $top[$i] = '<a href="table_cargoes.php?cargo='.rawurlencode($top[$i]).'">'.$top[$i].'</a>';
+    }
+    echo implode(', ', $top);
+    echo '</td></tr>';
     echo '</table>';
     // Activity chart
     $activityChart = array(array('Year', 'Arrivals'));
@@ -98,7 +104,7 @@ if(isset($_GET['area'])){
 		  $year = substr($row['date'], 0, -6);	
 		  $month = substr($row['date'], 5, -3);
 	      $day = substr($row['date'], 8);
-          $captain = str_replace(' ', '_', $row2['fullNameCaptain']);
+          $captain = rawurlencode($row2['fullNameCaptain']);
           echo '<tr><td><a href="table_arrivals.php?id='.$row2['idEur'].'">'.$row2['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row2['fullNameCaptain'].'</a></td><td>'.$row2['cargoCount'].'</td></tr>';
         }
         echo '</table>';

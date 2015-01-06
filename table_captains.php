@@ -5,19 +5,25 @@ $_loadGoogleCharts = true;
 beginPage('Paalgeld Europa - Complete tables', true, 'The complete names table');
 
 if(isset($_GET['id'])){
-  $captain = str_replace('_', ' ', $_db->real_escape_string($_GET['id']));
-  $resDetail = $_db->query("SELECT *, (SELECT GROUP_CONCAT(cargo SEPARATOR ', ') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.fullNameCaptain = '".$captain."' AND pe.idEur = cargo.idEur GROUP BY cargo ORDER BY COUNT(*) DESC LIMIT 10) AS sub) AS cargoString FROM paalgeldEur WHERE fullNameCaptain = '".$captain."' LIMIT 1");
+  $captain = rawurldecode($_db->real_escape_string($_GET['id']));
+  $resDetail = $_db->query("SELECT *, (SELECT GROUP_CONCAT(cargo SEPARATOR '|') AS cargoString FROM (SELECT cargo FROM cargo, paalgeldEur AS pe WHERE pe.fullNameCaptain = '".$captain."' AND pe.idEur = cargo.idEur GROUP BY cargo ORDER BY COUNT(*) DESC LIMIT 10) AS sub) AS cargoString FROM paalgeldEur WHERE fullNameCaptain = '".$captain."' LIMIT 1");
   if($resDetail == null || $resDetail->num_rows == 0){
     echo '<div class="alert alert-warning" role="alert"No captain names with name <strong>'.$_GET['id'].'</strong> found. <a class="alert-link" href="index.php">Go back to home</a></div>';
   }else{
     // details
 	echo '<table class="table">';
     $rowDetail = $resDetail->fetch_assoc();
-    $captain = str_replace(' ', '_', $rowDetail['fullNameCaptain']);
+    $captain = rawurlencode($rowDetail['fullNameCaptain']);
     echo '<tr><td>Full name</td><td><a href="table_captains.php?id='.$captain.'">'.$rowDetail['fullNameCaptain'].'</a></td></tr>';
     echo '<tr><td>First name</td><td>'.$rowDetail['firstNameCaptain'].'</td></tr>';
     echo '<tr><td>Last name</td><td>'.$rowDetail['lastNameCaptain'].'</td></tr>';
-    echo '<tr><td>Top cargoes</td><td>'.$rowDetail['cargoString'].'</td></tr>';
+    echo '<tr><td>Top cargoes</td><td>';
+    $top = explode('|', $rowDetail['cargoString']);
+    for($i = 0;$i < count($top);$i++){
+      $top[$i] = '<a href="table_cargoes.php?cargo='.rawurlencode($top[$i]).'">'.$top[$i].'</a>';
+    }
+    echo implode(', ', $top);
+    echo '</td></tr>';
     echo '</table>';
 
     $query = "SELECT idEur, date, fullNameCaptain, firstNameCaptain, lastNameCaptain, portName, ports.portCode AS pCode, lat, lng FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode AND fullNameCaptain = '".validate($rowDetail['fullNameCaptain'])."'";
@@ -93,7 +99,7 @@ if(isset($_GET['id'])){
   echo '<table class="table table-hover">';
   echo '<tr><th>'.sortableHead('Captain', 'fullNameCaptain').'</th><th>'.sortableHead('Amount of shippings', 'count').'</th></tr>';
   while($row = $res->fetch_assoc()){
-    $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+    $captain = rawurlencode($row['fullNameCaptain']);
     echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['count'].'</td></tr>';
   }
   echo '</table>';

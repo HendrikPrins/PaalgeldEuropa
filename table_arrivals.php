@@ -16,7 +16,7 @@ if(isset($_GET['id'])){
 	$year = substr($row['date'], 0, -6);	
 	$month = substr($row['date'], 5, -3);
 	$day = substr($row['date'], 8);
-	$captain = str_replace(' ', '_', $row['fullNameCaptain']);
+	$captain = rawurlencode($row['fullNameCaptain']);
     echo '<tr><td>Arrival id</td><td>'.$row['idEur'].'</td></tr>';
     echo '<tr><td>Date</td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td></tr>';
     echo '<tr><td>Full name captain</td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td></tr>';
@@ -32,7 +32,7 @@ if(isset($_GET['id'])){
       echo '<table class="table table-hover">';
       echo '<tr><th>Cargo</th><th>Value</th></tr>';
       while($row2 = $res2->fetch_assoc()){
-        $cargo = str_replace(' ', '_', $row2['cargo']);
+        $cargo = rawurlencode($row2['cargo']);
         echo '<tr><td><a href="table_cargoes.php?cargo='.$cargo.'">'.$row2['cargo'].'</a></td><td>'.($row2['taxGuilders']*500).'</td></tr>';
       }
       echo '</table>';
@@ -72,7 +72,7 @@ Clicking the name of a captain gives an overview of the cargoes this particular 
     $year = substr($row['date'], 0, -6);	
 	$month = substr($row['date'], 5, -3);
 	$day = substr($row['date'], 8);
-    $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+    $captain = rawurlencode($row['fullNameCaptain']);
     echo '<tr><td><a href="table_arrivals.php?id='.$row['idEur'].'">'.$row['idEur'].'</a></td><td><a href="table_date.php?year='.$year.'">'.$year.'</a>-<a href="table_date.php?month='.$month.'">'.$month.'</a>-<a href="table_date.php?day='.$day.'">'.$day.'</a></td><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td><a href="table_ports.php?portCode='.$row['portCode'].'">'.$row['portName'].'</a></td></tr>';
   }
   echo '</table>';
