@@ -19,6 +19,16 @@ beginPage('Paalgeld Europa - Search', true, 'Search through the database finding
     </div>
     </div>
     <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                  <input name="exact" value="yes" type="checkbox"> I want to search exact
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
     <label for="inputStartDate" class="col-sm-2 control-label">Period</label>
     <div class="col-xs-2">
     <input type="text" maxlength="4" min="1742" max="1787" class="form-control" name="inputStartDate" placeholder="Start Year" data-parsley-maxlength="4" data-parsley-type="digits">
