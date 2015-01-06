@@ -62,7 +62,7 @@ require_once('inc/config.php');
         echo '<table class="table table-hover">';
         echo '<tr><th>Captain</th><th>Arrivals</th></tr>';
         while($row = $res->fetch_array()){
-            $captain = str_replace(' ', '_', $row['fullNameCaptain']);
+            $captain = urlencode($row['fullNameCaptain']);
             echo '<tr><td><a href="table_captains.php?id='.$captain.'">'.$row['fullNameCaptain'].'</a></td><td>'.$row['arrivalCount'].'</td></tr>';
         }
         echo '</table>';
