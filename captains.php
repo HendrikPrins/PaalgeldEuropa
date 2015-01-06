@@ -23,7 +23,7 @@ beginPage('Paalgeld Europa - Search', true, 'Search through the database finding
         <div class="col-sm-10">
             <div class="checkbox">
                 <label>
-                  <input name="exact" value="yes" type="checkbox"> I want to search exact
+                  <input name="exact" value="yes" type="checkbox"> Strict search
                 </label>
             </div>
         </div>

@@ -21,7 +21,8 @@ require_once('inc/config.php');
 
     $query = "SELECT fullNameCaptain, COUNT(*) AS arrivalCount, lat, lng, ports.portCode AS pCode, portName FROM paalgeldEur, ports WHERE paalgeldEur.portCode = ports.portCode";
     if($inputName != "" && $exact != "yes"){
-      $query .= " AND fullNameCaptain like '%'.'$inputName'.'%'";
+      $inputNameNew = "%".$inputName."%";
+      $query .= " AND fullNameCaptain like '$inputNameNew'";
     }
     if($inputName != "" && $exact == "yes"){
       $query .= " AND fullNameCaptain like '$inputName'";
