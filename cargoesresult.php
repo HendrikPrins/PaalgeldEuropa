@@ -28,12 +28,12 @@ if($country != ""){
 	echo '<div class="row">Country: '.$country.'</div>';
 }
 
-if($area != ""){
-	echo '<div class="row">Area: '.$area.'</div>';
+if($area != ""){  
+	echo '<div class="row">Area: <a href="table_ports.php?area='.$area.'">'.$area.'</a></div>';
 }
 
 if($port != ""){
-	echo '<div class="row">Port: '.$port.'</div>';
+	echo '<div class="row">Port: <a href="table_ports.php?portCode='.$port.'">'.$port.'</a></div>';
 }
 
 
@@ -100,6 +100,7 @@ if ($res == null or $res->num_rows == 0){
   </script>
   <div id="chart" class="col-md-9" style="height:500px;"></div>
   <?php
+  download_knop($query);
   echo '<table class="table table-hover">';
   echo '<tr><th>Year</th><th>'.$cargoOne.'</th><th>'.$cargoTwo.'</th></tr>';
   foreach($data as $row){

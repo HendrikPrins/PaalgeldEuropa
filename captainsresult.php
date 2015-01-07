@@ -14,7 +14,7 @@ require_once('inc/config.php');
         header("Location: table_captains.php");
     }
 
-    if($inputName == "WELLING"){
+    if(strtolower($inputName) == "welling"){
         beginPage('Paalgeld Europa - Search', true, 'Search through the database finding Names');
         echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="342" height="386" id="guitar" align="center">';
         echo '<param name="movie" value="guitar.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="img/guitar.swf" quality="high" bgcolor="#FFFFFF" width="342" height="386" name="guitar" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';

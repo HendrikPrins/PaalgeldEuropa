@@ -102,6 +102,7 @@ if ($res == null or $res->num_rows == 0){
   </script>
   <div id="chart" class="col-md-9" style="height:500px;"></div>
   <?php
+  download_knop($query);
   echo '<table class="table table-hover">';
 	echo '<tr><th>Year</th><th>'.$one.'</th><th>'.$two.'</th></tr>';
 	foreach($data as $row){
